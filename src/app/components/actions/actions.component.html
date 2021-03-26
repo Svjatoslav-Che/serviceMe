@@ -7,7 +7,6 @@
      (@fadeOutUpOnLeave.start)="animOutStart($event)"
      (@fadeOutUpOnLeave.done)="animOutDone($event)">
 
-
     <div class="container_inner_space scroll_style_custom">
 
         <div class="header_container">
@@ -300,7 +299,7 @@
 </ng-template>
 
 <ng-template #notickets>
-    <div class="login_posotion">
+    <div class="login_posotion" *ngIf="globalsService.userLogged">
         <h1>{{"actions.nothing"|translate}}</h1>
         <div class="settings_help">
             <p class="__custom"><span>{{"actions.tip"|translate}}</span> {{"actions.open"|translate}}</p>
@@ -318,7 +317,7 @@
         </div>
 
     </div>
-    <div class="loader_mini">
+    <div class="loader_mini" *ngIf="globalsService.userLogged">
         <loader-square>
         </loader-square>
     </div>

@@ -1,9 +1,12 @@
 # the Sound Converts:
 
 sudo snap install ffmpeg  # version 4.3.1,
-
 sudo apt  install ffmpeg  # version 7:4.2.4-1ubuntu0.1
 
+
+"build prod on GHpages
+
+ng build --prod --output-path docs --base-href /serviceMe/
 
 # NgxTranslateAngular
 
