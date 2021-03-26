@@ -82,7 +82,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   ngAfterContentInit() {
   }
 
-  localScenarioToggle() {
+  localScenarioToggle(): any {
     if (this.globalsService.cookiesPolicy) {
       if (this.globalsService.userLogged) {
         this.globalsService.userLogged = false;
