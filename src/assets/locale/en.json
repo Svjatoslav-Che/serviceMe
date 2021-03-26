@@ -270,6 +270,19 @@
 			"choose": "Choose to view:",
 			"refresh": "REFRESH"
 		},
+		"elements_headers": {
+			"headers": "HEADERS",
+			"about": "more than words only",
+			"customs": "Custom component",
+			"description": "Understand incoming values as: display different icon by name;  exceptions when some value is missing; Got own non-customizing simply drawing logic on appear.",
+			"description_head": "description",
+			"header_head": "HEAD",
+			"choose": "Select to view:",
+			"refresh": "REFRESH",
+			"elements": "Elements:",
+			"small": "Small",
+			"open": "Open"
+		},
 		"elements_graphs": {
 			"headers": "GRAPHS",
 			"about": "SVG based",
