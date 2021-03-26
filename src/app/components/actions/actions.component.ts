@@ -89,6 +89,7 @@ export class ActionsComponent implements OnInit {
       { name: 'actions.system', value: 'system'},
       { name: 'actions.user', value: 'user'},
     ]
+    this.paginationList = [];
   }
 
   ngOnInit() {
