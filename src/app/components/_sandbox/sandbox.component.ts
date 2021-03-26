@@ -121,7 +121,7 @@ export class SandboxComponent implements OnInit {
     this.secondRoute = value;
   }
 
-  routerScenario(value) {
+  routerScenario(value): any {
     if (this.router.routerState.snapshot.url !== value) {
       this.secondRoute = value;
       this._data.updateMessage({

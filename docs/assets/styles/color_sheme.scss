@@ -1,0 +1,239 @@
+.color_scheme_green {
+  * {transition: all var(--transition_basic_element_speed) ease-in-out;}
+  //active colors
+  --highlight_color_active: rgb(255, 255, 255); //***dnt
+  --highlight_color_active_shadow: rgba(255, 255, 255, 0.65); //***dnt
+  --highlight_color_active_background: rgba(255, 255, 255, 0.1); //***dnt
+  //highlights colors
+  --highlight_color: rgb(172, 249, 251); //-hl 172
+  --highlight_error: rgb(255, 201, 201); //***dnt
+  --highlight_color_shadow: rgba(172, 249, 251, 0.65); //-hl 172
+  --highlight_color_background: rgba(172, 249, 251, 0.2); //-hl 172
+  //regular colors
+  --text_color: rgb(126, 252, 246); //--ok
+  --theif_color: rgb(81, 212, 255); //--ok
+  //objects colors
+  --object_color: rgb(6, 216, 215); //0obj
+  //***error***
+  --object_error_radical: rgb(255, 0, 0); //***dnt
+  --object_error_radical_low: rgb(255, 53, 53); //***dnt
+  --object_error: rgb(255, 112, 112); //***dnt
+  --object_error_active_shadow: rgba(255, 112, 112, 0.65); //***dnt
+  --object_error_highlite_shadow: rgba(255, 112, 112, 0.2); //***dnt
+  //***apply***
+  --object_apply_radical: rgb(0, 213, 0); //***dnt
+  --object_apply_radical_low: rgb(109, 255, 109); //***dnt
+  --object_apply: rgb(151, 255, 151); //***dnt
+  --object_apply_active_shadow: rgba(0, 255, 0, 0.65); //***dnt
+  --object_apply_highlite_shadow: rgba(0, 255, 0, 0.2); //***dnt
+  --object_apply_highlite_shadow_low: rgba(0, 255, 0, 0.1); //***dnt
+  //***alert***
+  --object_alert_radical: rgb(213, 213, 0); //***dnt
+  --object_alert_radical_low: rgb(255, 255, 109); //***dnt
+  --object_alert: rgb(255, 255, 151); //***dnt
+  --object_alert_active_shadow: rgba(255, 255, 0, 0.65); //***dnt
+  --object_alert_highlite_shadow: rgba(255, 255, 0, 0.2); //***dnt
+  --object_alert_highlite_shadow_low: rgba(255, 255, 0, 0.1); //***dnt
+
+  --object_color_border: rgba(6, 216, 215, 0.2); //0obj
+  --object_color_border_low: rgba(6, 216, 215, 0.05); //0obj
+  --object_color_disabled: rgb(0, 82, 82); //--ok
+  --object_shadow: rgba(75, 242, 246, 0.65); //--ok
+  //background colors
+  --background_die_color: rgb(0, 0, 0); //--ok
+  --background_die_color_opacity: rgba(0, 0, 0, 0.2); //--ok
+  --background_die_color_opacity_low: rgba(0, 0, 0, 0.3); //--ok
+  --background_die_color_opacity_drop: rgba(0, 0, 0, 0.8); //--ok
+  --background_main_color: rgb(0, 19, 19); //--ok
+  --button_color_backround: rgba(6, 216, 215, 0.2); //0obj
+  --viever_color_backround: rgba(6, 216, 215, 0.1); //0obj
+  --path_fill_regular_color_bacground: rgba(6, 216, 215, 0.1); //0obj
+  --path_fill_regular_color_bacground_small: rgba(6, 216, 215, 0.4); //0obj
+  --path_fill_regular_color_highlight: rgba(172, 249, 251, 0.1); //-hl 172
+  --path_fill_regular_color_highlight_small: rgba(172, 249, 251, 0.5); //-hl 172
+  --path_fill_regular_color_disabled: rgba(0, 82, 82, 0.1); //--ok
+  //background gradients
+  //***error***
+  --object_error_backround: linear-gradient(rgba(255, 112, 112, 0.2), rgba(255, 112, 112, 0), rgba(255, 112, 112, 0.2)); //***dnt
+  //***apply***
+  --object_apply_backround: linear-gradient(rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0), rgba(0, 255, 0, 0.2)); //***dnt
+  //***alert***
+  --object_alert_backround: linear-gradient(rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.2)); //***dnt
+
+  --highlight_backround: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2)); //***dnt
+  --highlight_backround_light: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); //***dnt
+  --object_color_backround: linear-gradient(rgba(6, 216, 215, 0.2), rgba(6, 216, 215, 0), rgba(6, 216, 215, 0.2)); //0obj
+  --object_color_backround_inverse: linear-gradient(rgba(6, 216, 215, 0), rgba(6, 216, 215, 0.2), rgba(6, 216, 215, 0)); //0obj
+  --object_color_backround_half_footer: linear-gradient(rgba(6, 216, 215, 0), rgba(6, 216, 215, 0.2)); //0obj
+  --object_color_backround_half_header: linear-gradient(rgba(6, 216, 215, 0.2), rgba(6, 216, 215, 0), rgba(6, 216, 215, 0)); //0obj
+  --object_color_backround_light: linear-gradient(rgba(6, 216, 215, 0.1), rgba(6, 216, 215, 0), rgba(6, 216, 215, 0.1)); //0obj
+  //custom scrollbar colors
+  --scrollbar_thumb: rgba(6, 216, 215, 0.2); //0obj
+  //color change and animations speed
+  --transition_all_speed: 300ms;
+  --transition_basic_element_speed: 100ms;
+  --transition_basic_element_speed_double: 200ms;
+  //gradient pics colors
+  --p-hair: rgba(6, 216, 215, 0.03); //0obj
+  --p-highlight_glass: rgba(172, 249, 251, 0.08); //-hl 172
+}
+
+.color_scheme_blue {
+  * {transition: all var(--transition_basic_element_speed) ease-in-out;}
+  //active colors
+  --highlight_color_active: rgb(255, 255, 255); //***dnt
+  --highlight_color_active_shadow: rgba(255, 255, 255, 0.65); //***dnt
+  --highlight_color_active_background: rgba(255, 255, 255, 0.1); //***dnt
+  //highlights colors
+  --highlight_color: rgb(148, 225, 253); //-hl 172
+  --highlight_error: rgb(255, 201, 201); //***dnt
+  --highlight_color_shadow: rgba(148, 225, 253, 0.65); //-hl
+  --highlight_color_background: rgba(148, 225, 253, 0.2);  //-hl
+  //regular colors
+  --text_color: rgb(69, 185, 217); //--ok
+  --theif_color: rgb(83, 192, 255); //--ok
+  //objects colors
+  --object_color: rgb(70, 195, 229); //0obj 6
+  //***error***
+  --object_error_radical: rgb(255, 0, 0); //***dnt
+  --object_error_radical_low: rgb(255, 53, 53); //***dnt
+  --object_error: rgb(255, 112, 112); //***dnt
+  --object_error_active_shadow: rgba(255, 112, 112, 0.65); //***dnt
+  --object_error_highlite_shadow: rgba(255, 112, 112, 0.2); //***dnt
+  //***apply***
+  --object_apply_radical: rgb(0, 213, 0); //***dnt
+  --object_apply_radical_low: rgb(109, 255, 109); //***dnt
+  --object_apply: rgb(151, 255, 151); //***dnt
+  --object_apply_active_shadow: rgba(0, 255, 0, 0.65); //***dnt
+  --object_apply_highlite_shadow: rgba(0, 255, 0, 0.2); //***dnt
+  --object_apply_highlite_shadow_low: rgba(0, 255, 0, 0.1); //***dnt
+  //***alert***
+  --object_alert_radical: rgb(213, 213, 0); //***dnt
+  --object_alert_radical_low: rgb(255, 255, 109); //***dnt
+  --object_alert: rgb(255, 255, 151); //***dnt
+  --object_alert_active_shadow: rgba(255, 255, 0, 0.65); //***dnt
+  --object_alert_highlite_shadow: rgba(255, 255, 0, 0.2); //***dnt
+  --object_alert_highlite_shadow_low: rgba(255, 255, 0, 0.1); //***dnt
+
+  --object_color_border: rgba(70, 195, 229, 0.2); //0obj
+  --object_color_border_low: rgba(70, 195, 229, 0.05); //0obj
+  --object_color_disabled: rgb(0, 75, 86);  //--ok
+  --object_shadow: rgba(29, 181, 217, 0.65); //--ok
+  //background colors
+  --background_die_color: rgb(0, 0, 0); //***dnt
+  --background_die_color_opacity: rgba(0, 0, 0, 0.2); //***dnt
+  --background_die_color_opacity_low: rgba(0, 0, 0, 0.3); //***dnt
+  --background_die_color_opacity_drop: rgba(0, 0, 0, 0.8); //--ok
+  --background_main_color: rgb(0, 24, 24); //--ok
+  --button_color_backround: rgba(70, 195, 229, 0.2); //0obj
+  --viever_color_backround: rgba(70, 195, 229, 0.1); //0obj
+  --path_fill_regular_color_bacground: rgba(70, 195, 229, 0.1); //0obj
+  --path_fill_regular_color_bacground_small: rgba(70, 195, 229, 0.4); //0obj
+  --path_fill_regular_color_highlight: rgba(148, 225, 253, 0.1);  //-hl
+  --path_fill_regular_color_highlight_small: rgba(148, 225, 253, 0.5);  //-hl
+  --path_fill_regular_color_disabled: rgba(40, 82, 82, 0.1); //--ok
+  //background gradients
+  //***error***
+  --object_error_backround: linear-gradient(rgba(255, 112, 112, 0.2), rgba(255, 112, 112, 0), rgba(255, 112, 112, 0.2)); //***dnt
+  //***apply***
+  --object_apply_backround: linear-gradient(rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0), rgba(0, 255, 0, 0.2)); //***dnt
+  //***alert***
+  --object_alert_backround: linear-gradient(rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.2)); //***dnt
+
+  --highlight_backround: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2)); //***dnt
+  --highlight_backround_light: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); //***dnt
+  --object_color_backround: linear-gradient(rgba(70, 195, 229, 0.2), rgba(70, 195, 229, 0), rgba(70, 195, 229, 0.2)); //0obj
+  --object_color_backround_inverse: linear-gradient(rgba(70, 195, 229, 0), rgba(70, 195, 229, 0.2), rgba(70, 195, 229, 0)); //0obj
+  --object_color_backround_half_footer: linear-gradient(rgba(70, 195, 229, 0), rgba(70, 195, 229, 0.2)); //0obj
+  --object_color_backround_half_header: linear-gradient(rgba(70, 195, 229, 0.2), rgba(70, 195, 229, 0), rgba(70, 195, 229, 0)); //0obj
+  --object_color_backround_light: linear-gradient(rgba(70, 195, 229, 0.1), rgba(70, 195, 229, 0), rgba(70, 195, 229, 0.1)); //0obj
+  //custom scrollbar colors
+  --scrollbar_thumb: rgba(70, 195, 229, 0.2); //0obj
+  //color change and animations speed
+  --transition_all_speed: 300ms;
+  --transition_basic_element_speed: 100ms;
+  --transition_basic_element_speed_double: 200ms;
+  //gradient pics colors
+  --p-hair: rgba(70, 195, 229, 0.03); //0obj
+  --p-highlight_glass: rgba(148, 225, 253, 0.08); //-hl
+}
+
+.color_scheme_pink {
+  * {transition: all var(--transition_basic_element_speed) ease-in-out;}
+  //active colors
+  --highlight_color_active: rgb(255, 255, 255); //***dnt
+  --highlight_color_active_shadow: rgba(255, 255, 255, 0.65); //***dnt
+  --highlight_color_active_background: rgba(255, 255, 255, 0.1); //***dnt
+  //highlights colors
+  --highlight_color: rgb(247, 172, 251); //-hl 172
+  --highlight_error: rgb(255, 201, 201); //***dnt
+  --highlight_color_shadow: rgba(247, 172, 251, 0.65); //-hl
+  --highlight_color_background: rgba(247, 172, 251, 0.2);  //-hl
+  //regular colors
+  --text_color: rgb(237, 126, 252); //--ok
+  --theif_color: rgb(255, 81, 223); //--ok
+  //objects colors
+  --object_color: rgb(247, 154, 255); //0obj 6
+  //***error***
+  --object_error_radical: rgb(255, 0, 0); //***dnt
+  --object_error_radical_low: rgb(255, 53, 53); //***dnt
+  --object_error: rgb(255, 112, 112); //***dnt
+  --object_error_active_shadow: rgba(255, 112, 112, 0.65); //***dnt
+  --object_error_highlite_shadow: rgba(255, 112, 112, 0.2); //***dnt
+  //***apply***
+  --object_apply_radical: rgb(0, 213, 0); //***dnt
+  --object_apply_radical_low: rgb(109, 255, 109); //***dnt
+  --object_apply: rgb(151, 255, 151); //***dnt
+  --object_apply_active_shadow: rgba(0, 255, 0, 0.65); //***dnt
+  --object_apply_highlite_shadow: rgba(0, 255, 0, 0.2); //***dnt
+  --object_apply_highlite_shadow_low: rgba(0, 255, 0, 0.1); //***dnt
+  //***alert***
+  --object_alert_radical: rgb(213, 213, 0); //***dnt
+  --object_alert_radical_low: rgb(255, 255, 109); //***dnt
+  --object_alert: rgb(255, 255, 151); //***dnt
+  --object_alert_active_shadow: rgba(255, 255, 0, 0.65); //***dnt
+  --object_alert_highlite_shadow: rgba(255, 255, 0, 0.2); //***dnt
+  --object_alert_highlite_shadow_low: rgba(255, 255, 0, 0.1); //***dnt
+
+  --object_color_border: rgba(247, 154, 255, 0.2); //0obj
+  --object_color_border_low: rgba(247, 154, 255, 0.05); //0obj
+  --object_color_disabled: rgb(91, 46, 94);  //--ok
+  --object_shadow: rgba(205, 105, 213, 0.65); //--ok
+  //background colors
+  --background_die_color: rgb(0, 0, 0); //***dnt
+  --background_die_color_opacity: rgba(0, 0, 0, 0.2); //***dnt
+  --background_die_color_opacity_low: rgba(0, 0, 0, 0.3); //***dnt
+  --background_die_color_opacity_drop: rgba(0, 0, 0, 0.9); //--ok
+  --background_main_color: rgb(24, 24, 24); //--ok
+  --button_color_backround: rgba(247, 154, 255, 0.2); //0obj
+  --viever_color_backround: rgba(247, 154, 255, 0.1); //0obj
+  --path_fill_regular_color_bacground: rgba(247, 154, 255, 0.1); //0obj
+  --path_fill_regular_color_bacground_small: rgba(247, 154, 255, 0.4); //0obj
+  --path_fill_regular_color_highlight: rgba(247, 172, 251, 0.1);  //-hl
+  --path_fill_regular_color_highlight_small: rgba(247, 172, 251, 0.5);  //-hl
+  --path_fill_regular_color_disabled: rgba(247, 172, 251, 0.1); //--ok
+  //background gradients
+  //***error***
+  --object_error_backround: linear-gradient(rgba(255, 112, 112, 0.2), rgba(255, 112, 112, 0), rgba(255, 112, 112, 0.2)); //***dnt
+  //***apply***
+  --object_apply_backround: linear-gradient(rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0), rgba(0, 255, 0, 0.2)); //***dnt
+  //***alert***
+  --object_alert_backround: linear-gradient(rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0), rgba(255, 255, 0, 0.2)); //***dnt
+
+  --highlight_backround: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2)); //***dnt
+  --highlight_backround_light: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1)); //***dnt
+  --object_color_backround: linear-gradient(rgba(247, 154, 255, 0.2), rgba(247, 154, 255, 0), rgba(247, 154, 255, 0.2)); //0obj
+  --object_color_backround_inverse: linear-gradient(rgba(247, 154, 255, 0), rgba(247, 154, 255, 0.2), rgba(247, 154, 255, 0)); //0obj
+  --object_color_backround_half_footer: linear-gradient(rgba(247, 154, 255, 0), rgba(247, 154, 255, 0.2)); //0obj
+  --object_color_backround_half_header: linear-gradient(rgba(247, 154, 255, 0.2), rgba(247, 154, 255, 0), rgba(247, 154, 255, 0)); //0obj
+  --object_color_backround_light: linear-gradient(rgba(247, 154, 255, 0.1), rgba(247, 154, 255, 0), rgba(247, 154, 255, 0.1)); //0obj
+  //custom scrollbar colors
+  --scrollbar_thumb: rgba(247, 154, 255, 0.2); //0obj
+  //color change and animations speed
+  --transition_all_speed: 300ms;
+  --transition_basic_element_speed: 100ms;
+  --transition_basic_element_speed_double: 200ms;
+  //gradient pics colors
+  --p-hair: rgba(247, 154, 255, 0.03); //0obj
+  --p-highlight_glass: rgba(247, 172, 251, 0.08); //-hl
+}
