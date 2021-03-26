@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
               private router: Router,
               private route: ActivatedRoute,
               private _data: CommonService,
-              private audioService: AudioService,
+              public audioService: AudioService,
               private localsService: LocalsService,
               private tokenService: TokenService
               ) {
