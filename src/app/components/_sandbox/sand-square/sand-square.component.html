@@ -1,0 +1,186 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'SQUARE'
+                    headerDescription = '{{"sandbox.elements_square.square"|translate}}'
+                    description = '{{"sandbox.elements_square.about"|translate}}'>
+            </header-small>
+            <div class="text __position __description __under_header">
+                {{"sandbox.elements_square.customs"|translate}}
+                <p>
+                    {{"sandbox.elements_square.description"|translate}}
+                </p>
+            </div>
+        </div>
+
+
+    <div class="preview_box_rules">
+        <div class="preview_box_300">
+            <div *ngIf="displayEl"
+                 class="inrdaws_conainer"
+                 [ngStyle]="{'width': size + 'px', 'height': size + 'px'}">
+
+                <square-element
+                        cornersSize = '{{this.cornersSize}}'
+                        cornersPosition = '{{this.cornersPosition}}'
+                        [borders] = borders
+                        [element] = element>
+                </square-element>
+            </div>
+            <square-element class="backdrop"
+                            cornersSize = '10'
+                            cornersPosition = 'border'
+                            [borders] = false>
+            </square-element>
+        </div>
+        <div class="controls_box">
+            <p class="__custom">{{"sandbox.elements_square.description_1"|translate}}</p>
+
+            <div class="text"
+                [ngStyle]="{
+                'margin-top': 10 + 'px',
+                'margin-right': 0 + 'px'}">
+                {{"sandbox.elements_square.size"|translate}}<span>{{size}}px</span>
+            </div>
+            <div
+                [ngStyle]="{
+                'width': 298 +'px',
+                'margin-top': -5 + 'px',
+                'margin-right': 0 + 'px'}">
+                <input type="range" min="50" max="250" step="1" value='{{size}}'
+                       (input)="valueBoxSizeChanged($event)"
+                       (mouseenter)="hoverSound()"
+                       (mouseup)="valueSoundChanged()"
+                       (touchend)="valueSoundChanged()">
+            </div>
+
+
+            <div class="text"
+                 [ngStyle]="{
+                'margin-top': 10 + 'px',
+                'margin-right': 0 + 'px'}">
+                {{"sandbox.elements_square.corners"|translate}}<span>{{cornersSize}}px</span>
+            </div>
+            <div
+                [ngStyle]="{
+                'width': 298 +'px',
+                'margin-top': -5 + 'px',
+                'margin-right': 0 + 'px'}">
+                <input type="range" min="5" max="20" step="1" value='{{cornersSize}}'
+                       (input)="valueCornerSizeChanged($event)"
+                       (mouseenter)="hoverSound()"
+                       (mouseup)="valueSoundChanged()"
+                       (touchend)="valueSoundChanged()">
+            </div>
+
+            <div class="text"
+                 [ngStyle]="{
+                'margin-top': 10 + 'px',
+                'margin-right': 0 + 'px',
+                'margin-bottom': 5 + 'px'}">
+                {{"sandbox.elements_square.position"|translate}}
+            </div>
+
+                <div class="custom-select" id="header-container"
+                    [ngStyle]="{
+                    'width': 298 +'px',
+                    'height': 20 + 'px'}">
+                    <dropdown
+                            class = 'casualMenu'
+                            [object]= menuList
+                            selected = '{{cornersPosition}}'
+                            (callBack)="this.valueBordersChanged($event)">
+                    </dropdown>
+                </div>
+
+            <div [ngStyle]="{
+            'display': 'flex',
+            'margin-top': 10 + 'px'}">
+                <div
+                [ngStyle]="{
+                'width': 138 + 'px',
+                'height': 37 + 'px',
+                'margin-top': 16 + 'px',
+                'margin-right': 16 + 'px',
+                'margin-left': '3px'}">
+                    <rectangle_button (click)="valueBordersDisplay()"
+                                      cornersSize = '10'
+                                      cornersPosition = 'out'
+                                      borders = 'true'
+                                      state = '{{borders ? "selected_active" : "regular"}}'
+                                      text= '{{"sandbox.elements_square.borders"|translate}}'>
+                    </rectangle_button>
+                </div>
+
+                <div
+                        [ngStyle]="{
+                'width': 138 + 'px',
+                'height': 37 + 'px',
+                'margin-top': 16 + 'px'}">
+                    <rectangle_button (click)="valueDisplayElement()"
+                                      cornersSize = '10'
+                                      cornersPosition = 'out'
+                                      borders = 'true'
+                                      state = '{{element ? "selected_active" : "regular"}}'
+                                      text= '{{"sandbox.elements_square.icon"|translate}}'>
+                    </rectangle_button>
+                </div>
+            </div>
+
+
+            <div [ngStyle]="{
+            'display': 'flex'}">
+                <div
+                [ngStyle]="{
+                'width': 138 + 'px',
+                'height': 37 + 'px',
+                'margin-top': 16 + 'px',
+                'margin-right': 16 + 'px',
+                'margin-left': '3px'}">
+                    <rectangle_button (click)="restartItem()"
+                                      cornersSize = '10'
+                                      cornersPosition = 'out'
+                                      borders = 'true'
+                                      state = 'regular'
+                                      text= '{{"sandbox.elements_square.refresh"|translate}}'>
+                    </rectangle_button>
+                </div>
+                <div
+                        [ngStyle]="{
+                    'width': 138 + 'px',
+                    'height': 37 + 'px',
+                    'margin-top': 16 + 'px'}">
+                    <rectangle_button (click)="resetItem()"
+                                      cornersSize = '10'
+                                      cornersPosition = 'out'
+                                      borders = 'true'
+                                      state = 'regular'
+                                      text= '{{"sandbox.elements_square.reload"|translate}}'>
+                    </rectangle_button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+</div>

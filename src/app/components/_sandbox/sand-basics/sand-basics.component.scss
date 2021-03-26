@@ -1,0 +1,26 @@
+@import 'src/assets/styles/header_small';
+
+.container {
+  position: relative;
+  width: calc(100% - var(--sandbox_pad_step));
+  height: calc(100% - var(--sandbox_pad_step));
+  padding: var(--sandbox_pad);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--object_color_border);
+  background: var(--background_die_color_opacity);
+
+  .container_inner_space {
+  }
+}
+
+.text_content {
+  user-select: none;
+  margin-left: 33px;
+  margin-top: 33px;
+
+  @media screen and (max-width: $breake-point-8) {
+    margin-left: 0;
+  }
+}
+

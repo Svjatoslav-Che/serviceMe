@@ -1,0 +1,160 @@
+@import "src/assets/styles/breake_media";
+
+.keanu_ones {
+  svg {
+    fill: none;
+    stroke: var(--highlight_color);
+    filter: drop-shadow(0 0 8px var(--object_shadow));
+    stroke-width: 1;
+
+    .glasses_metal {
+      stroke: none;
+      fill: var(---high_light_glass_low);
+    }
+
+    .glasses_toned {
+      stroke: none;
+      fill: var(--object_color_border);
+    }
+
+    .hair {
+      stroke: none;
+      fill: var(--object_color_border);
+      opacity: 0.5;
+    }
+
+    .body_start {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 0%;
+    }
+
+    .body_end {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 70%;
+    }
+
+    .unstroke_obj {
+      stroke: none;
+    }
+  }
+}
+
+.hulk_ones {
+  svg {
+    fill: none;
+    stroke: var(--highlight_color);
+    filter: drop-shadow(0 0 8px var(--object_shadow));
+    stroke-width: 1;
+
+    .glasses_metal {
+      stroke: none;
+      fill: var(--highlight_color_shadow);
+    }
+
+    .glasses_toned {
+      stroke: none;
+      fill: var(--object_color_border);
+    }
+
+    .hair {
+      stroke: none;
+      fill: var(--object_color_border);
+      opacity: 0.5;
+    }
+
+    .body_start {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 0%;
+    }
+
+    .body_end {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 70%;
+    }
+
+    .unstroke_obj {
+      stroke: none;
+    }
+  }
+}
+
+.laytops {
+  user-select: none;
+  position: relative;
+  .text_system {
+    width: 200px;
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    display: block;
+    transition: all var(--transition_all_speed);
+
+    .text {
+      text-transform: lowercase;
+      .blinker {
+        color: var(--highlight_color);
+      }
+
+      @media (max-width: $breake-point-overSmall) {
+        font-size: 5px;
+      }
+    }
+
+    }
+
+  svg {
+    stroke: var(--object_color);
+    fill: var(--viever_color_backround);
+    stroke-width: 1.4;
+
+    .glow {
+      filter: drop-shadow(0 0 8px var(--highlight_color_shadow));
+    }
+
+    .filler {
+      fill: var(--background_die_color_opacity_low);
+    }
+
+    .body_start {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 10%;
+    }
+
+    .body_mid {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 50%;
+    }
+
+    .body_end {
+      stroke: none;
+      stop-color: var(--object_color_border);
+      stop-opacity: 10%;
+    }
+
+    .__active_device {
+      fill: var(--highlight_backround_light);
+      animation: blink 6000ms infinite;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {fill-opacity: 0.8}
+
+  49% {fill-opacity: 0.85}
+  50% {fill-opacity: 1}
+  51% {fill-opacity: 0.85}
+
+  65% {fill-opacity: 0.8}
+  66% {fill-opacity: 1}
+  67% {fill-opacity: 0.8}
+
+  100% {fill-opacity: 0.8}
+
+}

@@ -1,0 +1,20 @@
+<div class="main_frame">
+    <div class="error_frame">
+        <div class="hulk_placer">
+            <big-graph
+                    graphName = 'Hulk'
+                    [background] = true>
+            </big-graph>
+        </div>
+        <div class="error_message">
+            <h1>{{"404.crap"|translate}}</h1>
+            <p>{{"404.wrong"|translate}}</p>
+            <p>{{"404.try"|translate}} <a
+                    (mouseenter)="hoverSound()"
+                    (click)="remoteRouterScenario('/')">{{"404.project"|translate}}</a></p>
+        </div>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,212 @@
+<div class="box_body"
+     #sizeViewer>
+    <div class="back_overdrop">
+    </div>
+    <div class="square_container"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+        <square-element
+                cornersSize = 10
+                cornersPosition = 'out'
+                [borders] = true
+                [element] = true
+                elementName = '{{header}}'>
+        </square-element>
+    </div>
+
+    <div class="header"
+         [ngClass]="{'__left_headers' : elementOrient === 'left',
+                        '__center_headers': elementOrient === 'centre',
+                        '__right_headers': elementOrient === 'right'}">
+        <h1><typer-string
+                text='{{"cookies.cookies"|translate}}'
+                [durationInner] = 10
+                [charsAtOnce] = 1
+        ></typer-string></h1>
+    </div>
+
+    <div class="descriptor"
+         [ngClass]="{'__left_headers' : elementOrient === 'left',
+                    '__center_headers': elementOrient === 'centre',
+                    '__right_headers': elementOrient === 'right'}">
+        <h6>
+            <h6><typer-string
+                    text='{{"cookies.state"|translate}} {{(globalsService.cookiesPolicy) ? ("cookies.already"|translate) : ("cookies.apply"|translate)}}'
+                    [durationInner] = 10
+                    [charsAtOnce] = 1
+            ></typer-string></h6>
+        </h6>
+    </div>
+
+    <form class="text_box"
+          [ngClass]="{'__center_text' : elementOrient === 'centre'}">
+
+        <p><typer-string
+                text='{{"cookies.text_1"|translate}}'
+                [durationInner] = 10
+                [charsAtOnce] = 50
+        ></typer-string></p>
+
+        <h1><typer-string
+                text='{{"cookies.why"|translate}}'
+                [durationInner] = 10
+                [charsAtOnce] = 5
+        ></typer-string></h1>
+
+        <p><typer-string
+                text='{{"cookies.text_2"|translate}}'
+                [durationInner] = 10
+                [charsAtOnce] = 50
+        ></typer-string></p>
+
+        <div class="settings_help">
+            <p class="__custom">
+                <typer-string
+                        text='{{"cookies.tip_1"|translate}}'
+                        [durationInner] = 10
+                        [charsAtOnce] = 5
+                ></typer-string>
+
+            <div class="element_container">
+                <square-button
+                        cornersSize = '3'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state= 'selected'
+                        action= 'static'
+                        icon = 'cookie'>
+                </square-button>
+            </div>
+            <p class="__custom">
+                <typer-string
+                        text='{{"cookies.tip_2"|translate}}'
+                        [durationInner] = 10
+                        [charsAtOnce] = 5
+                ></typer-string>
+            </p>
+
+        </div>
+
+        <div class="buttons">
+            <div class="single_button">
+                <rectangle_button type="button" (click)="!globalsService.cookiesPolicy && applyCookies()"
+                                  cornersSize = '10'
+                                  cornersPosition = 'out'
+                                  [borders] = true
+                                  state = "{{globalsService.cookiesPolicy ? 'disabled' : 'apply'}}"
+                                  text= '{{"cookies.okay"|translate}}'>
+                </rectangle_button>
+                <div class="text __custom">
+                    <typer-string
+                            text= '{{"cookies.okay_text"|translate}}'
+                            [durationInner] = 10
+                            [charsAtOnce] = 5
+                    ></typer-string>
+                </div>
+            </div>
+            <div class="single_button" (click)="closeCookies()">
+                <rectangle_button
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state = 'alert'
+                        text= '{{"cookies.later"|translate}}'>
+                </rectangle_button>
+                <div class="text __custom">
+                    <typer-string
+                            text= '{{"cookies.later_text"|translate}}'
+                            [durationInner] = 10
+                            [charsAtOnce] = 5
+                    ></typer-string>
+                </div>
+            </div>
+            <div class="single_button" (click)="destroyCookies()">
+                <rectangle_button
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state = 'warning'
+                        text= '{{"cookies.no"|translate}}'>
+                </rectangle_button>
+                <div class="text __custom">
+                    <typer-string
+                            text= '{{"cookies.no_text"|translate}}'
+                            [durationInner] = 10
+                            [charsAtOnce] = 5
+                    ></typer-string>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--BORDERS PART START-->
+    <div *ngIf="borders" class="corner __lt"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+    </div>
+
+
+    <div *ngIf="borders" class="corner __rt"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+    </div>
+
+    <div *ngIf="borders" class="corner __rd"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <div *ngIf="borders" class="corner __ld"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <!--BORDERS PART END-->
+
+    <!--CORNERS PART START-->
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __lt"
+         [ngClass]="{
+            '__lt_in' : cornersPosition === 'in',
+            '__lt_out' : cornersPosition === 'out',
+            '__lt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rt"
+         [ngClass]="{
+            '__rt_in' : cornersPosition === 'in',
+            '__rt_out' : cornersPosition === 'out',
+            '__rt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rd"
+         [ngClass]="{
+            '__rd_in' : cornersPosition === 'in',
+            '__rd_out' : cornersPosition === 'out',
+            '__rd' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __ld"
+         [ngClass]="{
+            '__ld_in' : cornersPosition === 'in',
+            '__ld_out' : cornersPosition === 'out',
+            '__ld' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <!--CORNERS PART END-->
+
+</div>

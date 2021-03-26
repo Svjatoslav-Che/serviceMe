@@ -1,0 +1,124 @@
+<div class="square_body"
+    (mouseenter)="hoverSound()"
+    (click)="clickSound()"
+    [ngClass]="{
+    '__regular': state === 'regular',
+    '__selected': state === 'selected',
+    '__disabled': state === 'disabled',
+    '__active': action === 'active',
+    '__no_background': !background
+    }">
+
+    <div class="image_container"
+        [ngClass]="{'__with_text': text != undefined}">
+        <svg *ngIf="text === 'HOME'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <polygon points="35,5 5,26 5,36 35,15 65,36 65,26 "/>
+            <polygon points="10,65 10,42 35,25 60,42 60,65 "/>
+        </svg>
+        <svg *ngIf="text === 'ABOUT'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <path d="M5,65.5v-60h60v50H15L5,65.5z M35,10.5c-2.762,0-5,2.239-5,5s2.238,5,5,5s5-2.239,5-5S37.762,10.5,35,10.5zM40,25.5H30v25h10V25.5z"/>
+        </svg>
+        <svg *ngIf="text === 'SANDBOX'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <polygon  points="35,5 5,30 5,40 35,15 65,38 65,28 "/> <polygon points="35,65 5,40 5,30 35,55 65,28 65,38 "/>
+        </svg>
+        <svg *ngIf="text === 'ACHIVES'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" >
+            <polygon  points="35.001,53.785 53.542,63.531 50,42.887 65.001,28.266 44.271,25.253 35.001,6.469 25.73,25.253 5,28.266 20,42.887 16.459,63.531 "/>
+        </svg>
+        <svg *ngIf="text === 'ANGULAR'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <path d="M29.904,36.617h10.191L35,24.367L29.904,36.617z M35,5.042l-27.792,9.95l4.253,36.874L35,64.957 l23.539-13.092l4.253-36.874L35,5.042z M52.413,50.754h-6.5l-3.504-8.746H27.617l-3.504,8.746H17.6L35,11.662L52.413,50.754z"/>
+        </svg>
+        <svg *ngIf="text === 'LOGIN'" version="1.1"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <polygon points="26,57 54,57 54,13 26,13 26,21 18,21 18,5 62,5 62,65 18,65 18,49 26,49 "/>
+            <polygon points="8,31 8,39 37,39 37,47 47,35 37,23 37,31 "/>
+        </svg>
+        <svg *ngIf="text === 'ACTIONS'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <path fill="#00DEDF" d="M27.179,48.838L13.491,35l13.838-13.839l-4.362-4.211L4.917,35l18.05,18.05L27.179,48.838z M42.822,48.838 L56.661,35L42.822,21.161l4.212-4.211L65.083,35L47.034,53.05L42.822,48.838z"/>
+        </svg>
+        <svg *ngIf="text === 'LOGOUT'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <polygon points="26,57 54,57 54,13 26,13 26,21 18,21 18,5 62,5 62,65 18,65 18,49 26,49 "/>
+            <polygon points="16,31 16,23 6,35 16,47 16,39 45,39 45,31 "/>
+        </svg>
+    </div>
+
+<!--LOGO CONDITIONS-->
+    <div class="logo_letters" *ngIf="text === 'JP'">
+        <svg *ngIf="text === 'JP'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79 61">
+            <path fill="#7EAB40" d="M23.858,1.166h10.938l0.063,37.938c0,0,0,13-17.063,13c-17.563,0-16.938-15.938-16.938-15.938h10.875 c0,0,0.063,7,6.125,7.063c6,0.062,6.063-7.125,6.063-7.125L23.858,1.166z"/>
+            <path fill="#7EAB40" d="M38.921,10.104h22.125c0,0,16.813-0.938,16.813,16.25c0,17.5-17.938,16.688-17.938,16.688H49.796 l0.063,17.125H38.921V10.104z M49.046,34.295l11.688-0.004c0,0,7,0.479,7-8.063c0-8.375-6.875-8.063-6.875-8.063H49.046V34.295z"/>
+        </svg>
+        <div class="text_logo">
+            <div class="text __custom">
+                {{'header.project'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="text" *ngIf="text != undefined && text != 'none' && text != 'JP'"> {{description}} </div>
+
+    <!--BORDERS PART START-->
+    <div *ngIf="borders" class="corner __lt"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <div *ngIf="borders" class="corner __rt"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <div *ngIf="borders" class="corner __rd"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <div *ngIf="borders" class="corner __ld"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <!--BORDERS PART END-->
+
+    <!--CORNERS PART START-->
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __lt"
+         [ngClass]="{
+            '__lt_in' : cornersPosition === 'in',
+            '__lt_out' : cornersPosition === 'out',
+            '__lt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rt"
+         [ngClass]="{
+            '__rt_in' : cornersPosition === 'in',
+            '__rt_out' : cornersPosition === 'out',
+            '__rt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rd"
+         [ngClass]="{
+            '__rd_in' : cornersPosition === 'in',
+            '__rd_out' : cornersPosition === 'out',
+            '__rd' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __ld"
+         [ngClass]="{
+            '__ld_in' : cornersPosition === 'in',
+            '__ld_out' : cornersPosition === 'out',
+            '__ld' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <!--CORNERS PART END-->
+
+</div>

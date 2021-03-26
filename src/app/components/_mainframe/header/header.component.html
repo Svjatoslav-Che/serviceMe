@@ -1,0 +1,343 @@
+<div class="header_container"
+     [@fadeInDownOnEnter]
+     [@fadeOutUpOnLeave]
+     (@fadeInDownOnEnter.start)="animInStart($event)"
+     (@fadeInDownOnEnter.done)="animInDone($event)">
+    <div class="header_inner_space">
+        <div class="header_media_350">
+            <dropdown
+                    class = 'headerMenu'
+                    [object]= routeList
+                    selected = '{{fistRoute}}'
+                    (callBack)="this.remoteRouterScenario($event)">
+            </dropdown>
+        </div>
+
+        <div class="header_logo_box">
+            <square-header
+                           (click)="remoteRouterScenario('/')"
+                           cornersSize = '10'
+                           cornersPosition = 'out'
+                           [borders] = false
+                           state = '{{(this.fistRoute === "/") ? "selected" : "regular"}}'
+                           action = '{{(this.fistRoute === "/") ? "static" : "active"}}'
+                           text = 'JP'>
+            </square-header>
+        </div>
+
+        <div class="header_content_box">
+
+            <div class="large_element_sq __first">
+                <square-header
+                               (click)="remoteRouterScenario('/about')"
+                               cornersSize = '10'
+                               cornersPosition = 'out'
+                               [borders] = true
+                               state = '{{(this.fistRoute === "/about") ? "selected" : "regular"}}'
+                               action = '{{(this.fistRoute === "/about") ? "static" : "active"}}'
+                               text = 'ABOUT'
+                               description='{{"header.about"|translate}}'>
+                </square-header>
+            </div>
+
+            <div class="large_element_sq __follower">
+                <square-header
+                               (click)="remoteRouterScenario('/sandbox')"
+                               cornersSize = '10'
+                               cornersPosition = 'out'
+                               [borders] = true
+                               state = '{{(this.fistRoute === "/sandbox") ? "selected" : "regular"}}'
+                               action = '{{(this.fistRoute === "/sandbox") ? "static" : "active"}}'
+                               text = 'SANDBOX'
+                               description='{{"header.sandbox"|translate}}'>
+                </square-header>
+            </div>
+
+            <div class="large_element_sq __follower"
+                [ngClass]="{'__last': !globalsService.userLogged}">
+                <square-header
+                               (click)="remoteRouterScenario('/actions')"
+                               cornersSize = '10'
+                               cornersPosition = 'out'
+                               [borders] = true
+                               state = '{{(this.fistRoute === "/actions") ? "selected" : "regular"}}'
+                               action = '{{(this.fistRoute === "/actions") ? "static" : "active"}}'
+                               text = 'ACTIONS'
+                               description='{{"header.actions"|translate}}'>
+                </square-header>
+            </div>
+
+            <div class="large_element_sq __last" *ngIf="globalsService.userLogged">
+                <square-header
+                               (click)="remoteRouterScenario('/achievement')"
+                               cornersSize = '10'
+                               cornersPosition = 'out'
+                               [borders] = true
+                               state = '{{(this.fistRoute === "/achievement") ? "selected" : "regular"}}'
+                               action = '{{(this.fistRoute === "/achievement") ? "static" : "active"}}'
+                               text = 'ACHIVES'
+                               description='{{"header.achives"|translate}}'>>
+                </square-header>
+            </div>
+        </div>
+
+
+        <div class="header_services_box">
+<!--SETTINGS-->
+            <div class="small_element_sq __first"
+                 (clickOutside)="this.settingsOpen && selectServiceToggle('settings_close')">
+
+                <square-button (click)="selectServiceToggle('settings')"
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        [muteClick] = true
+                        state= '{{(settingsOpen) ? "selected" : "regular"}}'
+                        action= 'active'
+                        icon = 'settings'>
+                </square-button>
+
+                <div class="settings_positioner __settings"
+                    *ngIf="settingsOpen"
+                     [ngClass]="{'__hide': !selectService}">
+
+                    <div class="text_placer">
+                        <div class="settings_item"
+                             [ngClass]="{'__disappear': !selectService}">
+                            <div class="text __custom">{{"header.palette"|translate}}
+                                <span>
+                                    {{'header.' + displayColorValue|translate}}
+                                </span>
+                            </div>
+                            <div class="settings_elements">
+                                <div class="small_element_sq __inner_selection __first">
+                                    <square-button (click)="colorShemeToggle('color_scheme_green')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.colorSettings === "color_scheme_green" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.colorSettings === "color_scheme_green" ? "disabled" : "active"}}'
+                                            icon= 'green'>
+                                    </square-button>
+                                </div>
+
+                                <div class="small_element_sq __inner_selection __follower">
+                                    <square-button (click)="colorShemeToggle('color_scheme_blue')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.colorSettings === "color_scheme_blue" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.colorSettings === "color_scheme_blue" ? "disabled" : "active"}}'
+                                            icon= 'blue'>
+                                    </square-button>
+                                </div>
+
+                                <div class="small_element_sq __inner_selection __last">
+                                    <square-button (click)="colorShemeToggle('color_scheme_pink')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.colorSettings === "color_scheme_pink" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.colorSettings === "color_scheme_pink" ? "disabled" : "active"}}'
+                                            icon= 'pink'>
+                                    </square-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings_item"
+                             [ngClass]="{'__disappear': !selectService}">
+                            <div class="text __custom">{{'header.background'|translate}}
+                                <span>
+                                {{'header.' + displayBacgroundValue|translate}}
+                                </span>
+                            </div>
+                            <div class="settings_elements">
+                                <div class="small_element_sq __inner_selection __first">
+                                    <square-button (click)="backgroundToggle('full')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.backgroundSettings === "full" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.backgroundSettings === "full" ? "disabled" : "active"}}'
+                                            icon= 'bubble'>
+                                    </square-button>
+                                </div>
+
+                                <div class="small_element_sq __inner_selection __follower">
+                                    <square-button (click)="backgroundToggle('picture')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.backgroundSettings === "picture" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.backgroundSettings === "picture" ? "disabled" : "active"}}'
+                                            icon= 'picture'>
+                                    </square-button>
+                                </div>
+
+                                <div class="small_element_sq __inner_selection __last">
+                                    <square-button (click)="backgroundToggle('potato')"
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            [muteClick] = true
+                                            state= '{{globalsService.backgroundSettings === "potato" ? "selected" : "regular"}}'
+                                            action= '{{globalsService.backgroundSettings === "potato" ? "disabled" : "active"}}'
+                                            icon= 'potato'>
+                                    </square-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings_item"
+                             [ngClass]="{'__disappear': !selectService}">
+                            <div class="text __custom">{{'header.sound'|translate}} <span>{{globalsService.soundVol !== 0 ? globalsService.soundVol + '%' : 'header.off'|translate}}</span></div>
+                            <div class="input_container">
+                                <input type="range" min="0" max="100" step="1" value='{{globalsService.soundVol}}'
+                                       (mouseup)="valueSoundChanged($event)"
+                                       (touchend)="valueSoundChanged($event)">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="lang_borders">
+                        <square-element
+                                cornersSize = '10'
+                                cornersPosition = 'out'
+                                [borders] = true
+                                state= 'regular'
+                                action= 'passive'
+                                icon = 'none'>
+                        </square-element>
+                    </div>
+                </div>
+            </div>
+
+<!--LANGUAGES-->
+            <div class="small_element_sq __follower"
+                (clickOutside)="this.languageOpen && selectServiceToggle('lang_close')">
+                <square-button (click)="selectServiceToggle('lang')"
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        [muteClick] = true
+                        state= '{{(languageOpen) ? "selected" : "regular"}}'
+                        action= 'active'
+                        text= '{{"header." + selectedLanguage|translate}}'>
+                </square-button>
+                <div class="settings_positioner __languages"
+                     *ngIf="languageOpen"
+                    [ngClass]="{'__hide': !selectService}">
+                    <div class="text_placer">
+                        <div class="lang_text"
+                             (mouseenter)="selectedLanguage !== 'en' && languageOpen && audioService.audio.selectSND.play()"
+                             (click)="selectedLanguage !== 'en' && changeLang('en')"
+                             [ngClass]="{'__disabled': selectedLanguage === 'en',
+                                    '__hoverable' : selectedLanguage != 'en',
+                                    '__disappear': !selectService}">
+                            {{'header.en'|translate}}
+                        </div>
+                        <div class="lang_text"
+                             (mouseenter)="selectedLanguage !== 'ua' && languageOpen && audioService.audio.selectSND.play()"
+                             (click)="selectedLanguage !== 'ua' && changeLang('ua')"
+                             [ngClass]="{'__disabled': selectedLanguage === 'ua',
+                                    '__hoverable' : selectedLanguage != 'ua',
+                                    '__disappear': !selectService}">
+                            {{'header.ua'|translate}}
+                        </div>
+                        <div class="lang_text"
+                             (mouseenter)="selectedLanguage !== 'ru' && languageOpen && audioService.audio.selectSND.play()"
+                             (click)="selectedLanguage !== 'ru' && changeLang('ru')"
+                             [ngClass]="{'__disabled': selectedLanguage === 'ru',
+                                    '__hoverable' : selectedLanguage != 'ru',
+                                    '__disappear': !selectService}">
+                            {{'header.ru'|translate}}
+                        </div>
+                    </div>
+
+                    <div class="lang_borders">
+                        <square-element
+                         cornersSize = '10'
+                         cornersPosition = 'out'
+                         [borders] = true
+                         state= 'regular'
+                         action= 'passive'
+                         icon = 'none'>
+                        </square-element>
+                    </div>
+                </div>
+            </div>
+
+<!--LOGIN-->
+            <div class="large_element_sq __last"
+                 (clickOutside)="this.loginOpen && selectServiceToggle('login_close')">
+                    <square-header (click)="selectServiceToggle('login')"
+                                   cornersSize = '10'
+                                   cornersPosition = 'out'
+                                   [borders] = true
+                                   [muteClick] = true
+                                   state = '{{(this.loginOpen) ? "selected" : "regular"}}'
+                                   action = 'active'
+                                   text = '{{(globalsService.userLogged) ? "LOGOUT" : "LOGIN"}}'
+                                   description='{{(globalsService.userLogged) ? ("header.logout"|translate) : ("header.login"|translate)}}'>
+                    </square-header>
+<!--there is login conditions-->
+                <div class="settings_positioner __login"
+                     *ngIf="loginOpen"
+                     [ngClass]="{'__hide': !selectService}">
+                    <div class="log_space"
+                        [ngClass]="{'single_disappear': !selectService}">
+                        <div class="text __custom" [innerHTML]="'header.localIn'|translate">
+                        </div>
+
+                        <div class="single_button">
+                            <rectangle_button type="button"
+                                              cornersSize = '10'
+                                              cornersPosition = 'out'
+                                              [borders] = true
+                                              state = '{{(globalsService.userLogged) ? "disabled" : "regular"}}'
+                                              text= '{{"header.track_me"|translate}}'
+                                              (click)="localScenarioToggle() && globalsService.userLogged">
+                            </rectangle_button>
+                        </div>
+
+                        <div class="text __custom" [innerHTML]="'header.localOut'|translate">
+                        </div>
+
+                        <div class="single_button">
+                            <rectangle_button type="button"
+                                              cornersSize = '10'
+                                              cornersPosition = 'out'
+                                              [borders] = true
+                                              state = '{{(globalsService.userLogged) ? "regular" : "disabled"}}'
+                                              text= '{{"header.anonymous"|translate}}'
+                                              (click)="localScenarioToggle() && !globalsService.userLogged">
+                            </rectangle_button>
+                        </div>
+
+                        <div class="lang_borders">
+                            <square-element
+                                    cornersSize = '10'
+                                    cornersPosition = 'out'
+                                    [borders] = true
+                                    state= 'regular'
+                                    action= 'passive'
+                                    icon = 'none'>
+                            </square-element>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

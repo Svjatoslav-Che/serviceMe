@@ -1,0 +1,31 @@
+<div class="background_globe __color_only
+        {{globalsService.colorSettings}}
+        {{globalsService.backgroundSettings}}"
+     [@fadeInOnEnter]
+     [@fadeOutOnLeave]>
+
+    <div
+        [@fadeInOnEnter]
+        [@fadeOutOnLeave]
+        *ngIf="globalsService.backgroundSettings !== 'potato'"
+        class="background_gird {{globalsService.colorSettings}}">
+    </div>
+
+    <div
+        [@fadeInOnEnter]
+        [@fadeOutOnLeave]
+        *ngIf="globalsService.backgroundSettings === 'full'"
+        class="animation_warp">
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+            <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+    </div>
+
+</div>

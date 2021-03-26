@@ -1,0 +1,33 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInDownOnEnter]
+     [@fadeOutUpOnLeave]
+     (@fadeInDownOnEnter.start)="animInStart($event)"
+     (@fadeInDownOnEnter.done)="animInDone($event)"
+     (@fadeOutUpOnLeave.start)="animOutStart($event)"
+     (@fadeOutUpOnLeave.done)="animOutDone($event)">
+
+
+    <div class="container_inner_space scroll_style_custom">
+
+        <div class="header_container">
+            <div class="header">
+                <header-open
+                        header = 'ACHIVES'
+                        headerText='{{"achives.achives"|translate}}'
+                        description = '{{"achives.achives_header"|translate}}'>
+                </header-open>
+            </div>
+        </div>
+
+        <div class="content_container">
+            <div class="text_open">
+                <h4 class="__custom">{{"achives.description_1"|translate}}</h4>
+                <p [ngStyle]="{'margin-top': 10 + 'px'}"
+                   class="__custom">
+                    {{"achives.description_2"|translate}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

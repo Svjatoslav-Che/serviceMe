@@ -1,0 +1,106 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'BUBBLES'
+                    headerDescription='{{"sandbox.elements_bubbles.bubbles"|translate}}'
+                    description = '{{"sandbox.elements_bubbles.about"|translate}}'>
+            </header-small>
+            <div class="text __position __description __under_header">
+                <a class="__text" target="_blank" href="https://codepen.io/tonkotsuboy"
+                   (mouseenter)="hoverSound()"
+                   (click)="clickSound()">Takeshi Kano</a> {{"sandbox.elements_bubbles.customs"|translate}}
+                <p [innerHTML]='"sandbox.elements_bubbles.description"|translate'>
+                </p>
+
+                <div class="settings_help">
+                    <p class="__custom"><span>{{"sandbox.elements_bubbles.tip"|translate}}</span> {{"sandbox.elements_bubbles.description_1"|translate}}</p>
+                    <div class="element_container">
+                        <square-button
+                                cornersSize = '3'
+                                cornersPosition = 'out'
+                                [borders] = true
+                                state= 'selected'
+                                action= 'static'
+                                icon = 'settings'>
+                        </square-button>
+                    </div>
+                    <p class="__custom"><span>{{"sandbox.elements_bubbles.description_2"|translate}}&nbsp;</span></p><p class="__custom">{{"sandbox.elements_bubbles.description_3"|translate}}</p>
+                    <div class="element_container">
+                        <square-button
+                                cornersSize = '3'
+                                cornersPosition = 'out'
+                                [borders] = true
+                                state= 'selected'
+                                action= 'static'
+                                icon = 'picture'>
+                        </square-button>
+                    </div>
+                    <p class="__custom"><span>{{"sandbox.elements_bubbles.static"|translate}}</span>.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="preview_box_rules">
+            <div class="preview_box_300">
+                <square-element class="backdrop"
+                                cornersSize = '10'
+                                cornersPosition = 'border'
+                                [borders] = false>
+                </square-element>
+                <div class="flexbox scroll_style_custom">
+                    <!--CONTENT HERE-->
+                    <div class="animation_warp">
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                        <svg class="svg"><circle cx="100" cy="100" r="5" /> </svg>
+                    </div>
+                    <!--CONTENT END-->
+                </div>
+            </div>
+
+            <div class="controls_box">
+                <p class="__custom">
+                    {{"sandbox.elements_bubbles.example"|translate}}<br>
+                    <br>
+                    <span>
+                    $total: 10;<br>
+                    @for $i from 1 through $total<br>
+                    $scale:random(2) - .4;<br>
+                    <br>
+                    svg:nth-child(# $i )<br>
+                    left:random(120) * 1% - 20;<br>
+                    animation: raise# $i  6 + random(15) +s linear infinite;<br>
+                    animation-delay:random(5) - 5 + s;<br>
+                    transform: scale(.6 * $i - .2);<br>
+                    z-index: $i - 7;<br>
+                    filter: blur(3px);<br>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+

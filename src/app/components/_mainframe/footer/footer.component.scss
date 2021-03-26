@@ -1,0 +1,51 @@
+@import "src/assets/styles/breake_media";
+
+.footer_container {
+  bottom: 0;
+  width: 100%;
+  height: var(--footer_size);
+  border-top: 1px solid var(--object_color_border_low);
+  color: var(--text_color);
+  display: flex;
+  justify-content: center;
+  font-family: HeliosExtThinC, serif;
+  font-weight: 600;
+  font-size: 14px;
+  //backdrop-filter: blur(1px);
+  background: var(--object_color_backround_half_footer);
+
+  .footer_inner_space {
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .footer_content_box {
+      display: flex;
+      //align-items: center;
+    }
+  }
+}
+
+.button_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.small_element_sq {
+  width: 27px;
+  height: 27px;
+  &.__first { margin: 13px 8px 0 3px; }
+  &.__follower { margin: 13px 8px 0 8px; }
+  &.__last { margin: 13px 3px 0 8px; }
+
+  @media screen and (max-width: $breake-point-8) {
+    transition: all var(--transition_all_speed);
+    &.__first { margin: 7px 8px 0 3px; }
+    &.__follower { margin: 7px 8px 0 8px; }
+    &.__last { margin: 7px 3px 0 8px; }
+  }
+}

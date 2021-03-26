@@ -1,0 +1,47 @@
+@import "breake_media";
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  transition: all var(--transition_all_speed);
+}
+
+table td, table.blueTable th {
+  padding: 10px;
+  transition: all var(--transition_all_speed);
+}
+
+table tbody td {
+  font-family: $RegularText;
+  color: var(--text_color);
+  font-size: 13px;
+  border-bottom: 1px solid var(--object_color_border);
+  transition: all var(--transition_all_speed);
+
+  //@media screen and (max-width: $breake-point-7t) {
+  //  display: block;
+  //  text-align: left;
+  //}
+
+}
+
+table thead {
+  background: var(--viever_color_backround);
+  transition: all var(--transition_all_speed);
+
+  //@media screen and (max-width: $breake-point-7t) {
+  //  display: none;
+  //}
+}
+
+table thead th {
+  padding: 10px;
+  font-family: $HeaderTextAlt;
+  color: var(--highlight_color);
+  text-shadow: 0 0 4px var(--highlight_color_shadow);
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  transition: all var(--transition_all_speed);
+}

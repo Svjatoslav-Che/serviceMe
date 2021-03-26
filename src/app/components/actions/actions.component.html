@@ -1,0 +1,325 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInDownOnEnter]
+     [@fadeOutUpOnLeave]
+     (@fadeInDownOnEnter.start)="animInStart($event)"
+     (@fadeInDownOnEnter.done)="animInDone($event)"
+     (@fadeOutUpOnLeave.start)="animOutStart($event)"
+     (@fadeOutUpOnLeave.done)="animOutDone($event)">
+
+
+    <div class="container_inner_space scroll_style_custom">
+
+        <div class="header_container">
+            <div class="header">
+                <header-open
+                        header = 'ACTIONS'
+                        headerText= '{{"actions.header"|translate}}'
+                        description = '{{"actions.description_header"|translate}}'>
+                </header-open>
+            </div>
+        </div>
+
+        <div class="content_container">
+            <div class="text_open">
+                <h4 class="__custom">{{"actions.description_1"|translate}}</h4>
+                <p [ngStyle]="{'margin-top': 10 + 'px'}"
+                   class="__custom">
+                    {{"actions.description_2"|translate}}</p>
+                <h5>{{"actions.description_3"|translate}}</h5>
+
+                <div class="buttons">
+                    <div class="single_button">
+                        <rectangle_button type="button"
+                                          cornersSize = '10'
+                                          cornersPosition = 'out'
+                                          [borders] = true
+                                          state = 'disabled'
+                                          text= '{{"actions.core"|translate}}'
+                                          (click)="displayedEvent = 'core'">
+                        </rectangle_button>
+                    </div>
+
+                    <div class="single_button">
+                        <rectangle_button type="button"
+                                          cornersSize = '10'
+                                          cornersPosition = 'out'
+                                          [borders] = true
+                                          state = '{{(displayedEvent === "tickets") ? "selected" : "regular"}}'
+                                          text= '{{"actions.tickets"|translate}}'
+                                          (click)="displayedEvent !== 'tickets' && scenarioTickets()">
+                        </rectangle_button>
+                    </div>
+
+                    <div class="single_button">
+                        <rectangle_button type="button"
+                                          cornersSize = '10'
+                                          cornersPosition = 'out'
+                                          [borders] = true
+                                          state = '{{(displayedEvent === "actions") ? "selected" : "regular"}}'
+                                          text= '{{"actions.actions"|translate}}'
+                                          (click)="displayedEvent !== 'actions' && scenarioActions()">
+                        </rectangle_button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="(displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions'">
+                <ng-container *ngTemplateOutlet="pagination">
+                </ng-container>
+            </div>
+
+<div class="table_placer scroll_style_custom">
+
+<!--ACTIONS-->
+            <div *ngIf="displayedEvent === 'actions'">
+                <table class="table_space">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="selector_drop_table">
+                                <div class="text __custom">{{"actions.action_type"|translate}}</div>
+                                <dropdown
+                                        class = 'tableMenu'
+                                        [object]= menuListActionType
+                                        selected = '{{displayActionType}}'
+                                        (callBack)="this.valueActionsTypeChange($event)">
+                                </dropdown>
+                            </div>
+                        </th>
+                        <th>{{"actions.location"|translate}}</th>
+                        <th>{{"actions.action"|translate}}</th>
+                        <th>{{"actions.params"|translate}}</th>
+                        <th>{{"actions.date"|translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let data of paginationList">
+                        <td>{{data.subject}}</td>
+                        <td>{{data.location}}</td>
+                        <td>{{data.action}}</td>
+                        <td>{{data.params}}</td>
+
+                        <td>
+                            <div *ngIf="(data.date | amDifference: currentDate :'days' : true) < 1">
+                                {{data.date | amLocale: (translateService.currentLang === 'ua' ? 'uk' : translateService.currentLang) | amTimeAgo}}&nbsp;
+                            </div>
+                            <div *ngIf="(data.date | amDifference: currentDate :'days' : true) >= 1">
+                                {{data.date | date:'dd.MM.yyyy,HH:mm'}}&nbsp;
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+<!--END OF ACTIONS-->
+
+<!--TICKETS-->
+            <div class="tickets"
+                 *ngIf="displayedEvent === 'tickets'">-->
+                <table class="table_space" *ngIf="globalsService.userLogged else loggerloads">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="selector_drop_table">
+                                <div class="text __custom">{{"actions.issue"|translate}}</div>
+                                <dropdown
+                                        class = 'tableMenu'
+                                        [object]= menuListTicketsType
+                                        selected = '{{displayTicketType}}'
+                                        (callBack)="this.valueTicketTypeChange($event)">
+                                </dropdown>
+                            </div>
+                        </th>
+                    <!--text frame-->
+                        <th>
+                            <div class="selector_drop_table">
+                                <div class="text __custom">{{"actions.description"|translate}}</div>
+                                <dropdown
+                                        class = 'tableMenu'
+                                        [object]= menuListDescriptionType
+                                        selected = '{{displayDescriptionType}}'
+                                        (callBack)="this.valueDescriptionTypeChange($event)">
+                                </dropdown>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="selector_drop_table">
+                                <div class="text __custom">{{"actions.screenshots"|translate}}</div>
+                                <dropdown
+                                        class = 'tableMenu'
+                                        [object]= menuListScreenshotsType
+                                        selected = '{{displayScreenshotsType}}'
+                                        (callBack)="this.valueScreenshotsTypeChange($event)">
+                                </dropdown>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="selector_drop_table">
+                                <div class="text __custom">{{"actions.time"|translate}}</div>
+                                <dropdown
+                                        class = 'tableMenu'
+                                        [object]= menuListDateType
+                                        selected = '{{displayDateType}}'
+                                        (callBack)="this.valueDateTypeChange($event)">
+                                </dropdown>
+                            </div>
+                        </th>
+                        <th>
+                            <div [ngStyle]="{'margin-top': '15px',
+                            'display': 'flex', 'justify-content': 'flex-end'}">{{"actions.action"|translate}}</div>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let ticket of paginationList let i = index">
+                            <td>{{ticket.issue_state}}</td>
+                            <td class="text_container">
+                                {{ticket.description}}
+                            </td>
+                            <td>
+                                <div *ngIf="ticket.screenshots.length > 0 else nopictures"
+                                    class="pictures_container">
+                                    <div *ngFor="let url of ticket.screenshots let i = index"
+                                        class="single_picture">
+                                        <img [src]=url>
+                                        <square-button class="index_low"
+                                                       cornersSize = '5'
+                                                       cornersPosition = 'out'
+                                                       [borders] = true
+                                                       state= 'regular'
+                                                       action= 'passive'
+                                                       icon = 'none'
+                                        ></square-button>
+                                    </div>
+                                </div>
+                                <ng-template #nopictures>
+                                    No screens
+                                </ng-template>
+                            </td>
+                            <td>
+                                <div *ngIf="(ticket.date | amDifference: currentDate :'days' : true) < 1">
+                                    {{ticket.date | amLocale: (translateService.currentLang === 'ua' ? 'uk' : translateService.currentLang) | amTimeAgo}}&nbsp;
+                                </div>
+                                <div *ngIf="(ticket.date | amDifference: currentDate :'days' : true) >= 1">
+                                    {{ticket.date | date:'dd.MM.yyyy,HH:mm'}}&nbsp;
+                                </div>
+                            </td>
+                            <td>
+
+                                <div class="action_positioner">
+                                    <svg class="__first"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                         (click)="watchTicket(i)">
+                                        <path d="M572.531 238.973C518.281 115.525 410.938 32 288 32S57.688 115.58 3.469 238.973C1.562 243.402 0 251.041 0 256C0 260.977 1.562 268.596 3.469 273.025C57.719 396.473 165.062 480 288 480S518.312 396.418 572.531 273.025C574.438 268.596 576 260.957 576 256C576 251.023 574.438 243.402 572.531 238.973ZM432 256.062C432 335.516 367.531 400 288.062 400H288C208.5 400 144 335.484 144 256S208.5 112 288 112S432 176.516 432 256V256.062ZM288 160H287.781C285.48 160.029 282.426 160.441 279.539 160.764C284.77 170.037 288 180.594 288 192C288 227.346 259.346 256 224 256C212.551 256 201.959 252.748 192.66 247.482C192.363 250.479 192 253.625 192 256C192 308.996 235.004 352 288 352S384 308.996 384 256S340.996 160 288 160Z"/>
+                                    </svg>
+                                    <svg class="__last"
+                                         version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 6 48 36"
+                                         (click)="removeTicket(i)">
+                                        <path d="M10.81,7.76L0,23.99L10.81,40.22L12,42h32h4v-4V10V6H12.031L10.81,7.76z M38,31.17L35.17,34L28,26.83L20.83,34L18,31.17 L25.17,24L18,16.83L20.83,14L28,21.17L35.17,14L38,16.83L30.83,24L38,31.17z"/>
+                                    </svg>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="paginationList.length > 0 else notickets">
+
+                </div>
+            </div>
+<!--END OF TICKETS-->
+</div>
+        <div *ngIf="(displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions'">
+            <ng-container *ngTemplateOutlet="pagination">
+            </ng-container>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<!--PAGINATION TEMPLATE-->
+<ng-template #pagination>
+    <div class="container_space">
+        <div class="pagination_space">
+            <div class="single_pag_button">
+                <rectangle_button type="button"
+                                  cornersSize = '10'
+                                  cornersPosition = 'out'
+                                  [borders] = true
+                                  state = '{{prevPage ? "regular" : "disabled"}}'
+                                  text= '{{"actions.prev"|translate}}'
+                                  (click)="prevPage && this.prevPageClick()">
+                </rectangle_button>
+            </div>
+            <div class="nums_page">
+                {{currentPage}} of {{numberOfPages}}
+            </div>
+            <div class="single_pag_button">
+                <rectangle_button type="button"
+                                  cornersSize = '10'
+                                  cornersPosition = 'out'
+                                  [borders] = true
+                                  state = '{{nextPage ? "regular" : "disabled"}}'
+                                  text= '{{"actions.next"|translate}}'
+                                  (click)="nextPage && this.nextPageClick()">
+                </rectangle_button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loggerloads>
+    <div class="login_posotion">
+        <h1>{{"actions.login"|translate}}</h1>
+        <div class="settings_help">
+            <p class="__custom"><span>{{"actions.tip"|translate}}</span> {{"actions.open"|translate}}</p>
+            <div class="element_container">
+                <square-button
+                        cornersSize = '3'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state= 'selected'
+                        action= 'static'
+                        icon = 'LOGIN'>
+                </square-button>
+            </div>
+            <p class="__custom"><span>{{"actions.log_panel"|translate}}&nbsp;</span></p><p class="__custom">{{"actions.switch"|translate}}&nbsp;</p>
+            <p class="__custom"><span>{{"actions.track"|translate}}</span>.</p>
+        </div>
+
+    </div>
+    <div class="loader_mini">
+        <loader-square>
+        </loader-square>
+    </div>
+</ng-template>
+
+<ng-template #notickets>
+    <div class="login_posotion">
+        <h1>{{"actions.nothing"|translate}}</h1>
+        <div class="settings_help">
+            <p class="__custom"><span>{{"actions.tip"|translate}}</span> {{"actions.open"|translate}}</p>
+            <div class="element_container">
+                <square-button
+                        cornersSize = '3'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state= 'selected'
+                        action= 'static'
+                        icon = 'bug'>
+                </square-button>
+            </div>
+            <p class="__custom"><span>{{"actions.tip_feed"|translate}}&nbsp;</span></p><p class="__custom">{{"actions.tip_nothing"|translate}}&nbsp;</p>
+        </div>
+
+    </div>
+    <div class="loader_mini">
+        <loader-square>
+        </loader-square>
+    </div>
+</ng-template>

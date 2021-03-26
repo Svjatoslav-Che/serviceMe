@@ -1,0 +1,53 @@
+<div class="container scroll_style_custom">
+    <div class="container_inner_space">
+        <div class="container_inner_left scroll_style_custom"
+             *ngIf="mainDiv"
+             [@fadeInLeftOnEnter]
+             [@fadeOutLeftOnLeave]
+             (@fadeInLeftOnEnter.start)="animInStart($event)"
+             (@fadeInLeftOnEnter.done)="animInDone($event)"
+             (@fadeOutLeftOnLeave.start)="animOutStart($event)"
+             (@fadeOutLeftOnLeave.done)="animOutDone($event)">
+
+            <div *ngFor="let item of routeList">
+                <div *ngIf="item.class === 'descriptor'"
+                    class="text __miniheader">
+                    {{item.name|translate}}
+                </div>
+                <a  *ngIf="item.class !== 'descriptor'"
+                    [ngClass]="{
+                        '__disabled': item.route === 'none',
+                        '__selected': secondRoute === item.route}"
+                    class="__custom"
+                    (mouseenter)="hoverSound()"
+                    (click)="item.route !== 'none' && routerScenario(item.route) && clickSound()">
+                    {{item.name|translate}}
+                </a>
+            </div>
+        </div>
+
+        <div class="small_menu" *ngIf="mainDiv"
+             [@fadeInLeftOnEnter]
+             [@fadeOutLeftOnLeave]
+             (@fadeInLeftOnEnter.start)="animInSmallStart($event)"
+             (@fadeInLeftOnEnter.done)="animInSmallDone($event)"
+             (@fadeOutLeftOnLeave.start)="animOutSmallStart($event)"
+             (@fadeOutLeftOnLeave.done)="animOutSmallDone($event)">
+            <div class="text">
+                Select component:
+            </div>
+
+            <dropdown
+                class = 'sandMenu'
+                [object]= routeList
+                selected = '{{secondRoute}}'
+                (callBack)="this.routerScenario($event)">
+            </dropdown>
+        </div>
+
+        <div class="container_inner_right" *ngIf="mainDiv">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

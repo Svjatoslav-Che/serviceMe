@@ -1,0 +1,35 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="header_container">
+        <div class="header">
+            <header-open
+                    header = 'SANDBOX'
+                    headerText = '{{"sandbox.about_sheet.sandbox"|translate}}'
+                    description = '{{"sandbox.about_sheet.about"|translate}}'>
+            </header-open>
+        </div>
+    </div>
+
+    <div class="container_inner_space">
+        <p class="__custom text_position" [innerHTML]='"sandbox.about_sheet.description"|translate'>
+        </p>
+
+<!--        <div class="header_container">-->
+<!--            <div class="header">-->
+<!--                <header-open-->
+<!--                        header = 'ABOUT'-->
+<!--                        description = 'Single Page APP'>-->
+<!--                </header-open>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+</div>
+

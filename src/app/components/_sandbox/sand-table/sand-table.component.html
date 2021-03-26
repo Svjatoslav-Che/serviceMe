@@ -1,0 +1,88 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'TABLE'
+                    headerDescription = '{{"sandbox.table_sheet.table"|translate}}'
+                    description='{{"sandbox.table_sheet.about"|translate}}'>
+            </header-small>
+            <div class="text __position __description __under_header">
+                {{"sandbox.table_sheet.customs"|translate}}
+                <p>
+                    {{"sandbox.table_sheet.description_1"|translate}} <a
+                        (mouseenter)="hoverSound()"
+                        (click)="remoteRouterScenario('/actions')">{{"sandbox.table_sheet.description_2"|translate}}</a> {{"sandbox.table_sheet.description_3"|translate}}
+                </p>
+            </div>
+        </div>
+
+        <div class="preview_box_rules">
+            <div class="preview_box_300">
+                <square-element class="backdrop"
+                                cornersSize = '10'
+                                cornersPosition = 'border'
+                                [borders] = false>
+                </square-element>
+                <div class="flexbox scroll_style_custom">
+                    <!--CONTENT HERE-->
+                    <table class="table_space">
+                        <thead>
+                        <tr>
+                            <th>{{"sandbox.table_sheet.subject"|translate}}</th>
+                            <th>{{"sandbox.table_sheet.location"|translate}}</th>
+                            <th>{{"sandbox.table_sheet.action"|translate}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let data of innerTableData">
+                            <td>{{data.subject|translate}}</td>
+                            <td>{{data.location|translate}}</td>
+                            <td>{{data.action|translate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--CONTENT END-->
+                </div>
+            </div>
+
+            <div class="controls_box">
+                <p class="__custom">
+                    {{"sandbox.table_sheet.example"|translate}}<br>
+                    <br>
+                    {{"sandbox.table_sheet.tags"|translate}} <span>table tbody td</span><br>
+                    <br>
+                    <span>
+                    font-family: $RegularText;<br>
+                    color: var(--text_color);<br>
+                    font-size: 13px;<br>
+                    border-bottom: 1px solid var(--object_color_border);<br>
+                    transition: all var(--transition_all_speed);<br>
+                    </span>
+                    <br>
+                    {{"sandbox.table_sheet.tags"|translate}} <span>table td th</span><br>
+                    <br>
+                    <span>
+                    padding: 10px;<br>
+                    transition: all var(--transition_all_speed);<br>
+                    </span>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

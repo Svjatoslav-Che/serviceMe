@@ -1,0 +1,76 @@
+<div class="dropdown_main"
+    (mouseenter)="hoverSound()"
+    [ngClass]="{'__header': class === 'headerMenu',
+                '__casual': class === 'casualMenu',
+                '__sand': class === 'sandMenu',
+                '__table': class === 'tableMenu'}"
+    (click)="dropToggle()"
+    (clickOutside)="this.openDrops && closeDrop()">
+    <div class="element_position" *ngIf="class !== 'tableMenu'">
+        <div class="inner_header">
+            {{selectedDisplay|translate}}
+        </div>
+        <div class="symbol"
+        [ngClass]="{'__turn': openDrops}">></div>
+    </div>
+
+    <div class="element_position_table" *ngIf="class === 'tableMenu'">
+        <div class="symbol"
+             [ngClass]="{'__turn': openDrops}">></div>
+        <div class="inner_header">
+            {{selectedDisplay|translate}}
+        </div>
+    </div>
+
+    <div class="drop_list scroll_style_custom" *ngIf="openDrops && class === 'sandMenu'">
+        <div class="inner_selection"
+            *ngFor="let item of object">
+            <div class="inner_text"
+                *ngIf="item.class !== 'descriptor'"
+                 [ngClass]="{
+                    '__disabled': item.route === 'none',
+                    '__selected': item.name === selectedDisplay}"
+                (click)="item.route !== 'none' && outPut(item.route)">
+                {{item.name|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="drop_list scroll_style_custom __header" *ngIf="openDrops && class === 'headerMenu'">
+        <div class="inner_selection"
+             *ngFor="let item of object">
+            <div class="inner_text"
+                 [ngClass]="{
+                    '__disabled': item.route === 'none',
+                    '__selected': item.name === selectedDisplay}"
+                 (click)="item.route !== 'none' && outPut(item.route)">
+                {{item.name|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="drop_list scroll_style_custom __casual" *ngIf="openDrops && class === 'casualMenu'">
+        <div class="inner_selection"
+             *ngFor="let item of object">
+            <div class="inner_text"
+                 [ngClass]="{
+                    '__selected': item.name === selectedDisplay}"
+                 (click)="item.name !== selectedDisplay && outPut(item.value)">
+                {{item.name|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="drop_list scroll_style_custom __table" *ngIf="openDrops && class === 'tableMenu'">
+        <div class="inner_selection"
+             *ngFor="let item of object">
+            <div class="inner_text"
+                 [ngClass]="{
+                    '__selected': item.name === selectedDisplay}"
+                 (click)="item.name !== selectedDisplay && outPut(item.value)">
+                {{item.name|translate}}
+            </div>
+        </div>
+    </div>
+
+</div>

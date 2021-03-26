@@ -1,0 +1,26 @@
+.popup_main {
+  z-index: 150;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+
+  transition: all var(--transition_all_speed);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .feedback_space {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .back_drop {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background_die_color_opacity_drop);
+    z-index: -1;
+  }
+}

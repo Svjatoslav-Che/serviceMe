@@ -1,0 +1,206 @@
+$--corners-size: var(-corners-size) + 'px';
+
+.box_body {
+  //margin-top: 50px;
+  position: relative;
+  width: 100%;
+  min-height: 110px;
+  * {transition: all var(--transition_all_speed) ease-in-out;}
+  --inner_object_color: var(--object_color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text_box {
+    margin: 110px 35px 10px 35px;
+    width: 100%;
+    text-align: justify;
+
+    &.__center_text {
+      margin-top: 175px;
+    }
+  }
+
+  .header {
+    position: absolute;
+
+    &.__left_headers {
+      top: -8px;
+      left: 154px;
+    }
+
+    &.__center_headers {
+      top: 97px;
+      //left: 154px;
+    }
+
+    &.__right_headers {
+      top: -8px;
+      right: 154px;
+    }
+
+  }
+
+  .descriptor {
+    position: absolute;
+
+    &.__left_headers {
+      top: 27px;
+      left: 154px;
+    }
+
+    &.__center_headers {
+      top: 132px;
+      //left: 154px;
+    }
+
+    &.__right_headers {
+      top: 27px;
+      right: 154px;
+    }
+  }
+
+  .square_container {
+    --element-width: 100px;
+    --element-height: 100px;
+    top:0;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    &.__left_container {
+      left: 37px;
+    }
+
+    &.__center_container {
+      left: calc(50% - 50px);
+    }
+
+    &.__right_container {
+      right: 37px;
+    }
+  }
+
+  .image_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: opacity-in var(--transition_all_speed) linear;
+  }
+
+  .corner {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: all 100ms;
+
+
+    &.__lt { top: 49px; left: -1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+
+      &.__left_container {
+        width: 37px;
+        height: calc(50% - 50px);
+      }
+
+      &.__center_container {
+        height: calc(50% - 50px);
+        width: calc(50% - 50px);
+      }
+
+      &.__right_container {
+        height: calc(50% - 50px);
+        width: calc(100% - 137px);
+      }
+    }
+
+    &.__rt { top: 49px; right: -1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+
+      &.__left_container {
+        width: calc(100% - 137px);
+        height: calc(50% - 50px);
+      }
+
+      &.__center_container {
+        height: calc(50% - 50px);
+        width: calc(50% - 50px);
+      }
+
+      &.__right_container {
+        height: calc(50% - 50px);
+        width: 37px;
+      }
+    }
+    &.__rd { bottom: -1px; right: -1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld { bottom: -1px; left: -1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+
+
+    &.__lt_in { top: 51px; left: 1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rt_in { top: 51px; right: 1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rd_in { bottom: 1px; right: 1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld_in { bottom: 1px; left: 1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+
+
+    &.__lt_out { top: 47px; left: -3px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rt_out { top: 47px; right: -3px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rd_out { bottom: -3px; right: -3px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld_out { bottom: -3px; left: -3px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+  }
+
+  svg { height: 100%;
+    path { fill: var(--inner_object_color); }
+  }
+}
+
+
+@keyframes opacity-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes width-height { from { width: 0; height: 0;} to { width: $--corners-size; height: $--corners-size;} }
+
+

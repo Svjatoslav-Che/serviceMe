@@ -1,0 +1,73 @@
+$roboto-font-path: "~roboto-fontface/fonts" !default;
+@import "~roboto-fontface/css/roboto/sass/roboto-fontface";
+@import "assets/styles/breake_media";
+@import "assets/styles/color_sheme";
+//@import "assets/styles/main_tags";
+
+//$material-icons-font-path: '~material-icons/iconfont/';
+//@import '~material-icons/iconfont/material-icons.scss';
+
+$HeaderContainerText: 'Roboto';
+$HeaderTextH: 'Roboto';
+$HeaderTextAlt: 'Roboto';
+$RegularText: 'Roboto';
+$ListText: 'Roboto';
+$SelectText: 'Roboto';
+
+@import "assets/styles/main_tag";
+@import "assets/styles/table";
+
+.size_theme_custom {
+  //header settings
+  --header_size: 96px;
+  --footer_size: 51px;
+  --outlet_top: calc(var(--header_size) + 11px);
+  --outlet_height: calc(100vh - var(--outlet_top) - var(--footer_size) - 11px);
+  //_sandbox settings
+  --sandbox_pad: 14px;
+  --sandbox_pad_step: 30px;
+  --sandbox_inner_margin: 10px;
+
+  @media screen and (max-width: $breake-point-8) {
+    //header settings
+    --header_size: 65px;
+    --footer_size: 41px;
+  }
+
+  @media screen and (max-width: $breake-point-10) {
+    //header settings
+    --header_size: 41px;
+    --footer_size: 41px;
+  }
+}
+
+.scroll_style_custom {
+  &::-webkit-scrollbar { width: 10px; height: 10px;}
+  &::-webkit-scrollbar-button {}
+  &::-webkit-scrollbar-track { background: none;}
+  &::-webkit-scrollbar-track-piece {}
+  &::-webkit-scrollbar-thumb { background: var(--scrollbar_thumb);}
+  &::-webkit-scrollbar-corner { background: none; }
+  &::-webkit-resizer {}
+
+  &.__app_page {
+    &::-webkit-scrollbar-track { background: none; margin-top: 71px; margin-bottom: 41px;}
+  }
+}
+
+@import 'assets/styles/select.scss';
+@import 'assets/styles/input.scss';
+@import 'assets/styles/breake_media';
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--background_main_color);
+}
+
+body {
+  margin: 0;
+}
+
+

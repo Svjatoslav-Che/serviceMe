@@ -1,0 +1,68 @@
+<div class="footer_container"
+     [@fadeInUpOnEnter]
+     [@fadeOutDownOnLeave]>
+    <div class="footer_inner_space">
+
+        <div class="footer_content_box">
+            <div class="button_container">
+                <div class="small_element_sq __first">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = 'gitlab'
+                    ></square-button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="button_container">
+            <div class="footer_content_box">
+                <div class="small_element_sq __follower">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = 'bug'
+                            (click)="popup('feedback')"
+                    ></square-button>
+                </div>
+            </div>
+
+            <div class="footer_content_box">
+                <div class="small_element_sq __follower">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = 'cookie'
+                            (click)="popup('cookies-policy')"
+                    ></square-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="button_container">
+            <div class="footer_content_box">
+                <div class="small_element_sq __last">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = 'in'
+                    ></square-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--{{ 'footer.language' | translate }}-->

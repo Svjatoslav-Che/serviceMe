@@ -1,0 +1,17 @@
+<div class="container"
+     [ngClass]="{'__auto': styles}">
+    <div class="square">
+        <square-element
+                cornersSize = '10'
+                cornersPosition = 'out'
+                [borders] = true
+                [element] = true
+                elementName="{{header}}">
+        </square-element>
+    </div>
+    <div class="text_container">
+        <h1 class="__custom">{{headerDescription}}</h1>
+        <h6 class="__custom">{{description}}</h6>
+    </div>
+</div>
+

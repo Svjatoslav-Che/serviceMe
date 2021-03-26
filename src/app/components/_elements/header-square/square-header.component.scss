@@ -1,0 +1,290 @@
+$--corners-size: var(-corners-size) + 'px';
+@import 'src/assets/styles/breake_media';
+
+.square_body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  * {transition: all var(--transition_basic_element_speed) ease-in-out;}
+  display: flex;
+  justify-content: center;
+  background: var(--inner_active_background);
+
+  &.__regular {
+    --inner_object_color: var(--object_color);
+    --inner_active_color: var(--highlight_color);
+    --inner_active_shadow: var(--highlight_color_active_shadow);
+    --inner_active_background: var(--object_color_backround_light);
+    --inner_color_active_background: var(--highlight_color_active_background);
+    --inner_path_fill_color: var(--path_fill_regular_color_bacground);
+
+    @media screen and (max-width: $breake-point-10) {
+      --inner_path_fill_color: var(--object_color_disabled);
+    }
+  }
+
+  &.__selected {
+    --inner_object_color: var(--highlight_color);
+    --inner_active_color: var(--highlight_color);
+    --inner_active_shadow: var(--highlight_color_active_shadow);
+    --inner_color_active_background: var(--highlight_color_active_background);
+    --inner_active_background: var(--highlight_backround_light);
+    --inner_path_fill_color: var(--path_fill_regular_color_highlight);
+    filter: drop-shadow(0 0 4px var(--highlight_color_shadow));
+
+    @media screen and (max-width: $breake-point-10) {
+      --inner_path_fill_color: var(--highlight_color);
+    }
+  }
+
+  &.__no_background {
+    background: none;
+  }
+
+  &.__disabled {
+    --inner_object_color: var(--object_color_disabled);
+    --inner_path_fill_color: var(--path_fill_regular_color_disabled);
+  }
+
+  &.__active {
+    &:hover {
+      --inner_object_color: var(--highlight_color);
+      --inner_active_color: var(--highlight_color);
+      --inner_active_shadow: var(--highlight_color_active_shadow);
+      --inner_color_active_background: var(--highlight_color_active_background);
+      --inner_active_background: var(--highlight_backround_light);
+      --inner_path_fill_color: var(--path_fill_regular_color_highlight);
+      filter: drop-shadow(0 0 4px var(--highlight_color_shadow));
+      cursor: pointer;
+
+      &.__no_background {
+        background: none;
+      }
+    }
+    &:active {
+      background: var(--inner_color_active_background);
+    }
+  }
+
+  .image_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: opacity-in var(--transition_all_speed) linear;
+
+    &.__jp {
+     left: 0;
+     top: 0;
+     background: #EEEEEE;
+     width: 600px;
+     height: 600px;
+    }
+
+    &.__with_text {
+      top: 3px;
+      height: calc(100% - 16px);
+      width: calc(100% - 16px);
+      transition: all var(--transition_all_speed);
+
+      @media screen and (max-width: $breake-point-8) {
+        top: 1px;
+        height: calc(100% - 3px);
+        width: calc(100% - 3px);
+        transition: all var(--transition_all_speed);
+      }
+    }
+  }
+
+  .corner {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: all 100ms;
+
+    &.__lt { top: -1px; left: -1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rt { top: -1px; right: -1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rd { bottom: -1px; right: -1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld { bottom: -1px; left: -1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+
+
+    &.__lt_in { top: 1px; left: 1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rt_in { top: 1px; right: 1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rd_in { bottom: 1px; right: 1px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld_in { bottom: 1px; left: 1px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+
+
+    &.__lt_out { top: -3px; left: -3px;
+      border-left: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rt_out { top: -3px; right: -3px;
+      border-right: 1px solid var(--inner_object_color);
+      border-top: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__rd_out { bottom: -3px; right: -3px;
+      border-right: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+    &.__ld_out { bottom: -3px; left: -3px;
+      border-left: 1px solid var(--inner_object_color);
+      border-bottom: 1px solid var(--inner_object_color);
+      animation: width-height var(--transition_basic_element_speed) linear;
+    }
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+
+    path {
+      fill: var(--inner_path_fill_color);
+      stroke: var(--inner_object_color);
+      stroke-width:1.5;
+    }
+    polygon {
+      fill: var(--inner_path_fill_color);
+      stroke: var(--inner_object_color);
+      stroke-width:1.5;
+    }
+
+    @media screen and (max-width: $breake-point-10) {
+      path {
+        stroke: var(--inner_path_fill_color);
+      }
+      polygon {
+        stroke: var(--inner_path_fill_color);
+      }
+    }
+  }
+
+  .text {
+    height: 11px;
+    position: absolute;
+    font-weight: 600;
+    color: var(--inner_object_color);
+    font-family: Roboto;
+    font-size: 10px;
+    bottom: 0;
+    transition: all var(--transition_all_speed);
+
+    @media screen and (max-width: $breake-point-8) {
+      display: none;
+      transition: all var(--transition_all_speed);
+    }
+  }
+
+  .logo_letters {
+    user-select: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all var(--transition_all_speed);
+
+    svg {
+      position: relative;
+      left: -5px;
+
+      @media screen and (max-width: $breake-point-8) {
+        left: 0;
+        transform: scale(1.2);
+      }
+
+      @media screen and (max-width: $breake-point-10) {
+
+      }
+    }
+
+    .text_logo {
+      position: absolute;
+      bottom: 11px;
+      left: 44px;
+      transition: all var(--transition_basic_element_speed);
+    }
+
+    @media screen and (max-width: $breake-point-8) {
+      transition: all var(--transition_basic_element_speed);
+      .letter_logo {
+        transform: translateX(-5px);
+        font-size: 55px;
+        line-height: 40px;
+        transition: all var(--transition_basic_element_speed);
+        &.__j {
+          top: 1px;
+          left: 0px;
+          transition: all var(--transition_basic_element_speed);
+        }
+        &.__p {
+          bottom: -1px;
+          left: 27px;
+          transition: all var(--transition_basic_element_speed);
+        }
+      }
+    }
+
+    @media screen and (max-width: $breake-point-10) {
+      filter: drop-shadow(0 0 0 var(--highlight_color_shadow));
+      transition: all var(--transition_basic_element_speed);
+      .letter_logo {
+        -webkit-text-stroke: 0px var(--inner_path_fill_color);
+        color: var(--inner_path_fill_color);
+        transform: translateX(-5px);
+        font-size: 25px;
+        line-height: 20px;
+        transition: all var(--transition_basic_element_speed);
+        &.__j {
+          top: 1px;
+          left: 4px;
+          transition: all var(--transition_basic_element_speed);
+        }
+        &.__p {
+          bottom: -1px;
+          left: 18px;
+          transition: all var(--transition_basic_element_speed);
+        }
+      }
+    }
+  }
+}
+
+@keyframes opacity-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes width-height { from { width: 0; height: 0;} to { width: $--corners-size; height: $--corners-size;} }
+
+

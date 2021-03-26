@@ -1,0 +1,29 @@
+<div class="popup_main">
+    <div *ngIf="globalsService.popupService === 'feedback'"
+        class="feedback_space">
+        <app-feedback>
+        </app-feedback>
+    </div>
+    <div *ngIf="globalsService.popupService === 'cookies-policy'"
+         class="feedback_space">
+        <app-cookies-policy>
+        </app-cookies-policy>
+    </div>
+    <div *ngIf="globalsService.popupService === 'delete-ticket'"
+         class="feedback_space">
+        <app-delete>
+        </app-delete>
+    </div>
+    <div *ngIf="globalsService.popupService === 'watch-ticket'"
+         class="feedback_space">
+        <app-ticket>
+        </app-ticket>
+    </div>
+
+
+
+    <div class="back_drop" (click)="missClickScenario()">
+
+    </div>
+</div>
+

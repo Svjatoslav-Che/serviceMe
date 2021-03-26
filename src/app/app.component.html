@@ -1,0 +1,29 @@
+<div [ngClass]="globalsService.colorSettings" class="app_globes size_theme_custom">
+    <div class="header_container">
+        <app-header>
+        </app-header>
+    </div>
+
+    <div class="user_select">
+    </div>
+
+    <div class="outlet_container">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="footer_container">
+        <app-footer>
+        </app-footer>
+    </div>
+
+    <div class="background_container">
+        <app-background class="background_container"></app-background>
+    </div>
+
+<!--POPUP CONDITIONS-->
+    <div *ngIf="globalsService.popupService !== ''">
+        <app-popup></app-popup>
+    </div>
+
+</div>
+

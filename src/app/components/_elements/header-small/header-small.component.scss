@@ -1,0 +1,35 @@
+@import "src/assets/styles/breake_media";
+
+.container {
+  position: relative;
+  display: flex;
+  margin-left: 3px;
+  transition: all var(--transition_basic_element_speed);
+  left: 0;
+
+  &.__auto {
+    @media screen and (max-width: $breake-point-8) {
+      transition: all var(--transition_basic_element_speed);
+      left: -35px;
+    }
+
+    @media screen and (max-width: $breake-point-15) {
+      width: 100vw;
+      left: -25px;
+    }
+  }
+
+  .square {
+    width: 34px;
+    height: 34px;
+    transition: all var(--transition_basic_element_speed);
+  }
+
+  .text_container {
+    margin-top: -6px;
+    margin-left: 16px;
+    animation: opacity-in var(--transition_basic_element_speed) linear;
+  }
+}
+
+@keyframes opacity-in { from { opacity: 0; } to { opacity: 1; } }

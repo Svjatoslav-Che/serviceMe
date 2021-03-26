@@ -1,0 +1,84 @@
+<div class="loader_container" #loader_container
+        [ngStyle]="{'width': size + 'px',
+        'height': size + 150 + 'px'}">
+
+    <div class="loader_placer"
+        [ngStyle]="{'width': size + 'px',
+        'height': size + 'px'}">
+
+        <div class="element"
+            [ngClass]="{'__max_size': conditionDone === 6}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 514 514">
+            <path
+                    [ngClass]="{'__done': conditionDone === 6}"
+                    d="M256 224.002C176.631 224.002 64.015 346.751 64.015 424.25C64.015 459.125 90.763 480 135.759 480C184.631 480 216.878 454.875 256 454.875C295.497 454.875 327.869 480 376.241 480C421.237 480 447.985 459.125 447.985 424.25C447.985 346.751 335.369 224.002 256 224.002ZM108.762 211.377C98.387 176.752 66.265 154.253 37.142 161.253C8.019 168.252 -7.104 202.003 3.27 236.627C13.644 271.252 45.766 293.751 74.889 286.752S119.136 246.002 108.762 211.377ZM193.505 190.627C224.378 182.502 239.876 140.628 228.002 97.253S181.506 25.254 150.508 33.379C119.636 41.503 104.137 83.378 116.011 126.753C127.885 170.127 162.507 198.752 193.505 190.627ZM474.858 161.253C445.735 154.253 413.613 176.752 403.238 211.377C392.864 246.002 407.988 279.752 437.111 286.752C466.233 293.751 498.231 271.252 508.73 236.627C519.104 202.003 503.981 168.252 474.858 161.253ZM318.495 190.627C349.493 198.752 384.115 170.127 395.989 126.753C407.863 83.378 392.364 41.503 361.492 33.379C330.494 25.254 295.872 53.878 283.998 97.253C272.124 140.628 287.623 182.502 318.495 190.627Z"/></svg>
+        </div>
+
+            <div class="svg_displayer"
+                 *ngIf="!changer"
+                 [ngClass]="{'__visible': conditionDone < 6}">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="288.452px" height="260px" viewBox="0 0 288.452 260" enable-background="new 0 0 288.452 259.808"
+                     xml:space="preserve">
+                    <polygon
+                            [ngClass]="{
+                            '__success': val1 === 'success',
+                            '__error': val1 === 'error'}"
+                            id="sector_1" fill="none" points="196.134,20 92.29,20 80.774,0 207.68,0 "/>
+                    <polygon
+                            [ngClass]="{
+                            '__success': val2 === 'success',
+                            '__error': val2 === 'error'}"
+                            id="sector_2" fill="none" points="196.134,239.808 92.29,239.808 80.774,259.808 207.68,259.808 "/>
+                    <polygon
+                            [ngClass]="{
+                            '__success': val3 === 'success',
+                            '__error': val3 === 'error'}"
+                            id="sector_3" fill="none" points="265.36,119.905 213.438,29.973 225.001,10 288.454,119.904 "/>
+                    <polygon
+                            [ngClass]="{
+                            '__success': val4 === 'success',
+                            '__error': val4 === 'error'}"
+                            id="sector_4" fill="none" points="75.002,229.808 23.081,139.877 0.002,139.903 63.455,249.808 "/>
+                    <polygon
+                            [ngClass]="{
+                            '__success': val5 === 'success',
+                            '__error': val5 === 'error'}"
+                            id="sector_5" fill="none" points="75,29.999 23.079,119.93 0,119.903 63.453,10 "/>
+                    <polygon
+                            [ngClass]="{
+                            '__success': val6 === 'success',
+                            '__error': val6 === 'error'}"
+                            id="sector_6" fill="none" points="265.358,139.901 213.437,229.833 224.999,249.807 288.452,139.903 "/>
+                </svg>
+
+            </div>
+
+
+    </div>
+
+    <div class="liner" [ngClass]="{'__margin': changer}">
+        <div class="line"
+             [ngClass]="{'__visible': loading}">
+        </div>
+    </div>
+
+    <div class="text_placer"
+         *ngIf="!changer"
+         [ngClass]="{'__visible': conditionDone < 6}">
+            <p class="__custom">loading: {{this.conditionDone === 6 ? 'done' : 'in progress..'}}</p>
+            <div class="text __custom"> val1: {{this.val1}}</div>
+            <div class="text __custom"> val2: {{this.val2}}</div>
+            <div class="text __custom"> val3: {{this.val3}}</div>
+            <div class="text __custom"> val4: {{this.val4}}</div>
+            <div class="text __custom"> val5: {{this.val5}}</div>
+            <div class="text __custom"> val6: {{this.val6}}</div>
+    </div>
+
+    <div class="text_placer_loaded"
+         *ngIf="changer"
+         [ngClass]="{'__visible': conditionDone === 6}">
+        <h1 class="__custom">JUST PET</h1>
+        <p class="__custom">project</p>
+    </div>
+</div>

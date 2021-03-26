@@ -1,0 +1,86 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'BASIC'
+                    headerDescription = '{{"sandbox.basics_sheet.basic"|translate}}'
+                    description='{{"sandbox.basics_sheet.about"|translate}}'>
+            </header-small>
+            <div class="text __position __description __under_header">
+                {{"sandbox.basics_sheet.customs"|translate}}
+            </div>
+        </div>
+
+        <div class="text_content">
+            <h1 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h1>
+            <div class="text">(h1)</div><br>
+            <h2 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h2>
+            <div class="text">(h2)</div><br>
+            <h3 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h3>
+            <div class="text">(h3)</div><br>
+            <h4 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h4>
+            <div class="text">(h4)</div><br>
+            <h5 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h5>
+            <div class="text">(h5)</div><br>
+            <h6 class="__custom">{{"sandbox.basics_sheet.header"|translate}}</h6>
+            <div class="text">(h6)</div><br>
+
+            <p class="__custom">{{"sandbox.basics_sheet.text"|translate}}</p>
+            <div class="text">{{"sandbox.basics_sheet.regular"|translate}}</div><br>
+
+            <p class="__custom">{{"sandbox.basics_sheet.text_tag_1"|translate}} <a
+                    (mouseenter)="hoverSound()"
+                    (click)="clickSound()">{{"sandbox.basics_sheet.text_tag_2"|translate}}</a> {{"sandbox.basics_sheet.text_tag_3"|translate}}</p>
+            <div class="text">{{"sandbox.basics_sheet.regular_hoverable"|translate}}</div><br>
+
+            <div class="text">{{"sandbox.basics_sheet.text_description"|translate}}</div>
+            <div class="text">{{"sandbox.basics_sheet.description"|translate}}</div><br>
+
+            <blockquote class="__custom">{{"sandbox.basics_sheet.text_description"|translate}}<br>
+                {{"sandbox.basics_sheet.text_description_quote"|translate}} <a
+                        (mouseenter)="hoverSound()"
+                        (click)="clickSound()">{{"sandbox.basics_sheet.text_description_quote_1"|translate}}</a> {{"sandbox.basics_sheet.text_description_quote_2"|translate}}<br>
+                <p class="__custom"> {{"sandbox.basics_sheet.text_description_quote_3"|translate}}</p>
+            </blockquote>
+            <div class="text">{{"sandbox.basics_sheet.blockquote"|translate}}</div><br>
+
+            <ul class="__custom">
+                <li class="__custom">{{"sandbox.basics_sheet.futuristic"|translate}}</li>
+                <li class="__custom">{{"sandbox.basics_sheet.fiction"|translate}}</li>
+                <li class="__custom">{{"sandbox.basics_sheet.cyberpunk"|translate}}</li>
+            </ul>
+            <div class="text">{{"sandbox.basics_sheet.ul"|translate}}</div><br>
+
+            <ol class="__custom">
+                <li class="__custom">{{"sandbox.basics_sheet.futuristic"|translate}}</li>
+                <li class="__custom">{{"sandbox.basics_sheet.fiction"|translate}}</li>
+                <li class="__custom">{{"sandbox.basics_sheet.cyberpunk"|translate}}</li>
+            </ol>
+            <div class="text">{{"sandbox.basics_sheet.ol"|translate}}</div><br>
+
+            <dl class="__custom">
+                <dt class="__custom">{{"sandbox.basics_sheet.futuristic"|translate}}</dt>
+                <dd class="__custom">{{"sandbox.basics_sheet.fiction"|translate}}</dd>
+                <dd class="__custom">{{"sandbox.basics_sheet.cyberpunk"|translate}}</dd>
+            </dl>
+            <div class="text">{{"sandbox.basics_sheet.dl"|translate}}</div><br>
+        </div>
+
+
+
+    </div>
+</div>
+

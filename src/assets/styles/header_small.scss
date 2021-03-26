@@ -1,0 +1,26 @@
+@import "breake_media";
+
+.small_header_position {
+  z-index: +2;
+  position: relative;
+  margin-top: 7px;
+  margin-left: 33px;
+}
+
+.back_glow {
+  z-index: +1;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  transform: translateX(-14px);
+  background: var(--object_color_backround_inverse);
+
+  @media screen and (max-width: $breake-point-15) {
+    transform: translateX(0px);
+  }
+
+  .liner {
+    height: 50px;
+    border-bottom: 1px solid var(--object_color);
+  }
+}

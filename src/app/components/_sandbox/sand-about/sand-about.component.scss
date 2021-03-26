@@ -1,0 +1,60 @@
+@import "src/assets/styles/breake_media";
+
+.container {
+  position: relative;
+  width: calc(100% - var(--sandbox_pad_step));
+  height: calc(100% - var(--sandbox_pad_step));
+  padding: var(--sandbox_pad);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--object_color_border);
+  background: var(--background_die_color_opacity);
+
+  @media screen and (max-width: $breake-point-15) {
+    position: absolute;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100vw;
+    left: 0;
+    transform: translateX(-20px);
+  }
+
+  .header_container {
+    position: absolute;
+    height: 106px;
+    margin-top: 4px;
+    width: 100%;
+    overflow: hidden;
+    transform: translateX(-14px);
+
+    @media screen and (max-width: $breake-point-15) {
+      padding-left: 0px;
+      padding-right: 0px;
+      left: 18px;
+      transform: translateX(-20px);
+    }
+
+      .header {
+        transform: translateY(3px);
+      }
+  }
+
+  .container_inner_space {
+
+    .text_position {
+      text-align: justify;
+      margin: 135px 35px 0 35px;
+      //margin-top: 135px;
+      //margin-left: 35px;
+
+      @media screen and (max-width: $breake-point-8) {
+        margin: 135px 0 0 0;
+      }
+
+      @media screen and (max-width: $breake-point-15) {
+        margin: 135px 10px 0 10px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,62 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'ICONS'
+                    headerDescription='{{"sandbox.elements_icons.icons"|translate}}'
+                    description = '{{"sandbox.elements_icons.about"|translate}}'>
+            </header-small>
+            <div class="text __position __description __under_header">
+                {{"sandbox.elements_icons.customs_1"|translate}} <a class="__text" target="_blank" href="https://material.io/resources/icons/?style=baseline"
+                        (mouseenter)="hoverSound()"
+                        (click)="clickSound()">{{"sandbox.elements_icons.customs_2"|translate}}</a>,
+                <a class="__text" target="_blank" href="https://fontawesome.com/icons"
+                   (mouseenter)="hoverSound()"
+                   (click)="clickSound()">{{"sandbox.elements_icons.customs_3"|translate}}</a>,
+                {{"sandbox.elements_icons.customs_4"|translate}}
+            </div>
+
+            <div class="content_icons">
+                <p class="__custom">{{"sandbox.elements_icons.description"|translate}}</p>
+                <div class="icon_space">
+                    <div class="icon_single" *ngFor="let item of headerIcons">
+                        <icon-block
+                                icon='{{item}}'>
+                        </icon-block>
+                    </div>
+                </div>
+                <p class="__custom">{{"sandbox.elements_icons.description_1"|translate}}</p>
+                <div class="icon_space">
+                    <div class="icon_single" *ngFor="let item of buttonIcons">
+                        <icon-block
+                                icon='{{item}}'>
+                        </icon-block>
+                    </div>
+                </div>
+                <p class="__custom">{{"sandbox.elements_icons.description_2"|translate}}</p>
+                <div class="icon_space">
+                    <div class="icon_single" *ngFor="let item of elementsIcons">
+                        <icon-block
+                                icon='{{item}}'>
+                        </icon-block>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

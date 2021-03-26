@@ -1,0 +1,51 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'ACHIVES'
+                    headerDescription = '{{"sandbox.elements_achives.achives"|translate}}'
+                    description = '{{"sandbox.elements_achives.encouragement"|translate}}'>
+            </header-small>
+<!--            <div class="text __position __description __under_header">-->
+<!--                Used from <a class="__text" target="_blank" href="https://unknownworlds.com/subnautica/"-->
+<!--                             (mouseenter)="hoverSound()"-->
+<!--                             (click)="clickSound()">@Unknown Worlds Entertainment</a> Subnautica package-->
+<!--                <p>-->
+<!--                    Sound converted to WEBM which significantly reduces the file weight.-->
+<!--                </p>-->
+<!--            </div>-->
+        </div>
+
+
+<!--        <div class="preview_box_rules">-->
+<!--            <div class="preview_box_300">-->
+<!--                <iframe-->
+<!--                        width="100%"-->
+<!--                        height="100%"-->
+<!--                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/222145468&color=%2390c7ad&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">-->
+<!--                </iframe>-->
+
+<!--                <square-element class="backdrop"-->
+<!--                                cornersSize = '10'-->
+<!--                                cornersPosition = 'border'-->
+<!--                                [borders] = false>-->
+<!--                </square-element>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+</div>

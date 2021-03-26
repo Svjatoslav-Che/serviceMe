@@ -1,0 +1,51 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInOnEnter]
+     [@fadeOutOnLeave]
+     (@fadeInOnEnter.start)="animInStart($event)"
+     (@fadeInOnEnter.done)="animInDone($event)"
+     (@fadeOutOnLeave.start)="animOutStart($event)"
+     (@fadeOutOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+
+        <div class="loader_space">
+<!--            <div class="loader_placer"-->
+<!--                 *ngIf="!globalsService.loads">-->
+<!--                <loader-square></loader-square>-->
+<!--                <div class="text_placer">-->
+<!--                    <h4 class="__custom __pulse">loading...</h4>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div *ngIf="globalsService.loads === true">
+                    <big-graph
+                            graphName = 'Keanu'>
+                    </big-graph>
+
+                <div class="text_center">
+                    <div>
+                        <h1 class="__custom">JUST a PET PROJECT</h1>
+                        <h5 class="__custom">SAMURAI</h5>
+                    </div>
+                    <div class="not_animated"
+                        [ngStyle]="{
+                        'width': 100 + 'px',
+                        'height': 37 + 'px',
+                        'margin-top': '20px'}">
+                        <rectangle_button
+                                cornersSize = '10'
+                                cornersPosition = 'out'
+                                borders = 'true'
+                                state = 'disabled'
+                                text= 'WHO IS'>
+                        </rectangle_button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

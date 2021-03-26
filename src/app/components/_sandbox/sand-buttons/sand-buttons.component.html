@@ -1,0 +1,396 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInRightOnEnter]
+     [@fadeOutRightOnLeave]
+     (@fadeInRightOnEnter.start)="animInStart($event)"
+     (@fadeInRightOnEnter.done)="animInDone($event)"
+     (@fadeOutRightOnLeave.start)="animOutStart($event)"
+     (@fadeOutRightOnLeave.done)="animOutDone($event)">
+
+    <div class="container_inner_space">
+        <div class="back_glow">
+            <div class="liner">
+            </div>
+        </div>
+        <div class="small_header_position">
+            <header-small
+                    [ngStyle]="{'margin-top': '3px'}"
+                    header = 'BUTTONS'
+                    headerDescription = '{{"sandbox.elements_buttons.buttons"|translate}}'
+                    description = '{{"sandbox.elements_buttons.about"|translate}}'
+            >
+            </header-small>
+            <div class="text __position __description __under_header">
+                {{"sandbox.elements_buttons.customs"|translate}}
+                <p>
+                    {{"sandbox.elements_buttons.description"|translate}}
+                </p>
+            </div>
+        </div>
+
+
+        <div class="preview_box_rules">
+            <div class="preview_box_300">
+                <square-element class="backdrop"
+                                cornersSize = '10'
+                                cornersPosition = 'border'
+                                [borders] = false>
+                </square-element>
+                <div *ngIf="displayEl" class="flexbox"
+                     [ngStyle]="{'width': 300 + 'px', 'height': 300 + 'px'}">
+<!--CONTENT HERE-->
+<!--***** CASUAL BEGIN *****-->
+                    <div class="buttons __vertical" *ngIf="element === 'casual'">
+                        <div class="buttons">
+                            <div>
+                                <div
+                                 [ngStyle]="{
+                                'width': 100 + 'px',
+                                'height': 37 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'regular'
+                                            text= '{{"sandbox.elements_buttons.regular"|translate}}'>
+                                    </rectangle_button>
+                                </div>
+                                <div class="text">
+                                    {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.regular"|translate}}<br>
+                                    {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                        [ngStyle]="{
+                                    'width': 100 + 'px',
+                                    'height': 37 + 'px',
+                                    'margin-left': 16 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'selected_active'
+                                            text= '{{"sandbox.elements_buttons.selected"|translate}}'>
+                                    </rectangle_button>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.selected"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <div>
+                                <div
+                                        [ngStyle]="{
+                                'width': 100 + 'px',
+                                'height': 37 + 'px',
+                                'margin-top': 16 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'disabled'
+                                            text= '{{"sandbox.elements_buttons.disabled"|translate}}'>
+                                    </rectangle_button>
+                                </div>
+                                <div class="text">
+                                    {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.disabled"|translate}}<br>
+                                    {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.passive"|translate}}<br>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                        [ngStyle]="{
+                                    'width': 100 + 'px',
+                                    'height': 37 + 'px',
+                                    'margin-left': 16 + 'px',
+                                    'margin-top': 16 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'apply'
+                                            text= '{{"sandbox.elements_buttons.apply"|translate}}'>
+                                    </rectangle_button>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.apply"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <div>
+                                <div
+                                        [ngStyle]="{
+                                'width': 100 + 'px',
+                                'height': 37 + 'px',
+                                'margin-top': 16 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'warning'
+                                            text= '{{"sandbox.elements_buttons.warning"|translate}}'>
+                                    </rectangle_button>
+                                </div>
+                                <div class="text">
+                                    {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.warning"|translate}}<br>
+                                    {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                [ngStyle]="{
+                                    'width': 100 + 'px',
+                                    'height': 37 + 'px',
+                                    'margin-left': 16 + 'px',
+                                    'margin-top': 16 + 'px'}">
+                                    <rectangle_button
+                                            cornersSize = '10'
+                                            cornersPosition = 'out'
+                                            [borders] = true
+                                            state = 'alert'
+                                            text= '{{"sandbox.elements_buttons.alert"|translate}}'>
+                                    </rectangle_button>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.alert"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--***** CASUAL END *****-->
+
+<!--***** SMALL BEGIN *****-->
+                        <div class="buttons __vertical" *ngIf="element === 'small'">
+                            <div class="buttons">
+                                <div>
+                                    <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center'}">
+                                        <div class="sq_button_element_container">
+                                            <square-button
+                                                    cornersSize = '10'
+                                                    cornersPosition = 'out'
+                                                    [borders] = true
+                                                    state= 'regular'
+                                                    action= 'active'
+                                                    icon = 'angular'
+                                            ></square-button>
+                                        </div>
+                                        <div class="text">
+                                            {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.regular"|translate}}<br>
+                                            {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                            {{"sandbox.elements_buttons.icon"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center',
+                                    'margin-left': 16 + 'px'}">
+                                        <div class="sq_button_element_container">
+                                            <square-button
+                                                    cornersSize = '10'
+                                                    cornersPosition = 'out'
+                                                    [borders] = true
+                                                    state= 'selected'
+                                                    action= 'static'
+                                                    icon = 'angular'
+                                            ></square-button>
+                                        </div>
+                                        <div class="text">
+                                            {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.selected"|translate}}<br>
+                                            {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.disabled"|translate}}<br>
+                                            {{"sandbox.elements_buttons.icon"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="buttons">
+                                <div>
+                                    <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center',
+                                    'margin-top': 16 + 'px'}">
+                                        <div class="sq_button_element_container">
+                                            <square-button
+                                                    cornersSize = '10'
+                                                    cornersPosition = 'out'
+                                                    [borders] = true
+                                                    state= 'disabled'
+                                                    action= 'passive'
+                                                    icon = 'angular'
+                                            ></square-button>
+                                        </div>
+                                        <div class="text">
+                                            {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.disabled"|translate}}<br>
+                                            {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.passive"|translate}}<br>
+                                            {{"sandbox.elements_buttons.icon"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center',
+                                    'margin-left': 16 + 'px',
+                                    'margin-top': 16 + 'px'}">
+                                        <div class="sq_button_element_container">
+                                            <square-button
+                                                    cornersSize = '10'
+                                                    cornersPosition = 'out'
+                                                    [borders] = true
+                                                    state= 'regular'
+                                                    action= 'active'
+                                                    text= '{{"sandbox.elements_buttons.en"|translate}}'
+                                                    icon = 'angular'
+                                            ></square-button>
+                                        </div>
+                                        <div class="text">
+                                            {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.regular"|translate}}<br>
+                                            {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                            {{"sandbox.elements_buttons.text"|translate}} {{"sandbox.elements_buttons.en"|translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!--***** SMALL END *****-->
+
+<!--***** HEADER BEGIN *****-->
+                    <div class="buttons __vertical" *ngIf="element === 'header'">
+                        <div class="buttons">
+                            <div>
+                                <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center'}">
+                                    <div class="header_element_container">
+                                        <square-header
+                                                cornersSize = '10'
+                                                cornersPosition = 'out'
+                                                [borders] = true
+                                                description='{{"sandbox.elements_buttons.angular"|translate}}'
+                                                state = 'regular'
+                                                action = 'active'
+                                                text= 'ANGULAR'>
+                                        </square-header>
+                                    </div>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.regular"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                        {{"sandbox.elements_buttons.text"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center',
+                                    'margin-left': 16 + 'px'}">
+                                    <div class="header_element_container">
+                                        <square-header
+                                                cornersSize = '10'
+                                                cornersPosition = 'out'
+                                                [borders] = true
+                                                description='{{"sandbox.elements_buttons.angular"|translate}}'
+                                                state = 'selected'
+                                                action = 'active'
+                                                text= 'ANGULAR'>
+                                        </square-header>
+                                    </div>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.selected"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                        {{"sandbox.elements_buttons.text"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <div>
+                                <div [ngStyle]="{
+                                    'display': 'flex',
+                                    'flex-direction': 'column',
+                                    'align-items': 'center',
+                                    'margin-top': 16 + 'px'}">
+                                    <div class="header_element_container">
+                                        <square-header
+                                                cornersSize = '10'
+                                                cornersPosition = 'out'
+                                                [borders] = true
+                                                description='{{"sandbox.elements_buttons.angular"|translate}}'
+                                                state = 'disabled'
+                                                text= 'ANGULAR'>
+                                        </square-header>
+                                    </div>
+                                    <div class="text">
+                                        {{"sandbox.elements_buttons.state"|translate}} {{"sandbox.elements_buttons.regular"|translate}}<br>
+                                        {{"sandbox.elements_buttons.action"|translate}} {{"sandbox.elements_buttons.active"|translate}}<br>
+                                        {{"sandbox.elements_buttons.text"|translate}} {{"sandbox.elements_buttons.angular"|translate}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+<!--***** HEADER END *****-->
+<!--CONTENT END-->
+                </div>
+            </div>
+
+            <div class="controls_box">
+                <p class="__custom">{{"sandbox.elements_buttons.choose"|translate}}</p>
+                <div class="text"
+                     [ngStyle]="{
+                'margin-top': 10 + 'px',
+                'margin-right': 0 + 'px',
+                'margin-bottom': 5 + 'px'}">
+                    {{"sandbox.elements_buttons.elements"|translate}}
+                </div>
+                <div class="custom-select" id="header-container"
+                     [ngStyle]="{
+                    'width': 298 +'px',
+                    'height': 20 + 'px'}">
+                    <dropdown
+                            class = 'casualMenu'
+                            [object]= menuListButtons
+                            selected = '{{element}}'
+                            (callBack)="this.valueDisplayerChange($event)">
+                    </dropdown>
+                </div>
+
+                <div
+                    [ngStyle]="{
+                    'width': 138 + 'px',
+                    'height': 37 + 'px',
+                    'margin-top': 27 + 'px',
+                    'margin-right': 0 + 'px',
+                    'margin-left': '3px'}">
+                        <rectangle_button (click)="restartItem($event)"
+                                          cornersSize = '10'
+                                          cornersPosition = 'out'
+                                          [borders] = true
+                                          state = 'regular'
+                                          text = '{{"sandbox.elements_buttons.refresh"|translate}}'>
+                        </rectangle_button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

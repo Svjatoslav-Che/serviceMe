@@ -1,0 +1,117 @@
+<div class="container scroll_style_custom"
+     *ngIf="mainDiv"
+     [@fadeInDownOnEnter]
+     [@fadeOutUpOnLeave]
+     (@fadeInDownOnEnter.start)="animInStart($event)"
+     (@fadeInDownOnEnter.done)="animInDone($event)"
+     (@fadeOutUpOnLeave.start)="animOutStart($event)"
+     (@fadeOutUpOnLeave.done)="animOutDone($event)">
+
+
+    <div class="container_inner_space scroll_style_custom">
+
+        <div class="header_container">
+            <div class="header">
+                <header-open
+                        header = 'ABOUT'
+                        headerText = '{{"about.header"|translate}}'
+                        description = '{{"about.description"|translate}}'>
+                </header-open>
+            </div>
+        </div>
+
+        <div class="content_container">
+            <div class="text_open">
+                <h4 class="__custom">{{"about.description_2"|translate}}</h4>
+                <p [ngStyle]="{'margin-top': 10 + 'px'}"
+                    class="__custom">
+                    {{"about.inspired"|translate}} <a target="_blank" href="https://github.com/romelperez"
+                                   (mouseenter)="hoverSound()"
+                                   (click)="clickSound()">{{"about.author"|translate}}</a> {{"about.arwes"|translate}}</p>
+                <div class="laytop_container">
+                    <big-graph
+                            graphName = 'Laytops'>
+                    </big-graph>
+                </div>
+            </div>
+
+
+            <div class="simply_strap">
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'RJsX'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom">
+                                    {{"about.angular"|translate}}
+                                </h4>
+                                <p class="__custom __up">
+                                    {{"about.angular_description"|translate}}
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'RJsX'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom">
+                                    {{"about.RxJS"|translate}}
+                                </h4>
+                                <p class="__custom __up">
+                                    {{"about.RxJS_description"|translate}}
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'RJsX'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom">
+                                    {{"about.WebB"|translate}}
+                                </h4>
+                                <p class="__custom __up">
+                                    {{"about.WebB_description"|translate}}
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

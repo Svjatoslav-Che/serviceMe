@@ -1,0 +1,185 @@
+<div class="box_body"
+     #sizeViewer>
+    <div class="back_overdrop">
+    </div>
+    <div class="square_container"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+        <square-element
+                cornersSize = 10
+                cornersPosition = 'out'
+                [borders] = true
+                [element] = true
+                elementName = '{{header}}'>
+        </square-element>
+    </div>
+
+    <div class="header"
+         [ngClass]="{'__left_headers' : elementOrient === 'left',
+                        '__center_headers': elementOrient === 'centre',
+                        '__right_headers': elementOrient === 'right'}">
+        <h1><typer-string
+                text='{{header}}'
+                [durationInner] = 10
+                [charsAtOnce] = 1
+        ></typer-string></h1>
+    </div>
+
+    <div class="descriptor"
+         [ngClass]="{'__left_headers' : elementOrient === 'left',
+                    '__center_headers': elementOrient === 'centre',
+                    '__right_headers': elementOrient === 'right'}">
+        <h6>
+            <h6><typer-string
+                    text='{{description}}'
+                    [durationInner] = 10
+                    [charsAtOnce] = 1
+            ></typer-string></h6>
+        </h6>
+    </div>
+
+    <div class="text_box"
+          [ngClass]="{'__center_text' : elementOrient === 'centre'}">
+        <h1><typer-string
+                text='You trying to delete ticket: {{globalsService.currentTicketNum}}'
+                [durationInner] = 10
+                [charsAtOnce] = 5
+        ></typer-string></h1>
+
+        <p>
+            <typer-string
+                    text='State: <span>{{globalsService.currentTicket.issue_state != "" ? globalsService.currentTicket.issue_state : "not specified"}}</span>'
+                    [durationInner] = 10
+                    [charsAtOnce] = 5
+            ></typer-string>
+        </p>
+        <p>
+            <typer-string
+                    text='Description: <span>{{globalsService.currentTicket.description != "" ? globalsService.currentTicket.description : "none"}}</span>'
+                    [durationInner] = 10
+                    [charsAtOnce] = 5
+            ></typer-string>
+        </p>
+        <p>
+            <typer-string
+                    text='Screenshots: <span>{{globalsService.currentTicket.screenshots.length > 0 ? globalsService.currentTicket.screenshots.length : "none"}}</span>'
+                    [durationInner] = 10
+                    [charsAtOnce] = 5
+            ></typer-string>
+        </p>
+        <p>
+            <typer-string
+                    text='Date of creation: <span>{{globalsService.currentTicket.date | date:"dd.MM.yyyy, HH:mm"}}</span>'
+                    [durationInner] = 10
+                    [charsAtOnce] = 5
+            ></typer-string>
+        </p>
+
+
+        <div class="buttons">
+            <div class="single_button" (click)="closeDelete()">
+                <rectangle_button
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state = 'alert'
+                        text= 'LATER'>
+                </rectangle_button>
+                <div class="text __custom">
+                    <typer-string
+                            text='Let me think about it'
+                            [durationInner] = 10
+                            [charsAtOnce] = 5
+                    ></typer-string>
+                </div>
+            </div>
+            <div class="single_button" (click)="destroyCookies()">
+                <rectangle_button
+                        cornersSize = '10'
+                        cornersPosition = 'out'
+                        [borders] = true
+                        state = 'warning'
+                        text= 'DELETE'>
+                </rectangle_button>
+                <div class="text __custom">
+                    <typer-string
+                            text='Delete ticket now'
+                            [durationInner] = 10
+                            [charsAtOnce] = 5
+                    ></typer-string>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--BORDERS PART START-->
+    <div *ngIf="borders" class="corner __lt"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+    </div>
+
+
+    <div *ngIf="borders" class="corner __rt"
+         [ngClass]="{'__left_container' : elementOrient === 'left',
+                     '__center_container': elementOrient === 'centre',
+                     '__right_container': elementOrient === 'right'}">
+    </div>
+
+    <div *ngIf="borders" class="corner __rd"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <div *ngIf="borders" class="corner __ld"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '50%'}">
+    </div>
+    <!--BORDERS PART END-->
+
+    <!--CORNERS PART START-->
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __lt"
+         [ngClass]="{
+            '__lt_in' : cornersPosition === 'in',
+            '__lt_out' : cornersPosition === 'out',
+            '__lt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rt"
+         [ngClass]="{
+            '__rt_in' : cornersPosition === 'in',
+            '__rt_out' : cornersPosition === 'out',
+            '__rt' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __rd"
+         [ngClass]="{
+            '__rd_in' : cornersPosition === 'in',
+            '__rd_out' : cornersPosition === 'out',
+            '__rd' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <div *ngIf="cornersPosition != 'none'"
+         class="corner __ld"
+         [ngClass]="{
+            '__ld_in' : cornersPosition === 'in',
+            '__ld_out' : cornersPosition === 'out',
+            '__ld' : cornersPosition === 'border'}"
+         [ngStyle]="{
+            'width': cornersSize + 'px',
+            'height': cornersSize + 'px'}">
+    </div>
+    <!--CORNERS PART END-->
+
+</div>

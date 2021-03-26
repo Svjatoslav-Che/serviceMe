@@ -1,0 +1,96 @@
+@import "src/assets/styles/breake_media";
+@import 'src/assets/styles/header_small';
+
+.container {
+  position: relative;
+  width: calc(100% - var(--sandbox_pad_step));
+  height: calc(100% - var(--sandbox_pad_step));
+  padding: var(--sandbox_pad);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--object_color_border);
+  background: var(--background_die_color_opacity);
+
+  @media screen and (max-width: $breake-point-15) {
+    position: absolute;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100vw;
+    left: 0;
+    transform: translateX(-20px);
+  }
+
+  .container_inner_space {
+    .text {
+
+      &.__position {
+        @media (max-width: $breake-point-8) {
+          margin-left: -35px;
+        }
+
+        @media screen and (max-width: $breake-point-15) {
+          margin-left: -25px;
+        }
+      }
+    }
+  }
+}
+
+.preview_box_rules {
+  display: flex;
+  transition: all var(--transition_basic_element_speed);
+  margin-left: 35px;
+
+  @media (max-width: $breake-point-7) {
+    flex-direction: column;
+  }
+
+  @media (max-width: $breake-point-8) {
+    margin-left: 0px;
+  }
+
+  .preview_box_300 {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--viever_color_backround);
+
+    iframe {
+      z-index: +1;
+      font-family: 'Roboto';
+    }
+
+    @media (max-width: $breake-point-12) {
+      margin: auto;
+    }
+
+    .backdrop {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  .controls_box {
+    width: 300px;
+    height: 300px;
+    margin-left: 15px;
+    border-left: 1px solid var(--object_color);
+    padding-left: 15px;
+
+    @media (max-width: $breake-point-7) {
+      margin-left: 0px;
+      border-left: none;
+      margin-top: 15px;
+      border-top: 1px solid var(--object_color);
+      padding-left: 0px;
+      padding-top: 10px;
+    }
+
+    @media (max-width: $breake-point-12) {
+      margin: 15px auto auto auto;
+    }
+  }
+}

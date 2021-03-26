@@ -1,0 +1,91 @@
+@import "src/assets/styles/breake_media";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+
+  .container_inner_space {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    max-width: 1600px;
+    //border: 1px solid var(--object_color_border);
+    //background: var(--background_die_color_opacity);
+
+    @media screen and (max-width: $breake-point-15) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.loader_space {
+  //position: absolute;
+  width: 100%;
+  height: 100%;
+  //background: #333333;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-20px);
+
+  .kianu_layer {
+    position: inherit;
+    max-width: 600px;
+    width: 600px;
+  }
+
+  .loader_placer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    animation: appear var(--transition_all_speed) linear;
+
+    &.__disappear {
+      animation: disappear var(--transition_all_speed) linear;
+    }
+
+    .text_placer {
+      position: absolute;
+      top: 65px;
+      left: 10px;
+      .__pulse {
+        animation: pulse var(--transition_all_speed) infinite;
+      }
+    }
+  }
+
+  .text_center {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.not_animated {
+  animation: none;
+}
+
+@keyframes appear {
+  from { opacity: 0%; }
+  to { opacity: 100%; }
+}
+
+@keyframes disappear {
+  from { opacity: 100%; }
+  to { opacity: 0%; }
+}
+
+@keyframes pulse {
+  0% { opacity: 100%; }
+  15% { opacity: 80%; }
+}
+
+
+
+
