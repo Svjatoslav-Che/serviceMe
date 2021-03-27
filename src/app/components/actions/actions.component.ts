@@ -114,7 +114,7 @@ export class ActionsComponent implements OnInit {
   reloadPagin() {
     this.prevPage = false;
     this.nextPage = false;
-    this.numberOfPages = 0;
+    this.numberOfPages = 1;
     this.currentPage = 1;
     this.paginationList = null;
   }
@@ -124,10 +124,12 @@ export class ActionsComponent implements OnInit {
     this.reloadPagin();
     //go ticket scenario
     this.displayedEvent = 'tickets';
-    this.ticketsList = this.localsService.getAllStorageTickets();
-    // this.ticketsList.forEach(element => {
-    //   element.divTextOpen = false;
-    // });
+    // check tickets exist
+    if (this.localsService.getAllStorageTickets() !== null) {
+      this.ticketsList = this.localsService.getAllStorageTickets();
+    } else {
+      this.ticketsList = [];
+    }
     this.displayTicketsList = this.ticketsList;
     //start pagination
     this.paginationModule(this.ticketsList);

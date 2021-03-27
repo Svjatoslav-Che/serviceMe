@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import LocalKey from "./local-storage-key.constant";
-import {parseJson} from "@angular/cli/utilities/json-file";
 
 @Injectable()
 export class LocalsService {

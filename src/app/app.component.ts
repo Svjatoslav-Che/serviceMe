@@ -2,12 +2,12 @@ import {Component, OnInit, HostListener} from '@angular/core';
 import { AudioService} from './services/audio.service';
 import { TokenService } from './services/token.service';
 import { CookieService } from './services/cookie.service';
-import CookiesKey from './services/cookies-key.constant';
 import { GlobalsService } from './services/globals.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { CommonService } from "./services/common.service";
 import { BigGraphComponent } from "./components/_elements/big-graph/big-graph.component";
 import { UAParser } from 'ua-parser-js';
+import { LocalsService } from "./services/local-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       private deviceService: DeviceDetectorService,
       private bigGraph: BigGraphComponent,
       private _data: CommonService,
-      private tokenService: TokenService
+      private tokenService: TokenService,
   ) {}
 
   ngOnInit(): void {
