@@ -51,7 +51,7 @@ export class ActionsComponent implements OnInit {
   //PAGINATION
   public prevPage: boolean = false;
   public nextPage: boolean = false;
-  public numberOfPages: number;
+  public numberOfPages: number = 0;
   public currentPage: number = 1;
   public paginationList: [];
 
@@ -114,7 +114,7 @@ export class ActionsComponent implements OnInit {
   reloadPagin() {
     this.prevPage = false;
     this.nextPage = false;
-    this.numberOfPages = null;
+    this.numberOfPages = 0;
     this.currentPage = 1;
     this.paginationList = null;
   }
