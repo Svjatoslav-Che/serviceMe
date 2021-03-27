@@ -82,6 +82,24 @@
 		"other": "other",
 		"not_specified": "not specified"
 	},
+	"delete": {
+		"delete": "DELETE",
+		"description": "confirm to delete ticket",
+		"message": "You deleting ticket:",
+		"state": "State:",
+		"description_ticket": "Description:",
+		"screenshots": "Screenshots:",
+		"date": "Date of creation:",
+		"not_specified": "not specified",
+		"none": "none",
+		"error": "error",
+		"proposal": "proposal",
+		"other": "other",
+		"later": "LATER",
+		"think" : "Let me think about it",
+		"delete_but" : "DELETE",
+		"delete_now" : "Delete ticket now"
+	},
 	"404": {
 		"crap": "CRAP!",
 		"wrong": "Something went wrong..",

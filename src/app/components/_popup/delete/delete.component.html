@@ -20,7 +20,7 @@
                         '__center_headers': elementOrient === 'centre',
                         '__right_headers': elementOrient === 'right'}">
         <h1><typer-string
-                text='{{header}}'
+                text='{{"delete.delete"|translate}}'
                 [durationInner] = 10
                 [charsAtOnce] = 1
         ></typer-string></h1>
@@ -32,7 +32,7 @@
                     '__right_headers': elementOrient === 'right'}">
         <h6>
             <h6><typer-string
-                    text='{{description}}'
+                    text='{{"delete.description"|translate}}'
                     [durationInner] = 10
                     [charsAtOnce] = 1
             ></typer-string></h6>
@@ -42,35 +42,35 @@
     <div class="text_box"
           [ngClass]="{'__center_text' : elementOrient === 'centre'}">
         <h1><typer-string
-                text='You trying to delete ticket: {{globalsService.currentTicketNum}}'
+                text='{{"delete.message"|translate}} {{globalsService.currentTicketNum}}'
                 [durationInner] = 10
                 [charsAtOnce] = 5
         ></typer-string></h1>
 
         <p>
             <typer-string
-                    text='State: <span>{{globalsService.currentTicket.issue_state != "" ? globalsService.currentTicket.issue_state : "not specified"}}</span>'
+                    text='{{"delete.state"|translate}} <span>{{globalsService.currentTicket.issue_state != "" ? ("delete." + globalsService.currentTicket.issue_state|translate) : "delete.not_specified"|translate}}</span>'
                     [durationInner] = 10
                     [charsAtOnce] = 5
             ></typer-string>
         </p>
         <p>
             <typer-string
-                    text='Description: <span>{{globalsService.currentTicket.description != "" ? globalsService.currentTicket.description : "none"}}</span>'
+                    text='{{"delete.description_ticket"|translate}} <span>{{globalsService.currentTicket.description != "" ? globalsService.currentTicket.description : "delete.none"|translate}}</span>'
                     [durationInner] = 10
                     [charsAtOnce] = 5
             ></typer-string>
         </p>
         <p>
             <typer-string
-                    text='Screenshots: <span>{{globalsService.currentTicket.screenshots.length > 0 ? globalsService.currentTicket.screenshots.length : "none"}}</span>'
+                    text='{{"delete.screenshots"|translate}} <span>{{globalsService.currentTicket.screenshots.length > 0 ? globalsService.currentTicket.screenshots.length : "delete.none"|translate}}</span>'
                     [durationInner] = 10
                     [charsAtOnce] = 5
             ></typer-string>
         </p>
         <p>
             <typer-string
-                    text='Date of creation: <span>{{globalsService.currentTicket.date | date:"dd.MM.yyyy, HH:mm"}}</span>'
+                    text='{{"delete.date"|translate}} <span>{{globalsService.currentTicket.date | date:"dd.MM.yyyy, HH:mm"}}</span>'
                     [durationInner] = 10
                     [charsAtOnce] = 5
             ></typer-string>
@@ -84,11 +84,11 @@
                         cornersPosition = 'out'
                         [borders] = true
                         state = 'alert'
-                        text= 'LATER'>
+                        text= '{{"delete.later"|translate}}'>
                 </rectangle_button>
                 <div class="text __custom">
                     <typer-string
-                            text='Let me think about it'
+                            text='{{"delete.think"|translate}}'
                             [durationInner] = 10
                             [charsAtOnce] = 5
                     ></typer-string>
@@ -100,11 +100,11 @@
                         cornersPosition = 'out'
                         [borders] = true
                         state = 'warning'
-                        text= 'DELETE'>
+                        text= '{{"delete.delete_but"|translate}}'>
                 </rectangle_button>
                 <div class="text __custom">
                     <typer-string
-                            text='Delete ticket now'
+                            text='{{"delete.delete_now"|translate}}'
                             [durationInner] = 10
                             [charsAtOnce] = 5
                     ></typer-string>
