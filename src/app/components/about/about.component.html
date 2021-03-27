@@ -35,6 +35,103 @@
                 </div>
             </div>
 
+            <div class="simply_strap">
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'ANGULAR'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom" [innerHTML]="'about.angular'|translate">
+                                </h4>
+                                <p class="__custom __up" [innerHTML]="'about.angular_description'|translate">
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'RJsX'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom" [innerHTML]="'about.RxJS'|translate">
+                                </h4>
+                                <p class="__custom __up" [innerHTML]="'about.RxJS_description'|translate">
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="describe_block">
+                        <div class="square_container">
+                            <square-element
+                                    cornersSize = 10
+                                    cornersPosition = 'out'
+                                    [borders] = false
+                                    [element] = true
+                                    elementName = 'RJsX'>
+                            </square-element>
+                        </div>
+                        <div class="text_about">
+                            <blockquote class="__custom">
+                                <h4 class="__custom" [innerHTML]="'about.WebB'|translate">
+                                </h4>
+                                <p class="__custom __up" [innerHTML]="'about.WebB_description'|translate">
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_container"
+             [ngStyle]="{'margin-top' : '80px'}">
+            <div class="header">
+                <header-open
+                        header = 'IDEA'
+                        headerText = '{{"about.idea"|translate}}'
+                        description = '{{"about.idea_description"|translate}}'>
+                </header-open>
+            </div>
+        </div>
+
+        <div class="content_container"
+             [ngStyle]="{'margin-bottom' : '40px'}">
+<!--            <div class="text_open">-->
+<!--                <h4 class="__custom">{{"about.description_2"|translate}}</h4>-->
+<!--                <p [ngStyle]="{'margin-top': 10 + 'px'}"-->
+<!--                   class="__custom">-->
+<!--                    {{"about.inspired"|translate}}-->
+<!--                        <a target="_blank" href="https://github.com/romelperez"-->
+<!--                                                      (mouseenter)="hoverSound()"-->
+<!--                                                      (click)="clickSound()">{{"about.author"|translate}}</a> {{"about.arwes"|translate}}</p>-->
+<!--                <div class="laytop_container">-->
+<!--                    <big-graph-->
+<!--                            graphName = 'Laytops'>-->
+<!--                    </big-graph>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="simply_strap">
 
@@ -46,16 +143,14 @@
                                     cornersPosition = 'out'
                                     [borders] = false
                                     [element] = true
-                                    elementName = 'RJsX'>
+                                    elementName = 'ASK'>
                             </square-element>
                         </div>
                         <div class="text_about">
                             <blockquote class="__custom">
-                                <h4 class="__custom">
-                                    {{"about.angular"|translate}}
+                                <h4 class="__custom" [innerHTML]="'about.what_all_about'|translate">
                                 </h4>
-                                <p class="__custom __up">
-                                    {{"about.angular_description"|translate}}
+                                <p class="__custom __up" [innerHTML]="'about.all_about_description'|translate">
                                 </p>
                             </blockquote>
                         </div>
@@ -70,16 +165,14 @@
                                     cornersPosition = 'out'
                                     [borders] = false
                                     [element] = true
-                                    elementName = 'RJsX'>
+                                    elementName = 'ASSISTANT'>
                             </square-element>
                         </div>
                         <div class="text_about">
                             <blockquote class="__custom">
-                                <h4 class="__custom">
-                                    {{"about.RxJS"|translate}}
+                                <h4 class="__custom" [innerHTML]="'about.assistant'|translate">
                                 </h4>
-                                <p class="__custom __up">
-                                    {{"about.RxJS_description"|translate}}
+                                <p class="__custom __up" [innerHTML]="'about.assistant_description'|translate">
                                 </p>
                             </blockquote>
                         </div>
@@ -94,24 +187,119 @@
                                     cornersPosition = 'out'
                                     [borders] = false
                                     [element] = true
-                                    elementName = 'RJsX'>
+                                    elementName = 'CORE'>
                             </square-element>
                         </div>
                         <div class="text_about">
                             <blockquote class="__custom">
-                                <h4 class="__custom">
-                                    {{"about.WebB"|translate}}
+                                <h4 class="__custom" [innerHTML]="'about.build_on'|translate">
                                 </h4>
-                                <p class="__custom __up">
-                                    {{"about.WebB_description"|translate}}
+                                <p class="__custom __up" [innerHTML]="'about.build_on_description'|translate">
                                 </p>
                             </blockquote>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
+        <div class="header_container"
+             [ngStyle]="{'margin-top' : '80px'}">
+            <div class="header">
+                <header-open
+                        header = 'PUZZLE'
+                        headerText = '{{"about.build"|translate}}'
+                        description = '{{"about.build_description"|translate}}'>
+                </header-open>
+            </div>
+        </div>
+
+        <div class="content_container"
+             [ngStyle]="{'margin-bottom' : '40px'}">
+                        <div class="text_open">
+<!--                            <h4 class="__custom">{{"about.build_in_progress"|translate}}</h4>-->
+                            <p [ngStyle]="{'margin-top': 10 + 'px'}"
+                               class="__custom">
+                                {{"about.build_in_progress"|translate}}
+                            </p>
+<!--                            <div class="laytop_container">-->
+<!--                                <big-graph-->
+<!--                                        graphName = 'Laytops'>-->
+<!--                                </big-graph>-->
+<!--                            </div>-->
+                        </div>
+
+<!--            <div class="simply_strap">-->
+
+<!--                <div class="cell">-->
+<!--                    <div class="describe_block">-->
+<!--                        <div class="square_container">-->
+<!--                            <square-element-->
+<!--                                    cornersSize = 10-->
+<!--                                    cornersPosition = 'out'-->
+<!--                                    [borders] = false-->
+<!--                                    [element] = true-->
+<!--                                    elementName = 'ASK'>-->
+<!--                            </square-element>-->
+<!--                        </div>-->
+<!--                        <div class="text_about">-->
+<!--                            <blockquote class="__custom">-->
+<!--                                <h4 class="__custom" [innerHTML]="'about.what_all_about'|translate">-->
+<!--                                </h4>-->
+<!--                                <p class="__custom __up" [innerHTML]="'about.all_about_description'|translate">-->
+<!--                                </p>-->
+<!--                            </blockquote>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="cell">-->
+<!--                    <div class="describe_block">-->
+<!--                        <div class="square_container">-->
+<!--                            <square-element-->
+<!--                                    cornersSize = 10-->
+<!--                                    cornersPosition = 'out'-->
+<!--                                    [borders] = false-->
+<!--                                    [element] = true-->
+<!--                                    elementName = 'ASSISTANT'>-->
+<!--                            </square-element>-->
+<!--                        </div>-->
+<!--                        <div class="text_about">-->
+<!--                            <blockquote class="__custom">-->
+<!--                                <h4 class="__custom" [innerHTML]="'about.assistant'|translate">-->
+<!--                                </h4>-->
+<!--                                <p class="__custom __up" [innerHTML]="'about.assistant_description'|translate">-->
+<!--                                </p>-->
+<!--                            </blockquote>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="cell">-->
+<!--                    <div class="describe_block">-->
+<!--                        <div class="square_container">-->
+<!--                            <square-element-->
+<!--                                    cornersSize = 10-->
+<!--                                    cornersPosition = 'out'-->
+<!--                                    [borders] = false-->
+<!--                                    [element] = true-->
+<!--                                    elementName = 'CORE'>-->
+<!--                            </square-element>-->
+<!--                        </div>-->
+<!--                        <div class="text_about">-->
+<!--                            <blockquote class="__custom">-->
+<!--                                <h4 class="__custom" [innerHTML]="'about.build_on'|translate">-->
+<!--                                </h4>-->
+<!--                                <p class="__custom __up" [innerHTML]="'about.build_on_description'|translate">-->
+<!--                                </p>-->
+<!--                            </blockquote>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+
     </div>
+
 </div>

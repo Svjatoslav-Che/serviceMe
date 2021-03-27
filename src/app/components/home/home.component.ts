@@ -3,7 +3,6 @@ import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animati
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
-import { Subscription, timer } from 'rxjs';
 import { GlobalsService } from "../../services/globals.service";
 
 const DURATION = { duration: 300 };
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit {
     // }
 
     // disable loader
-    this.globalsService.loads = true;
+
     this.globalsService.firstDrawLoad = true;
 
     // if (!this.globalsService.loads) {

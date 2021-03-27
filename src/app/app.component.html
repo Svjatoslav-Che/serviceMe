@@ -7,7 +7,7 @@
     <div class="user_select">
     </div>
 
-    <div class="outlet_container">
+    <div class="outlet_container" *ngIf="globalsService.loads else loads">
         <router-outlet></router-outlet>
     </div>
 
@@ -21,9 +21,26 @@
     </div>
 
 <!--POPUP CONDITIONS-->
-    <div *ngIf="globalsService.popupService !== ''">
+    <div *ngIf="globalsService.popupService !== '' && globalsService.loads">
         <app-popup></app-popup>
     </div>
 
 </div>
+
+<ng-template #loads>
+    <div class="loader_space">
+        <div class="loader_placer">
+            <loader-square></loader-square>
+            <div class="text_placer">
+                <h4 class="__custom __pulse">loading...</h4>
+            </div>
+<!--            <div class="text">-->
+<!--                Sound-->
+<!--                CSS-->
+<!--                HTML-->
+<!--            </div>-->
+        </div>
+    </div>
+
+</ng-template>
 

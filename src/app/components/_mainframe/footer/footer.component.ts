@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GlobalsService } from '../../../services/globals.service';
 import {fadeInUpOnEnterAnimation, fadeOutDownOnLeaveAnimation} from "angular-animations";
 
-const DURATION = {duration: 800};
+const DURATION = {duration: 300};
 
 @Component({
   selector: 'app-footer',

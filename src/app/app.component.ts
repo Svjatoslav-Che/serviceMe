@@ -33,9 +33,15 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.audioService.loadSoundData();
     this.audioService.initSoundData();
+
+    //loader conditions
+    setTimeout(()=> {this.globalsService.loads = true;}, 3000);
+    // this.globalsService.loads = true;
+
     this.checkCookies();
-    this.detectDevice();
+    setTimeout(()=>{this.detectDevice()},0);
   }
 
   checkCookies() {

@@ -368,6 +368,9 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   }
 
   animInStart(event: AnimationEvent) {
+    if (!this.globalsService.firstAppear) {
+      this.audioService.audio.headRoll.play();
+    }
   }
 
   animInDone(event: AnimationEvent) {

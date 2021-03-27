@@ -5,6 +5,11 @@ https://svjatoslav-che.github.io/serviceMe/actions
 sudo snap install ffmpeg  # version 4.3.1,
 sudo apt  install ffmpeg  # version 7:4.2.4-1ubuntu0.1
 
+commands:
+ffmpeg -i input.mp3 output.ogg
+ffmpeg -i input.mp4 output.webm
+and else in same style 2 convert
+
 
 # build prod on GH-pages
 

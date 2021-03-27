@@ -1,4 +1,5 @@
 <div class="header_container"
+     *ngIf="globalsService.loads"
      [@fadeInDownOnEnter]
      [@fadeOutUpOnLeave]
      (@fadeInDownOnEnter.start)="animInStart($event)"
