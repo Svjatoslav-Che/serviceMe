@@ -8,7 +8,6 @@
      (@fadeOutUpOnLeave.done)="animOutDone($event)">
 
     <div class="container_inner_space scroll_style_custom">
-
         <div class="header_container">
             <div class="header">
                 <header-open
@@ -18,58 +17,78 @@
                 </header-open>
             </div>
         </div>
-
         <div class="content_container">
             <div class="text_open">
                 <h4 class="__custom">{{"actions.description_1"|translate}}</h4>
                 <p [ngStyle]="{'margin-top': 10 + 'px'}"
                    class="__custom">
                     {{"actions.description_2"|translate}}</p>
-                <h5>{{"actions.description_3"|translate}}</h5>
-
-                <div class="buttons">
-                    <div class="single_button">
-                        <rectangle_button type="button"
-                                          cornersSize = '10'
-                                          cornersPosition = 'out'
-                                          [borders] = true
-                                          state = 'disabled'
-                                          text= '{{"actions.core"|translate}}'
-                                          (click)="displayedEvent = 'core'">
-                        </rectangle_button>
-                    </div>
-
-                    <div class="single_button">
-                        <rectangle_button type="button"
-                                          cornersSize = '10'
-                                          cornersPosition = 'out'
-                                          [borders] = true
-                                          state = '{{(displayedEvent === "tickets") ? "selected" : "regular"}}'
-                                          text= '{{"actions.tickets"|translate}}'
-                                          (click)="displayedEvent !== 'tickets' && scenarioTickets()">
-                        </rectangle_button>
-                    </div>
-
-                    <div class="single_button">
-                        <rectangle_button type="button"
-                                          cornersSize = '10'
-                                          cornersPosition = 'out'
-                                          [borders] = true
-                                          state = '{{(displayedEvent === "actions") ? "selected" : "regular"}}'
-                                          text= '{{"actions.actions"|translate}}'
-                                          (click)="displayedEvent !== 'actions' && scenarioActions()">
-                        </rectangle_button>
-                    </div>
+                <div class="core_container">
+                    <big-graph
+                            [background] = true
+                            [coreActive] = globalsService.userLogged
+                            graphName = 'Core'>
+                    </big-graph>
+                    <h5>{{"actions.description_3"|translate}}</h5>
+                        <div class="buttons">
+                            <div class="single_button_core">
+                                <rectangle_button type="button"
+                                                  cornersSize = '10'
+                                                  cornersPosition = 'out'
+                                                  [borders] = true
+                                                  state = '{{(displayedEvent === "core") ? "selected" : "regular"}}'
+                                                  text= '{{"actions.core"|translate}}'
+                                                  (click)="displayedEvent !== 'core' && scenarioCore()">
+                                </rectangle_button>
+                            </div>
+                            <div class="single_button">
+                                <rectangle_button type="button"
+                                                  cornersSize = '10'
+                                                  cornersPosition = 'out'
+                                                  [borders] = true
+                                                  state = '{{(displayedEvent === "tickets") ? "selected" : "regular"}}'
+                                                  text= '{{"actions.tickets"|translate}}'
+                                                  (click)="displayedEvent !== 'tickets' && scenarioTickets()">
+                                </rectangle_button>
+                            </div>
+                            <div class="single_button">
+                                <rectangle_button type="button"
+                                                  cornersSize = '10'
+                                                  cornersPosition = 'out'
+                                                  [borders] = true
+                                                  state = '{{(displayedEvent === "actions") ? "selected" : "regular"}}'
+                                                  text= '{{"actions.actions"|translate}}'
+                                                  (click)="displayedEvent !== 'actions' && scenarioActions()">
+                                </rectangle_button>
+                            </div>
+                        </div>
                 </div>
+            </div>
+        </div>
 
+            <div class="header_container __in">
+                <div class="header">
+                    <header-open
+                            header = '{{displayedEvent}}'
+                            headerText= '{{"actions." + displayedEvent|translate}}'
+                            description = '{{"actions.description_header_" + displayedEvent|translate}}'>
+                    </header-open>
+                </div>
             </div>
 
+        <div class="content_container">
             <div *ngIf="(displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions'">
                 <ng-container *ngTemplateOutlet="pagination">
                 </ng-container>
             </div>
 
 <div class="table_placer scroll_style_custom">
+
+<!--CORE-->
+    <div *ngIf="displayedEvent === 'core'">
+
+    </div>
+<!--END OF CORE-->
 
 <!--ACTIONS-->
             <div *ngIf="displayedEvent === 'actions'">

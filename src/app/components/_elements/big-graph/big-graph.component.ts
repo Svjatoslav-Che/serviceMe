@@ -13,6 +13,7 @@ export class BigGraphComponent implements OnInit, AfterViewInit {
   @Input() private drawSpeed: any;
   public blinkSymbol: boolean = false;
   @Input() public background: boolean;
+  @Input() public coreActive: boolean;
   public innerService = {
     deviceType: '',
     os: '',
@@ -45,6 +46,10 @@ export class BigGraphComponent implements OnInit, AfterViewInit {
 
     if (this.background === undefined) {
       this.background = true;
+    }
+
+    if (this.coreActive === undefined) {
+      this.coreActive = false;
     }
   }
 

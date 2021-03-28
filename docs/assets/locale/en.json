@@ -315,7 +315,9 @@
 			"redraw": "REDRAW",
 			"reset": "RESET",
 			"Keanu": "Keanu",
-			"Hulk": "Hulk"
+			"Hulk": "Hulk",
+			"Core": "Core",
+			"Laytops_prev": "Laytops"
 		},
 		"elements_icons": {
 			"icons": "ICONS",
@@ -413,7 +415,9 @@
 		"build_on_description": "<span>A core that collects actions.</span><br><br>Something like <span>BehaviorSubject</span> that can collect all actions, be heard in all places of the application and trigger some events if any necessary.<br><br>Excellent principle and suitable technology for such purposes.<br><br>The principle of <span>Achievement</span> for stimulating the user to fill the <span>Core</span> with reactions is a suitable solution.",
 		"build": "CREATION",
 		"build_description": "Progress by stages",
-		"build_in_progress": "In progress ))"
+		"build_in_progress": "In progress ))",
+		"idea_description": "Create some real interactive",
+		"idea_description_2": "Not sub-interactive, but true"
 	},
 	"actions": {
 		"header": "ACTIONS",
@@ -455,7 +459,10 @@
 		"date": "Date:",
 		"nothing": "Nothing to display",
 		"tip_feed": "Feedback Service",
-		"tip_nothing": "and create some ticket`s"
+		"tip_nothing": "and create some ticket`s",
+		"description_header_core": "Core behavior params",
+		"description_header_tickets": "Feedback tickets",
+		"description_header_actions": "Auto behavior actions"
 	},
 	"achives": {
 		"achives": "ACHIVES",

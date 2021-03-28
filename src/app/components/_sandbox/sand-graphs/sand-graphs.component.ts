@@ -43,6 +43,8 @@ export class SandGraphsComponent implements OnInit {
     this.menuListDraws = [
       { name: 'sandbox.elements_graphs.Keanu', value: 'Keanu'},
       { name: 'sandbox.elements_graphs.Hulk', value: 'Hulk'},
+      { name: 'sandbox.elements_graphs.Core', value: 'Core'},
+      { name: 'sandbox.elements_graphs.Laytops_prev', value: 'Laytopsprev'},
     ]
   }
 

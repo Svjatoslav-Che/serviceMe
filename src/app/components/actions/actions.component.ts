@@ -23,7 +23,7 @@ const DURATION = { duration: 300 };
 
 export class ActionsComponent implements OnInit {
   public mainDiv: boolean;
-  public displayedEvent: string = '';
+  public displayedEvent: string = 'core';
   public currentDate = new Date();
 
   // TICKETS
@@ -117,6 +117,10 @@ export class ActionsComponent implements OnInit {
     this.numberOfPages = 1;
     this.currentPage = 1;
     this.paginationList = null;
+  }
+
+  scenarioCore() {
+    this.displayedEvent = 'core';
   }
 
   scenarioTickets() {

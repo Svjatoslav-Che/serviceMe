@@ -42,7 +42,7 @@
             <div class="preview_box_300">
                 <div *ngIf="displayEl"
                      class="inrdaws_conainer"
-                     [ngClass]="{'__hulk': displayDraw === 'Hulk'}"
+                     [ngClass]="{'__hulk': (displayDraw === 'Hulk' || displayDraw === 'Core')}"
                      [ngStyle]="{'width': size + 'px', 'height': size - (size/100*25) + 'px'}">
 
                     <big-graph

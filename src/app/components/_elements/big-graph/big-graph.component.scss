@@ -144,6 +144,53 @@
   }
 }
 
+.Laytops_prev {
+  svg {
+    stroke: var(--object_color);
+    fill: none;
+    stroke-width: 1.4;
+  }
+}
+
+.core {
+  position: relative;
+  svg {
+    fill: none;
+    stroke: var(--highlight_color);
+    filter: drop-shadow(0 0 8px var(--object_shadow));
+    stroke-width: 1;
+
+    .glasses_metal {
+      stroke: none;
+      fill: var(--viever_color_backround);
+    }
+
+    .glasses_toned {
+      stroke: none;
+      fill: var(--object_color_border);
+    }
+
+    .active_device {
+      fill: var(--highlight_color_shadow);
+      animation: blink_hard 5000ms infinite;
+    }
+  }
+
+  .core_text {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+      &.__point {
+        left: calc(50% - 2px);
+        top: calc(50% - 8px);
+      }
+      &.__off {
+        left: calc(50% - 7px);
+        top: calc(50% - 10px);
+      }
+  }
+}
+
 @keyframes blink {
   0% {fill-opacity: 0.8}
 
@@ -155,6 +202,24 @@
   66% {fill-opacity: 1}
   67% {fill-opacity: 0.8}
 
-  100% {fill-opacity: 0.8}
 
+  100% {fill-opacity: 0.8}
+}
+
+@keyframes blink_hard {
+  0% {fill-opacity: 0.2}
+
+  49% {fill-opacity: 0.45}
+  50% {fill-opacity: 1}
+  51% {fill-opacity: 0.2}
+
+  65% {fill-opacity: 0.4}
+  66% {fill-opacity: 0.9}
+  67% {fill-opacity: 0.2}
+  68% {fill-opacity: 1}
+  69% {fill-opacity: 0.2}
+
+  98% {fill-opacity: 0.4}
+  99% {fill-opacity: 0.9}
+  100% {fill-opacity: 0.2}
 }

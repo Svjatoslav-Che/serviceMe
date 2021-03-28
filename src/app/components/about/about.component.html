@@ -118,20 +118,20 @@
 
         <div class="content_container"
              [ngStyle]="{'margin-bottom' : '40px'}">
-<!--            <div class="text_open">-->
-<!--                <h4 class="__custom">{{"about.description_2"|translate}}</h4>-->
-<!--                <p [ngStyle]="{'margin-top': 10 + 'px'}"-->
-<!--                   class="__custom">-->
-<!--                    {{"about.inspired"|translate}}-->
-<!--                        <a target="_blank" href="https://github.com/romelperez"-->
-<!--                                                      (mouseenter)="hoverSound()"-->
-<!--                                                      (click)="clickSound()">{{"about.author"|translate}}</a> {{"about.arwes"|translate}}</p>-->
-<!--                <div class="laytop_container">-->
-<!--                    <big-graph-->
-<!--                            graphName = 'Laytops'>-->
-<!--                    </big-graph>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="text_open">
+                <h4 class="__custom">{{"about.idea_description"|translate}}</h4>
+                <p [ngStyle]="{'margin-top': 10 + 'px'}"
+                   class="__custom">
+                    {{"about.idea_description_2"|translate}}
+                </p>
+                <div class="laytop_container">
+                    <big-graph
+                            [background] = true
+                            [coreActive] = globalsService.userLogged
+                            graphName = 'Core'>
+                    </big-graph>
+                </div>
+            </div>
 
             <div class="simply_strap">
 
