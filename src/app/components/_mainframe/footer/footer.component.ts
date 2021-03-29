@@ -24,6 +24,14 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
+  linkInGo() {
+    window.open("https://www.linkedin.com/in/svjatoslav-cherednikov-7176011a1/", "_blank");
+  }
+
+  projectPageGo() {
+    window.open("https://github.com/Svjatoslav-Che/serviceMe", "_blank");
+  }
+
   popup(value) {
     this.globalsService.popupService = value;
   }
