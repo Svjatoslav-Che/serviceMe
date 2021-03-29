@@ -428,8 +428,8 @@
 		"build": "СОЗДАНИЕ",
 		"build_description": "Прогресс по этапам",
 		"build_in_progress": "В процессе..",
-		"idea_description": "Создать что-то реально отзывчивое",
-		"idea_description_2": "Не суб-отзывчивое, а правдивое"
+		"idea_description_2": "Создать что-то реально отзывчивое",
+		"idea_description_3": "Не суб-отзывчивое, а правдивое"
 	},
 	"actions": {
 		"header": "ДЕЙСТВИЯ",

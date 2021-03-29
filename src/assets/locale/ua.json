@@ -414,8 +414,8 @@
     "build": "СТВОРЕННЯ",
     "build_description": "Прогрес за етапами",
     "build_in_progress": "В процесі ))",
-    "idea_description": "Створити щось дійсно взаємодієве",
-    "idea_description_2": "Не суб-взаємодія, а справжня"
+    "idea_description_2": "Створити щось дійсно взаємодієве",
+    "idea_description_3": "Не суб-взаємодія, а справжня"
   },
   "actions": {
     "header": "ДІЇ",

@@ -416,8 +416,8 @@
 		"build": "CREATION",
 		"build_description": "Progress by stages",
 		"build_in_progress": "In progress ))",
-		"idea_description": "Create some real interactive",
-		"idea_description_2": "Not sub-interactive, but true"
+		"idea_description_2": "Create some real interactive",
+		"idea_description_3": "Not sub-interactive, but true"
 	},
 	"actions": {
 		"header": "ACTIONS",
