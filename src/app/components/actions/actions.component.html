@@ -38,6 +38,7 @@
                                                   [borders] = true
                                                   state = '{{(displayedEvent === "core") ? "selected" : "regular"}}'
                                                   text= '{{"actions.core"|translate}}'
+                                                  [muteClick]=muteCoreClick
                                                   (click)="displayedEvent !== 'core' && scenarioCore()">
                                 </rectangle_button>
                             </div>
@@ -48,6 +49,7 @@
                                                   [borders] = true
                                                   state = '{{(displayedEvent === "tickets") ? "selected" : "regular"}}'
                                                   text= '{{"actions.tickets"|translate}}'
+                                                  [muteClick]=muteTicketsClick
                                                   (click)="displayedEvent !== 'tickets' && scenarioTickets()">
                                 </rectangle_button>
                             </div>
@@ -58,6 +60,7 @@
                                                   [borders] = true
                                                   state = '{{(displayedEvent === "actions") ? "selected" : "regular"}}'
                                                   text= '{{"actions.actions"|translate}}'
+                                                  [muteClick]=muteActionsClick
                                                   (click)="displayedEvent !== 'actions' && scenarioActions()">
                                 </rectangle_button>
                             </div>
@@ -77,7 +80,7 @@
             </div>
 
         <div class="content_container">
-            <div *ngIf="(displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions'">
+            <div *ngIf="((displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions') && paginationList.length !== 0">
                 <ng-container *ngTemplateOutlet="pagination">
                 </ng-container>
             </div>
@@ -86,7 +89,9 @@
 
 <!--CORE-->
     <div *ngIf="displayedEvent === 'core'">
-
+        <p>
+            Pages:
+        </p>
     </div>
 <!--END OF CORE-->
 
@@ -137,7 +142,13 @@
 <!--TICKETS-->
             <div class="tickets"
                  *ngIf="displayedEvent === 'tickets'">
-                <table class="table_space" *ngIf="globalsService.userLogged else loggerloads">
+                <div *ngIf="globalsService.userLogged else loggerloads">
+                </div>
+                <div *ngIf="paginationList.length > 0 else notickets">
+                </div>
+
+
+                <table class="table_space" *ngIf="globalsService.userLogged && paginationList.length > 0">
                     <thead>
                     <tr>
                         <th>
@@ -192,7 +203,7 @@
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody *ngIf="paginationList.length > 0">
                         <tr *ngFor="let ticket of paginationList let i = index">
                             <td>{{ticket.issue_state}}</td>
                             <td class="text_container">
@@ -245,13 +256,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf="paginationList.length > 0 else notickets">
 
-                </div>
             </div>
 <!--END OF TICKETS-->
 </div>
-        <div *ngIf="(displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions'">
+            <div *ngIf="((displayedEvent === 'tickets' && globalsService.userLogged) || displayedEvent === 'actions') && paginationList.length !== 0">
             <ng-container *ngTemplateOutlet="pagination">
             </ng-container>
         </div>

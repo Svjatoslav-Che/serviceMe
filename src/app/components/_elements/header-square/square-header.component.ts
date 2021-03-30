@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, HostBinding} from '@angular/core';
-import { AudioService } from "../../../services/audio.service";
+import { AudioService } from '../../../services/audio.service';
+import { GlobalsService } from '../../../services/globals.service';
 
 @Component({
   selector: 'square-header',
@@ -20,7 +21,8 @@ export class SquareHeaderComponent implements OnInit {
   @Input() muteClick: boolean;
 
   constructor(
-      private audioService: AudioService
+      private audioService: AudioService,
+      public globalsService: GlobalsService
   ) { }
 
   ngOnInit(): void {

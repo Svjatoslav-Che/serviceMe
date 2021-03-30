@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import LocalKey from "./local-storage-key.constant";
+import * as dataAchieves from '../../assets/jsons/achieves.json'
 
 @Injectable()
 export class LocalsService {
@@ -60,6 +61,22 @@ export class LocalsService {
         let ticketList = JSON.parse(this.get(LocalKey.TICKET_STORAGE));
         ticketList.splice(value, 1);
         this.set(LocalKey.TICKET_STORAGE, JSON.stringify(ticketList));
+    }
+
+    public getAllAchievesList() {
+        return JSON.parse(this.get(LocalKey.ACHIVES_STORAGE));
+    }
+
+    public checkValidateAchieves() {
+        if (this.getAllAchievesList().default.achieves_version === dataAchieves.achieves_version) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public createAchievesList() {
+        this.set(LocalKey.ACHIVES_STORAGE, JSON.stringify(dataAchieves));
     }
 
 }

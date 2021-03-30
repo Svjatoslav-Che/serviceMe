@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from 'angular-animations';
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
-import { GlobalsService } from "../../services/globals.service";
+import { GlobalsService } from '../../services/globals.service';
+import { ActionService } from "../../services/action.service";
 
 const DURATION = { duration: 300 };
 
@@ -17,13 +18,14 @@ const DURATION = { duration: 300 };
   ]
 })
 
-export class AchievementComponent implements OnInit {
+export class AchievementComponent implements OnInit, OnDestroy {
   public mainDiv: boolean = false;
 
   constructor(
       public audioService: AudioService,
       private _data: CommonService,
       public globalsService: GlobalsService,
+      private actionService: ActionService
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,24 @@ export class AchievementComponent implements OnInit {
     if (this.globalsService.firstAppear) {
       this.audioService.audio.routeIn.play();
     }
+    this.actionService.actionGenerator(
+        'system',
+        'achieves page',
+        'achieves page open',
+        'achieves page open',
+        'open'
+    );
+    // console.log(this.globalsService.achievesList.default);
+  }
+
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'achieves page',
+        'achieves page close',
+        'achieves page close',
+        'close'
+    );
   }
 
   // *************************** TEMPLATE CONDITIONS ***************************

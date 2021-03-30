@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { CookieService } from './cookie.service';
 import { environment } from '../../environments/environment'
 import CookiesKey from './cookies-key.constant';
+import { ActionService } from "./action.service";
 
 @Injectable()
 export class TokenService {
-  constructor(private cookieService: CookieService) {
-  }
+  constructor(
+      private cookieService: CookieService,
+      private actionService: ActionService
+  ) {}
 
   public getToken(): string {
     return this.cookieService.get(CookiesKey.ACCESS_TOKEN);
@@ -14,6 +17,13 @@ export class TokenService {
 
   public setLocalToken() {
     this.cookieService.put(CookiesKey.ACCESS_TOKEN, 'local');
+    this.actionService.actionGenerator(
+        'system',
+        'token service',
+        'set token',
+        'set token',
+        'local'
+    );
   }
 
   // public getSupportToken(): string {
@@ -26,6 +36,13 @@ export class TokenService {
 
   public destroyToken(): void {
     this.cookieService.remove(CookiesKey.ACCESS_TOKEN);
+    this.actionService.actionGenerator(
+        'system',
+        'token service',
+        'destroy token',
+        'destroy token',
+        'none'
+    );
     // this.cookieService.remove(CookiesKey.SUPPORT_TOKEN);
   }
 

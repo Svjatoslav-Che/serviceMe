@@ -18,27 +18,26 @@ export class RectangleButtonComponent implements OnInit {
   @Input() text: string;
   @Input() icon: string;
   //SOUNDS
-  @Input() muteClick: boolean;
+  @Input() muteClick: boolean = false;
 
   constructor(
       private audioService: AudioService
   ) { }
 
   ngOnInit(): void {
-    // console.log()
     if (this.muteClick === undefined) {
       this.muteClick = false;
     }
   }
 
   hoverSound() {
-    if (this.state !== 'disabled') {
+    if (!this.muteClick) {
       this.audioService.audio.selectSND.play();
     }
   }
 
   clickSound() {
-    if (this.state !== 'disabled' && !this.muteClick) {
+    if (!this.muteClick) {
       this.audioService.audio.clickSND.play();
     }
   }

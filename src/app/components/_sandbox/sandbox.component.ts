@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { fadeInLeftOnEnterAnimation, fadeOutLeftOnLeaveAnimation } from 'angular-animations';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
-import { GlobalsService } from "../../services/globals.service";
+import { GlobalsService } from '../../services/globals.service';
+import { ActionService } from '../../services/action.service';
 
 const DURATION = { duration: 300 };
 
@@ -17,7 +18,7 @@ const DURATION = { duration: 300 };
     fadeOutLeftOnLeaveAnimation(DURATION)
   ]
 })
-export class SandboxComponent implements OnInit {
+export class SandboxComponent implements OnInit, OnDestroy {
   public valueSelect: string;
   public mainDiv: boolean;
   public secondRoute: string;
@@ -28,6 +29,7 @@ export class SandboxComponent implements OnInit {
       private _data: CommonService,
       private router: Router,
       private globalsService: GlobalsService,
+      private actionService: ActionService
   ) {
     this.routeList = [
       { class: 'main', name: 'sandbox.about', route: '/sandbox' },
@@ -59,7 +61,6 @@ export class SandboxComponent implements OnInit {
       { class: 'services', name: 'sandbox.achievements', route: '/sandbox/achives' },
       { class: 'services', name: 'sandbox.pushup', route: '/sandbox/pushup' },
 
-
       { class: 'descriptor', name: 'sandbox.futures_description_2'},
       { class: 'services', name: 'sandbox.core', route: '/sandbox/core' },
       { class: 'services', name: 'sandbox.assistant', route: '/sandbox/assistant' },
@@ -71,6 +72,23 @@ export class SandboxComponent implements OnInit {
     this._data.currentData.subscribe(currentData => this.toggleDiv(currentData));
     this.firstRouteCheck();
     this.mainDiv = true;
+    this.actionService.actionGenerator(
+        'system',
+        'sandbox page',
+        'sandbox page open',
+        'sandbox page open',
+        'open'
+    );
+  }
+
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'sandbox page',
+        'sandbox page close',
+        'sandbox page close',
+        'close'
+    );
   }
 
   animInStart(event: AnimationEvent) {
@@ -122,16 +140,22 @@ export class SandboxComponent implements OnInit {
   }
 
   routerScenario(value): any {
+    this.actionService.actionGenerator(
+        'user',
+        'sandbox page',
+        'button click',
+        this.router.routerState.snapshot.url === value ? 'empty click' : 'router click',
+        value
+    );
     if (this.router.routerState.snapshot.url !== value) {
       this.secondRoute = value;
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'sandbox',
-        action: 'second route activated',
-        description: 'remote second route activated',
-        params: value,
-        date: Date()
-      });
+      this.actionService.actionGenerator(
+          'user',
+          'sandbox page',
+          'second route activated',
+          'remote second route activated',
+          value
+      );
       setTimeout(() => {this.router.navigate([value])}, 300);
     }
   }

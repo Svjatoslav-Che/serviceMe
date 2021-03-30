@@ -1,19 +1,16 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-import { GlobalsService } from "../../../services/globals.service";
-import { Observable, Subscription, fromEvent } from "rxjs";
-import { LocalsService } from "../../../services/local-storage.service";
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import { GlobalsService } from '../../../services/globals.service';
+import { Observable, Subscription, fromEvent } from 'rxjs';
+import { LocalsService } from '../../../services/local-storage.service';
 import { AudioService } from '../../../services/audio.service';
-import { CookieService } from '../../../services/cookie.service';
-import { TokenService } from '../../../services/token.service';
-import { ActionsComponent} from "../../actions/actions.component";
+import { ActionService } from '../../../services/action.service';
 
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss']
 })
-// @Injectable()
-export class DeleteComponent implements OnInit {
+export class DeleteComponent implements OnInit, OnDestroy {
   @ViewChild('sizeViewer') sizeViewer: ElementRef;
   resizeObservable$: Observable<Event>
   resizeSubscription$: Subscription
@@ -30,8 +27,7 @@ export class DeleteComponent implements OnInit {
       public globalsService: GlobalsService,
       private localsService: LocalsService,
       public audioService: AudioService,
-      private cookieService: CookieService,
-      private tokenService: TokenService,
+      private actionService: ActionService
   ) {}
 
   ngOnInit(): void {
@@ -43,14 +39,45 @@ export class DeleteComponent implements OnInit {
       this.getSize();
     })
     this.audioService.audio.type.play();
+    this.actionService.actionGenerator(
+        'system',
+        'delete form',
+        'delete form open',
+        'delete form open',
+        'open'
+    );
+  }
+
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'delete form',
+        'delete form close',
+        'delete form close',
+        'close'
+    );
   }
 
   getSize() {
     let width = this.sizeViewer.nativeElement.offsetWidth;
     if (width < 331) {
       this.elementOrient = 'centre';
+      this.actionService.actionGenerator(
+          'system',
+          'delete form',
+          'element position change',
+          'element position change with autosize detection',
+          this.elementOrient
+      );
     } else {
       this.elementOrient = 'left';
+      this.actionService.actionGenerator(
+          'system',
+          'delete form',
+          'element position change',
+          'element position change with autosize detection',
+          this.elementOrient
+      );
     }
   }
 
@@ -58,10 +85,24 @@ export class DeleteComponent implements OnInit {
     this.globalsService.currentTicketNum = undefined;
     this.globalsService.currentTicket = undefined;
     this.globalsService.popupService = '';
+    this.actionService.actionGenerator(
+        'user',
+        'delete form',
+        'button click',
+        'auto Pop Up close after close action',
+        'close'
+    );
   }
 
-  destroyCookies() {
+  destroyTicket() {
     this.localsService.removeOneStorageTicket(this.globalsService.currentTicketNum);
+    this.actionService.actionGenerator(
+        'user',
+        'delete form',
+        'button click',
+        'ticket delete action',
+        'delete'
+    );
     this.globalsService.currentTicketNum = undefined;
     this.globalsService.currentTicket = undefined;
     this.globalsService.popupService = '';

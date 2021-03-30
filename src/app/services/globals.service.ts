@@ -27,7 +27,9 @@ export class GlobalsService {
     // LOGGER BEHAVIOR
     loggerData = [];
 
-    //JP PAGE LEAVE
+    //ACHIEVES LIST
+    achievesList: any = undefined;
+    newAchieve: boolean = false;
 
     // SETTINGS VARIABLES
     colorSettings: string = this.checkColorScheme();

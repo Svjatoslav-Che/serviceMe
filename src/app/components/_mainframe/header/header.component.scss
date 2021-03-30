@@ -98,6 +98,7 @@
 }
 
 .large_element_sq {
+  position: relative;
   width: 70px;
   height: 70px;
   &.__first { margin: 13px 8px 0 3px; }
@@ -128,6 +129,42 @@
     &.__first { margin: 7px 6px 0 3px; }
     &.__follower { margin: 7px 6px 0 6px; }
     &.__last { margin: 7px 3px 0 6px; }
+  }
+}
+
+.blinker {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  right: -4px;
+  top: 10px;
+  z-index: +1;
+
+  svg {
+    position: absolute;
+    circle {
+      fill: var(--object_color_disabled);
+    }
+  }
+
+  .casual {
+    circle {
+      stroke: var(--object_color);
+    }
+  }
+
+  .__selected {
+    circle {
+      stroke: var(--highlight_color);
+    }
+  }
+
+  .__blink {
+    circle {
+      fill: var(--highlight_color);
+      filter: drop-shadow(0 0 2px var(--highlight_color));
+      animation: blink_small 1000ms infinite;
+    }
   }
 }
 
@@ -372,4 +409,25 @@
     opacity: 0%;
     font-size: 0px;
   }
+}
+
+@keyframes blink_small {
+  0% {fill-opacity: 0}
+
+  65% {fill-opacity: 0}
+  66% {fill-opacity: 1}
+  69% {fill-opacity: 1}
+  70% {fill-opacity: 0}
+
+  75% {fill-opacity: 0}
+  76% {fill-opacity: 1}
+  79% {fill-opacity: 1}
+  80% {fill-opacity: 0}
+
+  85% {fill-opacity: 0}
+  86% {fill-opacity: 1}
+  89% {fill-opacity: 1}
+  90% {fill-opacity: 0}
+
+  100% {fill-opacity: 0}
 }

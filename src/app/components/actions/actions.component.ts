@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from 'angular-animations';
 import { TranslateService } from '@ngx-translate/core';
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
-import { GlobalsService } from "../../services/globals.service";
-import { LocalsService } from "../../services/local-storage.service";
-import { environment } from "../../../environments/environment";
-// import { DeleteComponent } from '../_popup/delete/delete.component';
+import { GlobalsService } from '../../services/globals.service';
+import { LocalsService } from '../../services/local-storage.service';
+import { environment } from '../../../environments/environment';
+import { ActionService } from '../../services/action.service';
 
 const DURATION = { duration: 300 };
 
@@ -21,39 +21,35 @@ const DURATION = { duration: 300 };
   ]
 })
 
-export class ActionsComponent implements OnInit {
+export class ActionsComponent implements OnInit, OnDestroy {
   public mainDiv: boolean;
   public displayedEvent: string = 'core';
   public currentDate = new Date();
-
   // TICKETS
   private ticketsList: any;
   public displayTicketsList: any;
-
   public menuListTicketsType: any;
   public displayTicketType: string = 'all';
-
   public menuListDescriptionType: any;
   public displayDescriptionType: string = 'all';
-
   public menuListScreenshotsType: any;
   public displayScreenshotsType: string = 'all';
-
   public menuListDateType: any;
   public displayDateType: string = 'ascending';
-
   //ACTIONS
   public displayActionList: any;
-
   public menuListActionType: any;
   public displayActionType: string = 'all';
-
   //PAGINATION
   public prevPage: boolean = false;
   public nextPage: boolean = false;
   public numberOfPages: number = 0;
   public currentPage: number = 1;
   public paginationList: [];
+  //MUTE VALUES
+  public muteCoreClick: boolean = true;
+  public muteTicketsClick: boolean = false;
+  public muteActionsClick: boolean = false;
 
   constructor(
       public translateService: TranslateService,
@@ -61,7 +57,7 @@ export class ActionsComponent implements OnInit {
       public audioService: AudioService,
       public localsService: LocalsService,
       private _data: CommonService,
-      // private deleteComponent: DeleteComponent
+      private actionService: ActionService
   ) {
     this.menuListTicketsType = [
       { name: 'actions.all', value: 'all'},
@@ -93,12 +89,39 @@ export class ActionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._data.currentData.subscribe(currentData => this.toggleDiv(currentData));
+    this._data.currentData.subscribe(currentData => this.dataRecognizer(currentData));
     this.mainDiv = true;
     if (this.globalsService.firstAppear) {
       this.audioService.audio.routeIn.play();
     }
     this.initLang();
+    this.actionService.actionGenerator(
+        'system',
+        'actions page',
+        'actions page open',
+        'actions page open',
+        'open'
+    );
+  }
+
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'actions page',
+        'actions page close',
+        'actions page close',
+        'close'
+    );
+  }
+
+  generateMessage(value: string) {
+    this.actionService.actionGenerator(
+        'user',
+        'actions page',
+        'change view to: ' + value,
+        'change view to: ' + value,
+        value
+    );
   }
 
   checkSwitch() {
@@ -116,11 +139,34 @@ export class ActionsComponent implements OnInit {
     this.nextPage = false;
     this.numberOfPages = 1;
     this.currentPage = 1;
-    this.paginationList = null;
+    this.paginationList = [];
+  }
+
+  muteConditions(value: string) {
+  this.muteCoreClick = false;
+  this.muteTicketsClick = false;
+  this.muteActionsClick = false;
+
+  switch (value) {
+    case 'core': {
+      this.muteCoreClick = true;
+      break;
+    }
+    case 'tickets': {
+      this.muteTicketsClick = true;
+      break;
+    }
+    case 'actions': {
+      this.muteActionsClick = true;
+      break;
+    }
+  }
   }
 
   scenarioCore() {
     this.displayedEvent = 'core';
+    this.generateMessage('core');
+    this.muteConditions('core');
   }
 
   scenarioTickets() {
@@ -129,7 +175,7 @@ export class ActionsComponent implements OnInit {
     //go ticket scenario
     this.displayedEvent = 'tickets';
     // check tickets exist
-    if (this.localsService.getAllStorageTickets() !== null) {
+    if (this.localsService.getAllStorageTickets() !== null || this.localsService.getAllStorageTickets() !== []) {
       this.ticketsList = this.localsService.getAllStorageTickets();
     } else {
       this.ticketsList = [];
@@ -137,6 +183,8 @@ export class ActionsComponent implements OnInit {
     this.displayTicketsList = this.ticketsList;
     //start pagination
     this.paginationModule(this.ticketsList);
+    this.generateMessage('tickets');
+    this.muteConditions('tickets');
   }
 
   async scenarioActions() {
@@ -146,6 +194,8 @@ export class ActionsComponent implements OnInit {
     this.displayedEvent = 'actions';
     this.displayActionList = await this.returner(this.globalsService.loggerData);
     this.paginationModule(this.displayActionList);
+    this.generateMessage('actions');
+    this.muteConditions('actions');
   }
 
   async returner(value) {
@@ -250,20 +300,21 @@ export class ActionsComponent implements OnInit {
   }
 
   paginationModule(value: []) {
-    if (value.length > 0) {
-      this.numberOfPages = Math.ceil(value.length / 5)
-    }
-
-    this.paginationList = [];
-    for (let i=0; i<5; i++) {
-      let numOfElem = ((this.currentPage - 1) * 5) + i;
-      if (value[numOfElem] !== undefined) {
-        this.paginationList.push(value[numOfElem]);
+    let numOfElements = 10;
+    if (value) {
+      if (value.length > 0) {
+        this.numberOfPages = Math.ceil(value.length / numOfElements)
       }
+      this.paginationList = [];
+      for (let i=0; i<numOfElements; i++) {
+        let numOfElem = ((this.currentPage - 1) * numOfElements) + i;
+        if (value[numOfElem] !== undefined) {
+          this.paginationList.push(value[numOfElem]);
+        }
+      }
+      this.nextPage = this.numberOfPages > this.currentPage ? true : false;
+      this.prevPage = this.currentPage > 1 ? true : false;
     }
-
-    this.nextPage = this.numberOfPages > this.currentPage ? true : false;
-    this.prevPage = this.currentPage > 1 ? true : false;
   }
 
   async sorterActions() {
@@ -325,13 +376,27 @@ export class ActionsComponent implements OnInit {
   animOutDone(event: AnimationEvent) {
   }
 
-  toggleDiv(currentData) {
+  dataRecognizer(currentData) {
     if (currentData.action === 'first route activate') {
       if (this.mainDiv) {
         this.audioService.audio.routeOut.play();
       }
       this.mainDiv = false;
     }
+
+    if (this.displayedEvent === 'actions') {
+      this.sorterActions();
+    }
+
+    if (this.displayedEvent === 'tickets') {
+      if (currentData.location === 'feedback form' && currentData.params === 'send') {
+        setTimeout(()=> this.scenarioTickets(),500);
+      }
+      if (currentData.location === 'delete form' && currentData.params === 'delete') {
+        setTimeout(()=> this.scenarioTickets(),500);
+      }
+    }
   }
   // ************************* TEMPLATE CONDITIONS END *************************
+  undefinded: Boolean | boolean;
 }

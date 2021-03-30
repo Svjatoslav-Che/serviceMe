@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from 'angular-animations';
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
 import { GlobalsService } from "../../services/globals.service";
+import { ActionService } from "../../services/action.service";
 
 const DURATION = { duration: 300 };
 
@@ -17,13 +18,14 @@ const DURATION = { duration: 300 };
   ]
 })
 
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, OnDestroy {
   public mainDiv: boolean;
 
   constructor(
       public audioService: AudioService,
       private _data: CommonService,
       public globalsService: GlobalsService,
+      private actionService: ActionService
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,23 @@ export class AboutComponent implements OnInit {
     if (this.globalsService.firstAppear) {
       this.audioService.audio.routeIn.play();
     }
+    this.actionService.actionGenerator(
+        'system',
+        'about page',
+        'about page open',
+        'about page open',
+        'open'
+    );
+  }
+
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'about page',
+        'about page close',
+        'about page close',
+        'close'
+    );
   }
 
   hoverSound() {

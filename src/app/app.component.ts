@@ -4,10 +4,11 @@ import { TokenService } from './services/token.service';
 import { CookieService } from './services/cookie.service';
 import { GlobalsService } from './services/globals.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { CommonService } from "./services/common.service";
-import { BigGraphComponent } from "./components/_elements/big-graph/big-graph.component";
+import { CommonService } from './services/common.service';
+import { BigGraphComponent } from './components/_elements/big-graph/big-graph.component';
 import { UAParser } from 'ua-parser-js';
-import { LocalsService } from "./services/local-storage.service";
+import { LocalsService } from './services/local-storage.service';
+import { ActionService } from './services/action.service';
 
 @Component({
   selector: 'app-root',
@@ -30,18 +31,17 @@ export class AppComponent implements OnInit {
       private bigGraph: BigGraphComponent,
       private _data: CommonService,
       private tokenService: TokenService,
+      private actionService: ActionService
   ) {}
 
   ngOnInit(): void {
     this.audioService.loadSoundData();
     this.audioService.initSoundData();
-
     //loader conditions
-    setTimeout(()=> {this.globalsService.loads = true;}, 3000);
-    // this.globalsService.loads = true;
-
+    // setTimeout(()=> {this.globalsService.loads = true;}, 3000);
+    this.globalsService.loads = true;
     this.checkCookies();
-    setTimeout(()=>{this.detectDevice()},0);
+    this.detectDevice();
   }
 
   checkCookies() {
@@ -50,40 +50,62 @@ export class AppComponent implements OnInit {
     } else {
       this.globalsService.userLogged = false;
     }
+    this.actionService.actionGenerator(
+        'system',
+        'app',
+        'check cookie',
+        'check cookie',
+        this.tokenService.getToken() === 'local' ? 'local' : 'undefined');
+
+    this.actionService.actionGenerator(
+        'system',
+        'app',
+        'check login',
+        'check and set login value',
+        this.globalsService.userLogged);
+
     if (this.cookieService.getPolicy()) {
       this.globalsService.cookiesPolicy = true;
     } else {
       this.globalsService.cookiesPolicy = false;
       setTimeout(()=> {this.globalsService.popupService = 'cookies-policy';}, 0)
     }
+
+    this.actionService.actionGenerator(
+        'system',
+        'app',
+        'check policy',
+        'check and set cookies policy value',
+        this.globalsService.cookiesPolicy);
   }
 
   detectDevice() {
     let parser = new UAParser().getResult();
-
-    if (this.globalsService.deviceInfo === undefined) {
-      this._data.updateMessage({
-        subject: 'system',
-        location: 'app',
-        action: 'device type change',
-        description: 'first device type detection',
-        params: parser.device.type,
-        date: Date()
-      });
-      this.globalsService.deviceInfo = parser;
+    if (parser === undefined) {
+      setTimeout(()=> this.detectDevice(), 50)
     } else {
-      if (parser.device.type !== this.globalsService.deviceInfo.device.type) {
-        this._data.updateMessage({
-          subject: 'system',
-          location: 'app',
-          action: 'device type change',
-          description: 'device type change',
-          params: parser.device.type,
-          date: Date()
-        });
+      if (this.globalsService.deviceInfo === undefined) {
+        this.actionService.actionGenerator(
+            'system',
+            'app',
+            'device type check',
+            'device type check scenario',
+            'undefined');
+
         this.globalsService.deviceInfo = parser;
+      } else {
+        if (parser.device.type !== this.globalsService.deviceInfo.device.type) {
+          this.actionService.actionGenerator(
+              'system',
+              'app',
+              'device type check',
+              'device type check scenario',
+              parser.device.type);
+
+          this.globalsService.deviceInfo = parser;
+        }
       }
+      this.bigGraph.updateDeviceDescription();
     }
-    this.bigGraph.updateDeviceDescription();
   }
 }

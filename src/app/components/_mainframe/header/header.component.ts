@@ -4,12 +4,14 @@ import { environment } from '../../../../environments/environment';
 import { GlobalsService } from '../../../services/globals.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CommonService } from '../../../services/common.service';
-import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from "angular-animations";
+import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from 'angular-animations';
 import { SquareHeaderComponent } from '../../_elements/header-square/square-header.component';
 import { AudioService } from '../../../services/audio.service';
 import { LocalsService } from '../../../services/local-storage.service';
-import { AnimationEvent } from "@angular/animations";
+import { AnimationEvent } from '@angular/animations';
 import { TokenService } from '../../../services/token.service';
+import { ActionService } from '../../../services/action.service';
+import * as dataAchieves from "../../../../assets/jsons/achieves.json";
 
 const DURATION = {duration: 300};
 
@@ -44,7 +46,6 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   // ROUTES LIST
   public routeList: any;
 
-
   constructor(private translateService: TranslateService,
               public globalsService: GlobalsService,
               private router: Router,
@@ -52,7 +53,8 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
               private _data: CommonService,
               public audioService: AudioService,
               private localsService: LocalsService,
-              private tokenService: TokenService
+              private tokenService: TokenService,
+              private actionService: ActionService
               ) {
     this.routeList = [
       { class: 'main', name: 'header.main', route: '/' },
@@ -77,6 +79,9 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
     this.initLang();
     this.displayVolumeValue = this.globalsService.soundVol;
     this._data.currentData.subscribe(currentData => this.dataRecognizer(currentData));
+    if (this.globalsService.userLogged) {
+      this.initAchives();
+    }
   }
 
   ngAfterContentInit() {
@@ -90,17 +95,62 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         this.audioService.audio.logOut.play();
       } else {
         this.globalsService.userLogged = true;
+        this.initAchives();
         this.tokenService.setLocalToken();
         this.audioService.audio.logIn.play();
       }
     } else {
       this.globalsService.popupService = 'cookies-policy'
     }
-
+    this.actionService.actionGenerator(
+        'user',
+        'header',
+        'change login scenario',
+        'change login scenario',
+        this.globalsService.userLogged ? 'logged' : 'unloged'
+    );
     this.selectServiceToggle('login_close');
   }
 
+  initAchives() {
+    if (this.localsService.getAllAchievesList() !== null) {
+      if (this.localsService.checkValidateAchieves()) {
+        this.globalsService.achievesList = this.localsService.getAllAchievesList();
+        this.actionService.actionGenerator(
+            'system',
+            'header',
+            'get achieves',
+            'get achieves',
+            'get'
+        );
+      } else {
+        this.createAchieves();
+      }
+    } else {
+      this.createAchieves();
+    }
+  }
+
+  createAchieves() {
+    this.localsService.createAchievesList();
+    this.globalsService.achievesList = this.localsService.getAllAchievesList();
+    this.actionService.actionGenerator(
+        'system',
+        'header',
+        'create achieves',
+        'create achieves list',
+        'create'
+    );
+  }
+
   checkDisplayValues() {
+    this.actionService.actionGenerator(
+        'system',
+        'header',
+        'check display settings',
+        'auto check display settings and setup it',
+        'none'
+    );
     // COLOR CHANGE CONDITIONS
     if (this.globalsService.colorSettings === 'color_scheme_green') {
       this.displayColorValue = 'matrix'
@@ -124,52 +174,56 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   }
 
   backgroundToggle(value) {
+    this.actionService.actionGenerator(
+        'system',
+        'header',
+        'check background settings',
+        'auto check background settings and setup it',
+        'none'
+    );
     if (this.globalsService.backgroundSettings !== value)  {
       this.audioService.audio.applySND.play();
       this.globalsService.backgroundSettings = value;
       this.localsService.set('background', value);
       this.checkDisplayValues();
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'header',
-        action: 'background change',
-        description: 'set new background',
-        params: value,
-        date: Date()
-      });
+
+      this.actionService.actionGenerator(
+          'user',
+          'header',
+          'background change',
+          'set new background',
+          value
+      );
     }
   }
 
   colorShemeToggle(value) {
+    this.actionService.actionGenerator(
+        'user',
+        'header',
+        'button click',
+        'set new colors',
+        value
+    );
     if (this.globalsService.colorSettings !== value) {
       this.audioService.audio.applySND.play();
       this.globalsService.colorSettings = value;
       this.localsService.set('colorScheme', value);
       this.checkDisplayValues();
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'header',
-        action: 'colors change',
-        description: 'set new colors',
-        params: value,
-        date: Date()
-      });
     }
   }
 
   valueSoundChanged(e: any) {
-
+    this.actionService.actionGenerator(
+        'user',
+        'header',
+        'button click',
+        'set new volume',
+        Math.floor(e.target.value)
+    );
     this.globalsService.soundVol = Math.floor(e.target.value);
     this.audioService.initSoundData();
     this.localsService.set('soundVol', Math.floor(e.target.value));
-    this._data.updateMessage({
-      subject: 'user',
-      location: 'header',
-      action: 'volume change',
-      description: 'set new volume',
-      params: Math.floor(e.target.value),
-      date: Date()
-    });
     this.audioService.audio.applySND.play();
   }
 
@@ -179,7 +233,6 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
 
   selectServiceToggle(value) {
     let duration: number = 80;
-
     // LANGUAGE BUTTON CONDITIONS
       if (value === 'lang') {
         this.languageOpen ? this.audioService.audio.smallOut.play() : this.audioService.audio.smallIn.play();
@@ -191,14 +244,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
           this.languageOpen = !this.languageOpen;
           this.selectService = true;
         }, duration);
-        this._data.updateMessage({
-          subject: 'user',
-          location: 'header',
-          action: this.languageOpen ? 'language close' : 'language open',
-          description: this.languageOpen ? 'language panel close' : 'language panel open',
-          params: value,
-          date: Date()
-        });
+        this.actionService.actionGenerator(
+            'user',
+            'header',
+            'button click',
+            this.languageOpen ? 'language panel close' : 'language panel open',
+            value
+        );
       }
       if (value === 'lang_close' && this.languageOpen && !this.settingsOpen && !this.loginOpen) {
         this.audioService.audio.smallOut.play();
@@ -207,14 +259,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
           this.languageOpen = false;
           this.selectService = true;
         }, 80);
-        this._data.updateMessage({
-          subject: 'user',
-          location: 'header',
-          action: 'language close',
-          description: 'language panel close',
-          params: value,
-          date: Date()
-        });
+        this.actionService.actionGenerator(
+            'user',
+            'header',
+            'button click',
+            'language panel close',
+            value
+        );
       }
 
     // SETTINGS BUTTON CONDITIONS
@@ -228,14 +279,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
           this.settingsOpen = !this.settingsOpen;
           this.selectService = true;
         }, duration);
-        this._data.updateMessage({
-          subject: 'user',
-          location: 'header',
-          action: this.settingsOpen ? 'settings close' : 'settings open',
-          description: this.settingsOpen ? 'settings panel close' : 'settings panel open',
-          params: value,
-          date: Date()
-        });
+        this.actionService.actionGenerator(
+            'user',
+            'header',
+            'button click',
+            this.settingsOpen ? 'settings panel close' : 'settings panel open',
+            value
+        );
       }
 
       if (value === 'settings_close' && this.settingsOpen && !this.languageOpen && !this.loginOpen) {
@@ -245,14 +295,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
           this.settingsOpen = false;
           this.selectService = true;
         }, 80);
-        this._data.updateMessage({
-          subject: 'user',
-          location: 'header',
-          action: 'settings close',
-          description: 'settings panel close',
-          params: value,
-          date: Date()
-        });
+        this.actionService.actionGenerator(
+            'user',
+            'header',
+            'button click',
+            'settings panel close',
+            value
+        );
       }
 
     // LOGIN BUTTON CONDITIONS
@@ -266,14 +315,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         this.loginOpen = !this.loginOpen;
         this.selectService = true;
       }, duration);
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'header',
-        action: this.loginOpen ? 'login close' : 'login open',
-        description: this.loginOpen ? 'login panel close' : 'login panel open',
-        params: value,
-        date: Date()
-      });
+      this.actionService.actionGenerator(
+          'user',
+          'header',
+          'button click',
+          this.loginOpen ? 'login panel close' : 'login panel open',
+          value
+      );
     }
 
     if (value === 'login_close' && this.loginOpen && !this.languageOpen && !this.settingsOpen) {
@@ -283,14 +331,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         this.loginOpen = false;
         this.selectService = true;
       }, 80);
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'header',
-        action: 'login close',
-        description: 'login panel close',
-        params: value,
-        date: Date()
-      });
+      this.actionService.actionGenerator(
+          'user',
+          'header',
+          'button click',
+          'login panel close',
+          value
+      );
     }
   }
 
@@ -300,14 +347,13 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
     this.translateService.use(this.selectedLanguage);
     this.selectServiceToggle('lang');
     this.localsService.set('language', value);
-    this._data.updateMessage({
-      subject: 'user',
-      location: 'header',
-      action: 'language change',
-      description: 'set new language',
-      params: value,
-      date: Date()
-    });
+    this.actionService.actionGenerator(
+        'user',
+        'header',
+        'button click',
+        'set new language',
+        value
+    );
     this.audioService.audio.applySND.play();
   }
 
@@ -334,24 +380,77 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
     } else {
       this.selectedLanguage = 'en';
     }
+    this.actionService.actionGenerator(
+        'system',
+        'header',
+        'check language',
+        'checking language',
+        this.selectedLanguage
+    );
+  }
+
+  missClick(value) {
+    switch (value) {
+      case 'login_close' : {
+        if (this.loginOpen && !this.languageOpen && !this.settingsOpen) {
+          this.audioService.audio.smallOut.play();
+          this.selectService = false;
+          setTimeout(() => {
+            this.loginOpen = false;
+            this.selectService = true;
+          }, 80);
+          break;
+        }
+      }
+      case 'settings_close' : {
+        if (!this.loginOpen && !this.languageOpen && this.settingsOpen) {
+          this.audioService.audio.smallOut.play();
+          this.selectService = false;
+          setTimeout(() => {
+            this.settingsOpen = false;
+            this.selectService = true;
+          }, 80);
+          break;
+        }
+      }
+      case 'lang_close' : {
+        if (!this.loginOpen && this.languageOpen && !this.settingsOpen) {
+          this.audioService.audio.smallOut.play();
+          this.selectService = false;
+          setTimeout(() => {
+            this.languageOpen = false;
+            this.selectService = true;
+          }, 80);
+          break;
+        }
+      }
+    }
+    this.actionService.actionGenerator(
+        'user',
+        'header',
+        'miss click',
+        'miss click detected',
+        value
+    );
   }
 
   remoteRouterScenario(value) {
     if (this.router.routerState.snapshot.url !== value && value !== this.fistRoute) {
-      this._data.updateMessage({
-        subject: 'user',
-        location: 'header',
-        action: 'first route activate',
-        description: 'remote first route activated',
-        params: value,
-        date: Date()
-      });
+      this.actionService.actionGenerator(
+          'user',
+          'header',
+          'first route activate',
+          'remote first route activated',
+          value
+      );
     }
   }
 
   routerScenario(value) {
       this.fistRoute = value;
-      setTimeout(() => {this.router.navigate([value])}, 300);
+      setTimeout(() => {
+        this.router.navigate([value])
+      }, 300);
   }
 
   routeFirstChildCheck(): any {

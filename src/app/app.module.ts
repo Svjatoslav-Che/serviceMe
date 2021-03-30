@@ -21,6 +21,7 @@ import { ApiService } from './services/api.service';
 import { CommonService } from './services/common.service';
 import { AudioService } from './services/audio.service';
 import { LocalsService } from './services/local-storage.service';
+import { ActionService } from './services/action.service';
 
 import { NgInit } from "./directives/ng-init";
 
@@ -209,7 +210,7 @@ const appRoutes: Routes =[
     CommonService,
     BigGraphComponent,
     LocalsService,
-    // DeleteComponent
+    ActionService
   ],
   bootstrap: [AppComponent]
 })

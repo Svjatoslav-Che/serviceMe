@@ -79,6 +79,14 @@
                                text = 'ACHIVES'
                                description='{{"header.achives"|translate}}'>>
                 </square-header>
+                <div class="blinker">
+                    <svg class="casual" [ngClass]="{'__selected': this.fistRoute === '/achievement'}" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
+                        <circle cx="3.5" cy="3.5" r="3.5"/>
+                    </svg>
+                    <svg *ngIf="globalsService.newAchieve" class="__blink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
+                        <circle cx="3.5" cy="3.5" r="3"/>
+                    </svg>
+                </div>
             </div>
         </div>
 
@@ -86,7 +94,7 @@
         <div class="header_services_box">
 <!--SETTINGS-->
             <div class="small_element_sq __first"
-                 (clickOutside)="this.settingsOpen && selectServiceToggle('settings_close')">
+                 (clickOutside)="this.settingsOpen && missClick('settings_close')">
 
                 <square-button (click)="selectServiceToggle('settings')"
                         cornersSize = '10'
@@ -222,7 +230,7 @@
 
 <!--LANGUAGES-->
             <div class="small_element_sq __follower"
-                (clickOutside)="this.languageOpen && selectServiceToggle('lang_close')">
+                (clickOutside)="this.languageOpen && missClick('lang_close')">
                 <square-button (click)="selectServiceToggle('lang')"
                         cornersSize = '10'
                         cornersPosition = 'out'
@@ -277,7 +285,7 @@
 
 <!--LOGIN-->
             <div class="large_element_sq __last"
-                 (clickOutside)="this.loginOpen && selectServiceToggle('login_close')">
+                 (clickOutside)="this.loginOpen && missClick('login_close')">
                     <square-header (click)="selectServiceToggle('login')"
                                    cornersSize = '10'
                                    cornersPosition = 'out'

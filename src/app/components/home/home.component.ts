@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
-import { GlobalsService } from "../../services/globals.service";
+import { GlobalsService } from '../../services/globals.service';
+import { ActionService } from "../../services/action.service";
 
 const DURATION = { duration: 300 };
 const CURSORSYMBOL: string = '▊';
@@ -18,7 +19,7 @@ const CURSORSYMBOL: string = '▊';
   ]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   // private subTimer: Subscription;
   // private varTimer;
   // public blancSymbol: string;
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
       public audioService: AudioService,
       private _data: CommonService,
       public globalsService: GlobalsService,
+      private actionService: ActionService
   ) {}
 
 
@@ -61,7 +63,23 @@ export class HomeComponent implements OnInit {
     //     }
     //   })
     // }
+    this.actionService.actionGenerator(
+        'system',
+        'home page',
+        'home page open',
+        'home page open',
+        'open'
+    );
+  }
 
+  ngOnDestroy() {
+    this.actionService.actionGenerator(
+        'system',
+        'home page',
+        'home page close',
+        'home page close',
+        'close'
+    );
   }
 
   // demountDelayer() {
@@ -74,7 +92,7 @@ export class HomeComponent implements OnInit {
   //   // }, 400);
   // }
 
-  // *************************** TEMPLATE CONDITIONS ***************************
+// *************************** TEMPLATE CONDITIONS ***************************
   animInStart(event: AnimationEvent) {
   }
 
@@ -93,5 +111,5 @@ export class HomeComponent implements OnInit {
       // this.audioService.audio.routeOut.play();
     }
   }
-  // ************************* TEMPLATE CONDITIONS END *************************
+// ************************* TEMPLATE CONDITIONS END *************************
 }

@@ -29,5 +29,12 @@
             </div>
         </div>
 
+        <div *ngIf="globalsService.achievesList">
+            <div *ngFor="let achieve of this.globalsService.achievesList.default.visit_page">
+                <p>{{achieve.name}}</p>
+                <div class="text">{{achieve.solved}}</div>
+            </div>
+        </div>
+
     </div>
 </div>

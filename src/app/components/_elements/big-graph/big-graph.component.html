@@ -747,11 +747,13 @@
         <div class="text">
             UserAgent parser:<br><br>
             device:&ensp;
-            {{innerService.deviceType}}<br>
+            {{innerService.deviceType ? innerService.deviceType : '...'}}<br>
             os:&ensp;
-            {{innerService.os}}<br>
+            {{innerService.os ? innerService.os : '...'}}
+            <br>
             browser:&ensp;
-            {{innerService.browser}}<br><br>
+            {{innerService.browser ? innerService.browser : '...'}}
+            <br><br>
             <div
                     [ngStyle]="{'display': 'flex'}">
                 C:\>

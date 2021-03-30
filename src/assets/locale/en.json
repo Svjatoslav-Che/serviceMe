@@ -5,7 +5,7 @@
 		"about": "ABOUT",
 		"sandbox": "SANDBOX",
 		"actions": "ACTIONS",
-		"achives": "ACHIVES",
+		"achives": "ACHIEVES",
 		"palette": "Palette:",
 		"background": "Background:",
 		"matrix": "MATRIX SYS",
@@ -129,7 +129,7 @@
 		"404": "404",
 		"futures": "Futures:",
 		"futures_description_1": "Will appear with CORE update:",
-		"achievements": "Achievements",
+		"achievements": "Achieves",
 		"pushup": "Push Up",
 		"futures_description_2": "In concept and base code:",
 		"core": "Core",
@@ -372,7 +372,7 @@
 			"description_5": "- to see how it`s works with <span>Confirm Scenario</span> or <span>One Element Display Case</span>. After all, one <span>Pop Up Service</span> can call another <span>Pop Up Service</span>. Oh, don`t forget to create some <span>Feedback Ticket`s</span> to see it in action."
 		},
 		"elements_achives": {
-			"achives": "ACHIVES",
+			"achives": "ACHIEVES",
 			"encouragement": "encouragement"
 		},
 		"elements_pushup": {
@@ -406,7 +406,7 @@
 		"WebB": "WebB + SVG",
 		"idea": "IDEA",
 		"idea_description": "What it`s all about",
-		"WebB_description": "<span>WebB</span> is a great technology.<br><br>What else will allow you to pack audio and video in a <span>3k1</span> ratio? And sometimes even more. Do you need a small weight <span>Applications</span> and competent <span>320 kBit/s</span> sound? <span>WebB</span> - what other questions can there be.<br><br><span>SVG</span> - a separate conversation.<br><br>Forget about sprites, coordinate maps, just put it into the code and to be sure that it is impossible to process graphics faster. It is also <span>CSS</span> configurable - not as static, but as dynamic.",
+		"WebB_description": "<span>WebB</span> is a great technology.<br><br>What else will allow you to pack audio and video in a <span>3k1</span> ratio? And sometimes even more. Do you need a small weight <span>Applications</span> and competent <span>320kBit/s</span> sound? <span>WebB</span> - what other questions can there be.<br><br><span>SVG</span> - a separate conversation.<br><br>Forget about sprites, coordinate maps, just put it into the code and to be sure that it is impossible to process graphics faster. It is also <span>CSS</span> configurable - not as static, but as dynamic.",
 		"what_all_about": "What's the project idea?",
 		"all_about_description": "<span>Creating an interactive assistant</span>.<br><br>Many services have a pet on their pages, which tells the user what to look for.<br><br>Usually it all comes down to advertising individual services, or a reminder messages or tips - go to the chat in case of difficulties.<br><br>This is where all the interactivity ends. But not in this project.",
 		"assistant": "Interactive assistant?",
@@ -448,7 +448,7 @@
 		"prev": "PREV",
 		"next": "NEXT",
 		"login": "Login please",
-		"tip": "Tip",
+		"tip": "Tip:",
 		"open": "open the",
 		"log_panel": "Login Panel",
 		"switch": "and switch scenario to",
@@ -465,7 +465,7 @@
 		"description_header_actions": "Auto behavior actions"
 	},
 	"achives": {
-		"achives": "ACHIVES",
+		"achives": "ACHIEVES",
 		"achives_header": "Open them all",
 		"description_1": "Uses core information",
 		"description_2": "Built on user actions"
