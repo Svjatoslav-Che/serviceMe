@@ -11,7 +11,6 @@ import { LocalsService } from '../../../services/local-storage.service';
 import { AnimationEvent } from '@angular/animations';
 import { TokenService } from '../../../services/token.service';
 import { ActionService } from '../../../services/action.service';
-import * as dataAchieves from "../../../../assets/jsons/achieves.json";
 
 const DURATION = {duration: 300};
 
@@ -54,7 +53,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
               public audioService: AudioService,
               private localsService: LocalsService,
               private tokenService: TokenService,
-              private actionService: ActionService
+              private actionService: ActionService,
               ) {
     this.routeList = [
       { class: 'main', name: 'header.main', route: '/' },
@@ -93,11 +92,23 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         this.globalsService.userLogged = false;
         this.tokenService.destroyToken();
         this.audioService.audio.logOut.play();
+        if (this.fistRoute === '/actions') {
+          this.audioService.audio.coreDeActivated.volume = this.globalsService.soundAmbient;
+          this.audioService.audio.coreDeActivated.play();
+        }
+        this.audioService.audio.coreWorksHover.volume = 0;
+        this.audioService.audio.coreWorks.volume = 0;
+        this.globalsService.soundAmbient = 0;
       } else {
         this.globalsService.userLogged = true;
         this.initAchives();
         this.tokenService.setLocalToken();
+        this.globalsService.soundAmbient = (this.globalsService.soundVol/4)/100;
         this.audioService.audio.logIn.play();
+        if (this.fistRoute === '/actions') {
+          this.audioService.audio.coreActivated.volume = this.globalsService.soundAmbient;
+          this.audioService.audio.coreActivated.play();
+        }
       }
     } else {
       this.globalsService.popupService = 'cookies-policy'

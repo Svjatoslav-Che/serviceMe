@@ -26,6 +26,10 @@ export class AudioService {
         type: new Audio(),
         complete: new Audio(),
         headRoll: new Audio(),
+        coreActivated: new Audio(),
+        coreWorks: new Audio(),
+        coreDeActivated: new Audio(),
+        coreWorksHover: new Audio(),
     };
 
     loadSoundData() {
@@ -43,6 +47,11 @@ export class AudioService {
         this.audio.type.load();
         this.audio.complete.load();
         this.audio.headRoll.load();
+        this.audio.coreActivated.load();
+        this.audio.coreWorks.load();
+        this.audio.coreDeActivated.load();
+        this.audio.coreWorksHover.load();
+
         // this.checkState();
     }
 
@@ -103,5 +112,14 @@ export class AudioService {
         //COMPLETE
         this.audio.complete.src = ROUTE + "/assets/sounds/complete.webm";
         this.audio.complete.volume = this.globalsService.soundVol/100;
+        //CORE
+        this.audio.coreActivated.src = ROUTE + "/assets/sounds/connect_established.webm";
+        this.audio.coreActivated.volume = this.globalsService.soundVol/100;
+        this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/connect_over.webm";
+        this.audio.coreDeActivated.volume = this.globalsService.soundVol/100;
+        this.audio.coreWorks.src = ROUTE + "/assets/sounds/connect_loop.webm";
+        this.audio.coreWorks.volume = this.globalsService.soundVol/100;
+        this.audio.coreWorksHover.src = ROUTE + "/assets/sounds/connect_loop.webm";
+        this.audio.coreWorksHover.volume = this.globalsService.soundVol/100;
     }
 }
