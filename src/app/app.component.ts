@@ -38,8 +38,8 @@ export class AppComponent implements OnInit {
     this.audioService.loadSoundData();
     this.audioService.initSoundData();
     //loader conditions
-    // setTimeout(()=> {this.globalsService.loads = true;}, 3000);
-    this.globalsService.loads = true;
+    setTimeout(()=> {this.globalsService.loads = true;}, 3000);
+    // this.globalsService.loads = true;
     this.checkCookies();
     this.detectDevice();
   }

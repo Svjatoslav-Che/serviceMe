@@ -1,0 +1,62 @@
+{ "achieves_version": 1,
+  "visit_page": [
+    {
+      "weight": "solid",
+      "type": "progress",
+      "progress_value": 0,
+      "progress_value_complete": 5,
+      "name": "visit all main pages",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "home page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "about page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "sandbox page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "actions page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "achieves page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    },
+    {
+      "weight": "casual",
+      "type": "single",
+      "name": "404 page",
+      "solved": false,
+      "achieve_seen": false,
+      "date": null
+    }
+  ]
+}

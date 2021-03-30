@@ -104,11 +104,11 @@ export class ActionsComponent implements OnInit, OnDestroy {
         'actions page open',
         'open'
     );
-    if (this.globalsService.userLogged) {
-      this.playInit();
-      this.audioService.audio.coreWorksHover.volume = (this.globalsService.soundVol/4)/100;
-      this.audioService.audio.coreWorks.volume = (this.globalsService.soundVol/8)/100;
-    }
+    // if (this.globalsService.userLogged) {
+      // this.playInit();
+      // this.audioService.audio.coreWorksHover.volume = (this.globalsService.soundVol/4)/100;
+      // this.audioService.audio.coreWorks.volume = (this.globalsService.soundVol/8)/100;
+    // }
   }
 
   ngOnDestroy() {
@@ -123,27 +123,27 @@ export class ActionsComponent implements OnInit, OnDestroy {
     this.audioService.audio.coreWorks.volume = 0;
   }
 
-  playInit() {
-    this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 2;
-    setTimeout(()=> this.audioService.audio.coreWorks.volume =this.globalsService.soundAmbient, 500 );
-    this.audioService.audio.coreWorks.play();
-    setTimeout(()=> this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 2, 9500 );
-    setTimeout(()=> this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 4, 9700 );
-    if (this.globalsService.userLogged) {
-      setTimeout(()=> this.playMainTrack(), 9500 );
-    };
-  }
+  // playInit() {
+  //   this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 2;
+  //   setTimeout(()=> this.audioService.audio.coreWorks.volume =this.globalsService.soundAmbient, 500 );
+  //   this.audioService.audio.coreWorks.play();
+  //   setTimeout(()=> this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 2, 9500 );
+  //   setTimeout(()=> this.audioService.audio.coreWorks.volume = this.globalsService.soundAmbient / 4, 9700 );
+  //   if (this.globalsService.userLogged) {
+  //     setTimeout(()=> this.playMainTrack(), 9500 );
+  //   };
+  // }
 
-  playMainTrack() {
-    this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 2;
-    setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient, 500 );
-    this.audioService.audio.coreWorksHover.play();
-    setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 2, 9500 );
-    setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 4, 9700 );
-    if (this.globalsService.userLogged) {
-      setTimeout(()=> this.playInit(), 9500 )
-    };
-  }
+  // playMainTrack() {
+  //   this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 2;
+  //   setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient, 500 );
+  //   this.audioService.audio.coreWorksHover.play();
+  //   setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 2, 9500 );
+  //   setTimeout(()=> this.audioService.audio.coreWorksHover.volume = this.globalsService.soundAmbient / 4, 9700 );
+  //   if (this.globalsService.userLogged) {
+  //     setTimeout(()=> this.playInit(), 9500 )
+  //   };
+  // }
 
   generateMessage(value: string) {
     this.actionService.actionGenerator(
@@ -428,11 +428,11 @@ export class ActionsComponent implements OnInit, OnDestroy {
       }
     }
 
-    if (currentData.action === 'change login scenario') {
-      if (currentData.params === 'logged' && this.router.routerState.snapshot.url === '/actions') {
-        this.playInit();
-      }
-    }
+    // if (currentData.action === 'change login scenario') {
+    //   if (currentData.params === 'logged' && this.router.routerState.snapshot.url === '/actions') {
+    //     this.playInit();
+    //   }
+    // }
   }
   // ************************* TEMPLATE CONDITIONS END *************************
   undefinded: Boolean | boolean;
