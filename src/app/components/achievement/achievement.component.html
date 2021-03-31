@@ -32,7 +32,10 @@
         <div *ngIf="globalsService.achievesList">
             <div *ngFor="let achieve of this.globalsService.achievesList.default.visit_page">
                 <p>{{achieve.name}}</p>
-                <div class="text">{{achieve.solved}}</div>
+                <div class="text __custom">Type:  {{achieve.type}}</div>
+                <div class="text __custom" *ngIf="achieve.type === 'progress'">Progress:  {{achieve.progress_value}} from {{achieve.progress_value_complete}}</div>
+                <div class="text __custom">Solved?  {{achieve.solved}}</div>
+                <div class="text __custom">Seen? {{achieve.achieve_seen}}</div>
             </div>
         </div>
 

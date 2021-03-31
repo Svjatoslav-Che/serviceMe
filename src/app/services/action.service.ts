@@ -42,6 +42,7 @@ export class ActionService {
                     if (element.name === location && params === 'open') {
                         console.log('got match ' + location);
                         this.globalsService.achievesList.default.visit_page[i].solved = true;
+                        this.localsService.updateAchievesList(this.globalsService.achievesList);
                         if (!this.globalsService.newAchieve) {
                             this.globalsService.newAchieve = true;
                         }

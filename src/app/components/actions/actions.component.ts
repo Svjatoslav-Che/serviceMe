@@ -104,11 +104,10 @@ export class ActionsComponent implements OnInit, OnDestroy {
         'actions page open',
         'open'
     );
-    // if (this.globalsService.userLogged) {
-      // this.playInit();
-      // this.audioService.audio.coreWorksHover.volume = (this.globalsService.soundVol/4)/100;
-      // this.audioService.audio.coreWorks.volume = (this.globalsService.soundVol/8)/100;
-    // }
+    if (this.globalsService.userLogged) {
+      // this.audioService.audio.coreWorks.loop = true;
+      // this.audioService.audio.coreWorks.play();
+    }
   }
 
   ngOnDestroy() {
@@ -119,8 +118,8 @@ export class ActionsComponent implements OnInit, OnDestroy {
         'actions page close',
         'close'
     );
-    this.audioService.audio.coreWorksHover.volume = 0;
-    this.audioService.audio.coreWorks.volume = 0;
+    // this.audioService.audio.coreWorksHover.volume = 0;
+    // this.audioService.audio.coreWorks.volume = 0;
   }
 
   // playInit() {

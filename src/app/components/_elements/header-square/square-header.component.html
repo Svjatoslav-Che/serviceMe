@@ -40,6 +40,21 @@
         </svg>
     </div>
 
+    <div class="blinker" *ngIf="text === 'ACHIVES'">
+        <svg class="casual" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7"
+             [ngClass]="{
+                '__regular': state === 'regular',
+                '__selected': state === 'selected',
+                '__disabled': state === 'disabled',
+                '__active': action === 'active',
+                '__no_background': !background
+             }">
+            <circle cx="3.5" cy="3.5" r="3.5"/>
+        </svg>
+        <svg *ngIf="globalsService.newAchieve" class="__blink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
+            <circle cx="3.5" cy="3.5" r="3"/>
+        </svg>
+    </div>
 <!--LOGO CONDITIONS-->
     <div class="logo_letters" *ngIf="text === 'JP'">
         <svg *ngIf="text === 'JP'" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79 61">
@@ -61,16 +76,26 @@
             'width': '50%',
             'height': '50%'}">
     </div>
-    <div *ngIf="borders" class="corner __rt"
+    <div *ngIf="borders && text !== 'ACHIVES'" class="corner __rt"
          [ngStyle]="{
             'width': '50%',
             'height': '50%'}">
     </div>
-    <div *ngIf="borders" class="corner __rd"
+    <div *ngIf="borders && text == 'ACHIVES'" class="corner __rt"
+         [ngStyle]="{
+            'width': '50%',
+            'height': '10px'}">
+    </div>
+
+    <div *ngIf="borders && text !== 'ACHIVES'" class="corner __rd"
          [ngStyle]="{
             'width': '50%',
             'height': '50%'}">
     </div>
+    <div *ngIf="borders && text == 'ACHIVES'" class="corner __rd_media"
+         [ngStyle]="{'width': '50%'}">
+    </div>
+
     <div *ngIf="borders" class="corner __ld"
          [ngStyle]="{
             'width': '50%',

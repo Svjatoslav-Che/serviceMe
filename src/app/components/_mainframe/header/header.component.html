@@ -79,14 +79,6 @@
                                text = 'ACHIVES'
                                description='{{"header.achives"|translate}}'>>
                 </square-header>
-                <div class="blinker">
-                    <svg class="casual" [ngClass]="{'__selected': this.fistRoute === '/achievement'}" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
-                        <circle cx="3.5" cy="3.5" r="3.5"/>
-                    </svg>
-                    <svg *ngIf="globalsService.newAchieve" class="__blink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 7">
-                        <circle cx="3.5" cy="3.5" r="3"/>
-                    </svg>
-                </div>
             </div>
         </div>
 

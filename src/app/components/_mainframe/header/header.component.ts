@@ -86,27 +86,44 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   ngAfterContentInit() {
   }
 
+  checkAchievesToSeen() {
+    let achievesList = this.localsService.getAllAchievesList();
+    achievesList.default.visit_page.forEach(element => {
+      if (element.solved && !element.achieve_seen) {
+        this.globalsService.newAchieve = true;
+      }
+    })
+  }
+
   localScenarioToggle(): any {
     if (this.globalsService.cookiesPolicy) {
       if (this.globalsService.userLogged) {
         this.globalsService.userLogged = false;
         this.tokenService.destroyToken();
         this.audioService.audio.logOut.play();
-        if (this.fistRoute === '/actions') {
-          // this.audioService.audio.coreDeActivated.volume = this.globalsService.soundAmbient;
-          this.audioService.audio.coreDeActivated.play();
+
+        switch (this.fistRoute) {
+          case '/actions': {
+            this.audioService.audio.coreDeActivated.play();
+          }
+          case '/achievement': {
+            this.actionService.actionGenerator(
+                'user',
+                'header',
+                'first route activate',
+                'user logout auto reroute',
+                '/'
+            );
+          }
         }
-        // this.audioService.audio.coreWorksHover.volume = 0;
-        // this.audioService.audio.coreWorks.volume = 0;
-        // this.globalsService.soundAmbient = 0;
+
       } else {
         this.globalsService.userLogged = true;
+        this.checkAchievesToSeen();
         this.initAchives();
         this.tokenService.setLocalToken();
-        // this.globalsService.soundAmbient = (this.globalsService.soundVol/4)/100;
         this.audioService.audio.logIn.play();
         if (this.fistRoute === '/actions') {
-          // this.audioService.audio.coreActivated.volume = this.globalsService.soundAmbient;
           this.audioService.audio.coreActivated.play();
         }
       }
@@ -233,6 +250,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         Math.floor(e.target.value)
     );
     this.globalsService.soundVol = Math.floor(e.target.value);
+    this.globalsService.soundAmbient = Math.floor(e.target.value / 10);
     this.audioService.initSoundData();
     this.localsService.set('soundVol', Math.floor(e.target.value));
     this.audioService.audio.applySND.play();

@@ -36,7 +36,7 @@ export class GlobalsService {
     backgroundSettings: string = this.checkBackground();
     soundVol: number = this.checkSoundVol();
     language: string;
-    soundAmbient = (this.soundVol/4)/100;
+    soundAmbient = this.soundVol/4;
 
     checkBackground() {
         let background = this.localsService.get('background');

@@ -132,41 +132,7 @@
   }
 }
 
-.blinker {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  right: -4px;
-  top: 10px;
-  z-index: +1;
 
-  svg {
-    position: absolute;
-    circle {
-      fill: var(--object_color_disabled);
-    }
-  }
-
-  .casual {
-    circle {
-      stroke: var(--object_color);
-    }
-  }
-
-  .__selected {
-    circle {
-      stroke: var(--highlight_color);
-    }
-  }
-
-  .__blink {
-    circle {
-      fill: var(--highlight_color);
-      filter: drop-shadow(0 0 2px var(--highlight_color));
-      animation: blink_small 1000ms infinite;
-    }
-  }
-}
 
 .small_element_sq {
   width: 27px;

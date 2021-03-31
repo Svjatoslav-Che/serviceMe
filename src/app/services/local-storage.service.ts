@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import LocalKey from "./local-storage-key.constant";
+// import { GlobalsService } from './globals.service';
 import * as dataAchieves from '../../assets/jsons/achieves.json'
 
 @Injectable()
 export class LocalsService {
-    constructor() {
-    }
+    constructor(
+        // public globalsService: GlobalsService,
+    ) {}
 
     public set(key: string, value: any) {
         return localStorage.setItem(key, value);
@@ -77,6 +79,10 @@ export class LocalsService {
 
     public createAchievesList() {
         this.set(LocalKey.ACHIVES_STORAGE, JSON.stringify(dataAchieves));
+    }
+
+    public updateAchievesList(value: any) {
+        this.set(LocalKey.ACHIVES_STORAGE, JSON.stringify(value));
     }
 
 }

@@ -48,9 +48,7 @@ export class AudioService {
         this.audio.complete.load();
         this.audio.headRoll.load();
         this.audio.coreActivated.load();
-        this.audio.coreWorks.load();
         this.audio.coreDeActivated.load();
-        this.audio.coreWorksHover.load();
 
         // this.checkState();
     }
@@ -99,10 +97,10 @@ export class AudioService {
         this.audio.clickSND.volume = this.globalsService.soundVol/100;
         //LOGIN
         this.audio.logIn.src = ROUTE + "/assets/sounds/login.webm";
-        this.audio.logIn.volume = this.globalsService.soundVol/100;
+        this.audio.logIn.volume = this.globalsService.soundAmbient/100;
         //LOGOUT
         this.audio.logOut.src = ROUTE + "/assets/sounds/logout.webm";
-        this.audio.logOut.volume = this.globalsService.soundVol/100;
+        this.audio.logOut.volume = this.globalsService.soundAmbient/100;
         //FAIL
         this.audio.fail.src = ROUTE + "/assets/sounds/fail.webm";
         this.audio.fail.volume = this.globalsService.soundVol/100;
@@ -113,13 +111,40 @@ export class AudioService {
         this.audio.complete.src = ROUTE + "/assets/sounds/complete.webm";
         this.audio.complete.volume = this.globalsService.soundVol/100;
         //CORE
-        this.audio.coreActivated.src = ROUTE + "/assets/sounds/connect_established.webm";
+        this.audio.coreActivated.src = ROUTE + "/assets/sounds/power_on.webm";
         this.audio.coreActivated.volume = this.globalsService.soundVol/100;
-        this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/connect_over.webm";
-        this.audio.coreDeActivated.volume = this.globalsService.soundVol/100;
-        this.audio.coreWorks.src = ROUTE + "/assets/sounds/connect_loop.webm";
-        this.audio.coreWorks.volume = this.globalsService.soundVol/100;
-        this.audio.coreWorksHover.src = ROUTE + "/assets/sounds/connect_loop.webm";
-        this.audio.coreWorksHover.volume = this.globalsService.soundVol/100;
+        this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/power_off.webm";
+        this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
+    }
+
+    initSoundVol() {
+        //HEADER ROLL IN
+        this.audio.headRoll.volume = this.globalsService.soundVol/100;
+        //Router main shutter IN
+        this.audio.routeIn.volume = this.globalsService.soundVol/100;
+        this.audio.routeOut.volume = this.globalsService.soundVol/100;
+        //SMALL WINDOW FADE IN
+        this.audio.smallIn.volume = this.globalsService.soundVol/100;
+        //SMALL WINDOW FADE OUT
+        this.audio.smallOut.volume = this.globalsService.soundVol/100;
+        //APPLY SETTINGS SOUND
+        this.audio.applySND.volume = this.globalsService.soundVol/100;
+        //SELECT BTN SOUND
+        this.audio.selectSND.volume = this.globalsService.soundVol/100;
+        //CLICK BTN SND
+        this.audio.clickSND.volume = this.globalsService.soundVol/100;
+        //LOGIN
+        this.audio.logIn.volume = this.globalsService.soundVol/100;
+        //LOGOUT
+        this.audio.logOut.volume = this.globalsService.soundVol/100;
+        //FAIL
+        this.audio.fail.volume = this.globalsService.soundVol/100;
+        //TYPE
+        this.audio.type.volume = this.globalsService.soundVol/100;
+        //COMPLETE
+        this.audio.complete.volume = this.globalsService.soundVol/100;
+        //CORE
+        this.audio.coreActivated.volume = this.globalsService.soundVol/100;
+        this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
     }
 }

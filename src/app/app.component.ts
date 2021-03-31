@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
       private bigGraph: BigGraphComponent,
       private _data: CommonService,
       private tokenService: TokenService,
-      private actionService: ActionService
+      private actionService: ActionService,
+      private localsService: LocalsService
   ) {}
 
   ngOnInit(): void {
@@ -44,9 +45,19 @@ export class AppComponent implements OnInit {
     this.detectDevice();
   }
 
+  checkAchievesToSeen() {
+    let achievesList = this.localsService.getAllAchievesList();
+    achievesList.default.visit_page.forEach(element => {
+      if (element.solved && !element.achieve_seen) {
+        this.globalsService.newAchieve = true;
+      }
+    })
+  }
+
   checkCookies() {
     if (this.tokenService.getToken() === 'local') {
       this.globalsService.userLogged = true;
+      this.checkAchievesToSeen();
     } else {
       this.globalsService.userLogged = false;
     }

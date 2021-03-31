@@ -18,6 +18,19 @@
                     ></square-button>
                 </div>
             </div>
+            <div class="button_container">
+                <div class="small_element_sq __follower">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = 'in'
+                            (click)="linkInGo()"
+                    ></square-button>
+                </div>
+            </div>
 
         </div>
 
@@ -53,6 +66,19 @@
 
         <div class="button_container">
             <div class="footer_content_box">
+                <div class="small_element_sq __follower">
+                    <square-button
+                            cornersSize = '10'
+                            cornersPosition = 'out'
+                            borders = 'true'
+                            state= 'regular'
+                            action= 'active'
+                            icon = '{{ambientMute ? "ambientMute" : "ambient"}}'
+                            (click)="muteAmbientToggle()"
+                    ></square-button>
+                </div>
+            </div>
+            <div class="footer_content_box">
                 <div class="small_element_sq __last">
                     <square-button
                             cornersSize = '10'
@@ -60,12 +86,11 @@
                             borders = 'true'
                             state= 'regular'
                             action= 'active'
-                            icon = 'in'
-                            (click)="linkInGo()"
+                            icon = '{{soundMute ? "mute" : "unmute"}}'
+                            (click)="muteSoundToggle()"
                     ></square-button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--{{ 'footer.language' | translate }}-->
