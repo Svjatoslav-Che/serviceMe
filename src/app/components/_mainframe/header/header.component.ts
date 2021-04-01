@@ -78,9 +78,9 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
     this.initLang();
     this.displayVolumeValue = this.globalsService.soundVol;
     this._data.currentData.subscribe(currentData => this.dataRecognizer(currentData));
-    if (this.globalsService.userLogged) {
-      this.initAchives();
-    }
+    // if (this.globalsService.userLogged) {
+    //   this.initAchives();
+    // }
   }
 
   ngAfterContentInit() {
@@ -121,7 +121,6 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
       } else {
         this.globalsService.userLogged = true;
         this.checkAchievesToSeen();
-        this.initAchives();
         this.tokenService.setLocalToken();
         this.audioService.audio.logIn.play();
         if (this.fistRoute === '/actions') {
@@ -141,36 +140,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
     this.selectServiceToggle('login_close');
   }
 
-  initAchives() {
-    if (this.localsService.getAllAchievesList() !== null) {
-      if (this.localsService.checkValidateAchieves()) {
-        this.globalsService.achievesList = this.localsService.getAllAchievesList();
-        this.actionService.actionGenerator(
-            'system',
-            'header',
-            'get achieves',
-            'get achieves',
-            'get'
-        );
-      } else {
-        this.createAchieves();
-      }
-    } else {
-      this.createAchieves();
-    }
-  }
 
-  createAchieves() {
-    this.localsService.createAchievesList();
-    this.globalsService.achievesList = this.localsService.getAllAchievesList();
-    this.actionService.actionGenerator(
-        'system',
-        'header',
-        'create achieves',
-        'create achieves list',
-        'create'
-    );
-  }
 
   checkDisplayValues() {
     this.actionService.actionGenerator(

@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
     this.globalsService.loads = true;
     this.checkCookies();
     this.detectDevice();
+    this.initAchives();
+    this.checkAchievesToSeen()
   }
 
   checkAchievesToSeen() {
@@ -55,6 +57,37 @@ export class AppComponent implements OnInit {
         }
       })
     }
+  }
+
+  initAchives() {
+    if (this.localsService.getAllAchievesList() !== null) {
+      if (this.localsService.checkValidateAchieves()) {
+        this.globalsService.achievesList = this.localsService.getAllAchievesList();
+        this.actionService.actionGenerator(
+            'system',
+            'header',
+            'get achieves',
+            'get achieves',
+            'get'
+        );
+      } else {
+        this.createAchieves();
+      }
+    } else {
+      this.createAchieves();
+    }
+  }
+
+  createAchieves() {
+    this.localsService.createAchievesList();
+    this.globalsService.achievesList = this.localsService.getAllAchievesList();
+    this.actionService.actionGenerator(
+        'system',
+        'header',
+        'create achieves',
+        'create achieves list',
+        'create'
+    );
   }
 
   checkCookies() {
