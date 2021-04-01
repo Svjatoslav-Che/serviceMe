@@ -27,7 +27,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   public thisForm: boolean = false;
   public urlPicturesList = [];
   form = new FormGroup({
-    date: new FormControl(Date()),
+    date: new FormControl(Date.parse(Date())),
     issue_state: new FormControl(''),
     description: new FormControl(''),
     screenshots: new FormControl([]),

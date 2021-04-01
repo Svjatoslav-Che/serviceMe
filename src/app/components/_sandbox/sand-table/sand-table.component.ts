@@ -59,8 +59,7 @@ export class SandTableComponent implements OnInit {
         location: 'sandbox table',
         action: 'first route activate',
         description: 'remote first route activated',
-        params: value,
-        date: Date()
+        params: value
       });
   }
 

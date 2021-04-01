@@ -31,6 +31,7 @@ export class GlobalsService {
     achievesList: any = undefined;
     newAchieve: boolean = false;
 
+
     // SETTINGS VARIABLES
     colorSettings: string = this.checkColorScheme();
     backgroundSettings: string = this.checkBackground();

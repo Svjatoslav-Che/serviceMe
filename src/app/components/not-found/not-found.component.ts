@@ -51,8 +51,7 @@ export class NotFoundComponent implements OnInit, OnDestroy {
       location: 'sandbox bootstrap',
       action: 'first route activate',
       description: 'remote first route activated',
-      params: value,
-      date: Date()
+      params: value
     });
   }
 }

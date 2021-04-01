@@ -20,8 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "lodash"
+            "allowedCommonJsDependencies": ["ua-parser-js", "vivus", "css-element-queries"
             ],
             "outputPath": "public",
             "index": "src/index.html",

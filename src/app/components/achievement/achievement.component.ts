@@ -23,7 +23,7 @@ const DURATION = { duration: 300 };
 
 export class AchievementComponent implements OnInit, OnDestroy {
   public mainDiv: boolean = false;
-  public currentDate = new Date();
+  public currentDate =  Date.parse(Date());
 
   constructor(
       public audioService: AudioService,
@@ -68,7 +68,12 @@ export class AchievementComponent implements OnInit, OnDestroy {
         if (element.state === 'solved' && element.achieve_seen_date === null) {
           if (confirm(element.name + ' solved, receive it?')) {
             achievesList[i].state = 'received';
-            achievesList[i].achieve_seen_date = Date();
+            achievesList[i].achieve_seen_date =  Date.parse(Date());
+
+            //CHECK CONDITION FOR visit all main pages ACHIEVE
+            if (element.type === 'single main page') {
+              achievesList[0].progress_value = achievesList[0].progress_value + 1;
+            }
             this.localsService.updateAchievesList(this.globalsService.achievesList);
           }
         }
@@ -79,14 +84,23 @@ export class AchievementComponent implements OnInit, OnDestroy {
   }
 
   checkAchieve() {
+    let achievesList = this.globalsService.achievesList.default;
     this.globalsService.newAchieve = false;
-    let achievesList = this.globalsService.achievesList.default.visit_page;
-    achievesList.forEach(element => {
+    achievesList.visit_page.forEach(element => {
       if (element.state === 'solved') {
         this.globalsService.newAchieve = true;
       }
     })
 
+    if (achievesList.visit_page[0].progress_value === 5 && achievesList.visit_page[0].state === 'none') {
+      this.globalsService.achievesList.default.visit_page[0].state = 'solved';
+      this.globalsService.newAchieve = true;
+      this.getAchieve();
+    }
+    if (achievesList.visit_page[0].state === 'received') {
+      this.globalsService.achievesList.default.solved_visit_page = true;
+      this.localsService.updateAchievesList(this.globalsService.achievesList);
+    }
   }
 
   checkState(value) {

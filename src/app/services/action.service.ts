@@ -27,11 +27,12 @@ export class ActionService {
             action: action,
             description: description,
             params: params,
-            date: new Date()
+            date: Date.parse(Date())
             }
         )
-        if (this.globalsService.userLogged && this.globalsService.achievesList) {
-            this.achievesService.achievesChecker(location, action, params);
+
+        if (this.globalsService.userLogged && this.globalsService.achievesList && !this.globalsService.achievesList.default.solved_visit_page) {
+            this.achievesService.achievesCheckerSolvedVisit(location, action, params);
         }
     }
 

@@ -1,4 +1,6 @@
-{ "achieves_version": 1,
+{
+  "achieves_version": 1,
+  "solved_visit_page": false,
   "visit_page": [
     {
       "weight": "solid",

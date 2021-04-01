@@ -50,7 +50,7 @@ export class SandBootstrapComponent implements OnInit {
       action: 'first route activate',
       description: 'remote first route activated',
       params: value,
-      date: Date()
+      date: Date.parse(Date())
     });
   }
 

@@ -50,7 +50,6 @@ export class SandBubblesComponent implements OnInit {
       action: 'first route activate',
       description: 'remote first route activated',
       params: value,
-      date: Date()
     });
   }
 

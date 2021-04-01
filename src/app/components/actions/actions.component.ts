@@ -25,7 +25,7 @@ const DURATION = { duration: 300 };
 export class ActionsComponent implements OnInit, OnDestroy {
   public mainDiv: boolean;
   public displayedEvent: string = 'core';
-  public currentDate = new Date();
+  public currentDate = Date.parse(Date());
   // TICKETS
   private ticketsList: any;
   public displayTicketsList: any;
