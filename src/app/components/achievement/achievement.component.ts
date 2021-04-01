@@ -4,7 +4,10 @@ import { AnimationEvent } from '@angular/animations';
 import { AudioService } from '../../services/audio.service';
 import { CommonService } from '../../services/common.service';
 import { GlobalsService } from '../../services/globals.service';
-import { ActionService } from "../../services/action.service";
+import { ActionService } from '../../services/action.service';
+import { LocalsService } from '../../services/local-storage.service';
+import { TranslateService } from '@ngx-translate/core';
+import {element} from "protractor";
 
 const DURATION = { duration: 300 };
 
@@ -20,12 +23,15 @@ const DURATION = { duration: 300 };
 
 export class AchievementComponent implements OnInit, OnDestroy {
   public mainDiv: boolean = false;
+  public currentDate = new Date();
 
   constructor(
       public audioService: AudioService,
       private _data: CommonService,
       public globalsService: GlobalsService,
-      private actionService: ActionService
+      private actionService: ActionService,
+      public localsService: LocalsService,
+      public translateService: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -41,7 +47,7 @@ export class AchievementComponent implements OnInit, OnDestroy {
         'achieves page open',
         'open'
     );
-    // console.log(this.globalsService.achievesList.default);
+    this.getAchieve();
   }
 
   ngOnDestroy() {
@@ -52,6 +58,50 @@ export class AchievementComponent implements OnInit, OnDestroy {
         'achieves page close',
         'close'
     );
+  }
+
+  getAchieve() {
+    if (this.globalsService.newAchieve) {
+      let i = 0;
+      let achievesList = this.globalsService.achievesList.default.visit_page;
+      achievesList.forEach(element => {
+        if (element.state === 'solved' && element.achieve_seen_date === null) {
+          if (confirm(element.name + ' solved, receive it?')) {
+            achievesList[i].state = 'received';
+            achievesList[i].achieve_seen_date = Date();
+            this.localsService.updateAchievesList(this.globalsService.achievesList);
+          }
+        }
+        i++;
+      })
+    }
+    this.checkAchieve();
+  }
+
+  checkAchieve() {
+    this.globalsService.newAchieve = false;
+    let achievesList = this.globalsService.achievesList.default.visit_page;
+    achievesList.forEach(element => {
+      if (element.state === 'solved') {
+        this.globalsService.newAchieve = true;
+      }
+    })
+
+  }
+
+  checkState(value) {
+    let element = this.globalsService.achievesList.default.visit_page[value];
+    switch (element.state) {
+      case 'none': {
+        return 'none';
+      }
+      case 'solved': {
+        return 'solved';
+      }
+      case 'received': {
+        return 'fresh';
+      }
+    }
   }
 
   // *************************** TEMPLATE CONDITIONS ***************************

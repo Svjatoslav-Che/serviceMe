@@ -29,15 +29,73 @@
             </div>
         </div>
 
-        <div *ngIf="globalsService.achievesList">
-            <div *ngFor="let achieve of this.globalsService.achievesList.default.visit_page">
-                <p>{{achieve.name}}</p>
-                <div class="text __custom">Type:  {{achieve.type}}</div>
-                <div class="text __custom" *ngIf="achieve.type === 'progress'">Progress:  {{achieve.progress_value}} from {{achieve.progress_value_complete}}</div>
-                <div class="text __custom">Solved?  {{achieve.solved}}</div>
-                <div class="text __custom">Seen? {{achieve.achieve_seen}}</div>
+        <div class="achieve_container">
+            <div *ngFor="let achieve of this.globalsService.achievesList.default.visit_page let i = index">
+                <div *ngIf="achieve.weight === 'solid'" class="achieve_solid">
+                    <div class="square">
+                        <square-element
+                                cornersSize = '10'
+                                cornersPosition = 'out'
+                                borders = 'true'
+                                element = 'true'
+                                elementName='angular'>
+                        </square-element>
+                    </div>
+                    <div class="description">
+                        <h4 class="__custom">{{achieve.name}}</h4>
+                        <div *ngIf="achieve.type === 'progress'" class="text __custom">Progress: <span>{{achieve.progress_value}}</span> of <span>{{achieve.progress_value_complete}}</span></div>
+                        <div *ngIf="achieve.date === null" class="text __custom">
+                            <span>Not received yet</span>
+                        </div>
+                        <div *ngIf="achieve.date !== null" class="text __custom">
+                            <span>Got it</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="achieve.weight === 'casual'" class="achieve_casual">
+                    <div class="square">
+                        <square-element
+                                cornersSize = '10'
+                                cornersPosition = 'out'
+                                borders = 'true'
+                                element = 'true'
+                                state = '{{checkState(i)}}'
+                                elementName='angular'>
+                        </square-element>
+                    </div>
+                    <div class="description">
+                        <h4 class="__custom">{{achieve.name}}</h4>
+
+                        <div *ngIf="achieve.achieve_seen_date !== null else notgetyet" class="text __custom">
+                            <div *ngIf="(achieve.achieve_seen_date | amDifference: currentDate :'days' : true) < 1">
+                                <span>Received: </span>{{achieve.achieve_seen_date | amLocale: (translateService.currentLang === 'ua' ? 'uk' : translateService.currentLang) | amTimeAgo}}&nbsp;
+                            </div>
+                            <div *ngIf="(achieve.achieve_seen_date | amDifference: currentDate :'days' : true) >= 1">
+                                <span>Received: </span>{{achieve.achieve_seen_date | date:'dd.MM.yyyy,HH:mm'}}&nbsp;
+                            </div>
+                        </div>
+
+                        <ng-template #notgetyet>
+                            <div class="text __custom">
+                                <span *ngIf="achieve.state === 'solved'">Solved, but not Received yet</span>
+                                <span *ngIf="achieve.state === 'none'">Not Solved yet</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
             </div>
         </div>
+
+<!--        <div *ngIf="globalsService.achievesList">-->
+<!--            <div *ngFor="let achieve of this.globalsService.achievesList.default.visit_page">-->
+<!--                <p>{{achieve.name}}</p>-->
+<!--                <div class="text __custom">Type:  {{achieve.type}}</div>-->
+<!--                <div class="text __custom" *ngIf="achieve.type === 'progress'">Progress:  {{achieve.progress_value}} from {{achieve.progress_value_complete}}</div>-->
+<!--                <div class="text __custom">Solved?  {{achieve.solved}}</div>-->
+<!--                <div class="text __custom">Seen? {{achieve.achieve_seen}}</div>-->
+<!--            </div>-->
+<!--        </div>-->
 
     </div>
 </div>

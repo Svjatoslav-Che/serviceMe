@@ -54,5 +54,55 @@
   }
 }
 
+.achieve_container {
+  width: 100%;
+}
 
+.achieve_solid {
+  margin-top: 15px;
+  margin-left: 50px;
+  width: calc(100% - 90px);
+  display: flex;
+  .square {
+    width: 75px;
+    height: 75px;
+  }
+  .description {
+    width: 100%;
+    background: var(--viever_color_backround);
+    margin-left: 15px;
+    h4 {
+      text-transform: capitalize;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    .text {
+      margin-left: 10px;
+    }
+  }
+}
 
+.achieve_casual {
+  margin-top: 15px;
+  margin-left: 68px;
+  width: calc(100% - 108px);
+  display: flex;
+
+  .square {
+    width: 55px;
+    height: 55px;
+  }
+  .description {
+    width: 100%;
+    background: var(--viever_color_backround);
+    margin-left: 15px;
+    h4 {
+      text-transform: capitalize;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    .text {
+      margin-left: 10px;
+    }
+  }
+}

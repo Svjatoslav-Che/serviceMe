@@ -22,6 +22,7 @@ import { CommonService } from './services/common.service';
 import { AudioService } from './services/audio.service';
 import { LocalsService } from './services/local-storage.service';
 import { ActionService } from './services/action.service';
+import { AchievesService } from './services/achieves.service';
 
 import { NgInit } from "./directives/ng-init";
 
@@ -78,6 +79,7 @@ import { SandPushComponent } from './components/_sandbox/sand-push/sand-push.com
 import { SandCoreComponent } from './components/_sandbox/sand-core/sand-core.component';
 import { SandAssistComponent } from './components/_sandbox/sand-assist/sand-assist.component';
 import { SandStructureComponent } from './components/_sandbox/sand-structure/sand-structure.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
@@ -210,7 +212,8 @@ const appRoutes: Routes =[
     CommonService,
     BigGraphComponent,
     LocalsService,
-    ActionService
+    ActionService,
+    AchievesService,
   ],
   bootstrap: [AppComponent]
 })

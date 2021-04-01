@@ -6,9 +6,25 @@ $--corners-size: var(-corners-size) + 'px';
   height: 100%;
   * {transition: all var(--transition_all_speed) ease-in-out;}
   --inner_object_color: var(--object_color);
+  --inner_path_color: var(--path_fill_regular_color_highlight_small);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.__disabled {
+    --inner_object_color: var(--object_color_disabled);
+    --inner_path_color: var(--object_color_disabled);
+  }
+
+  &.__solved {
+    --inner_object_color: var(--object_color);
+    --inner_path_color: var(--path_fill_regular_color_highlight_small);
+  }
+
+  &.__selected {
+    --inner_object_color: var(--highlight_color);
+    --inner_path_color: var(--highlight_color);
+  }
 
   .image_container {
     width: 100%;
@@ -92,10 +108,10 @@ $--corners-size: var(-corners-size) + 'px';
    }
 
   svg { height: 100%;
-    path { fill: var(--path_fill_regular_color_highlight_small); }
-    polygon { fill: var(--path_fill_regular_color_highlight_small); }
-    circle { fill: var(--path_fill_regular_color_highlight_small); }
-    rect { fill: var(--path_fill_regular_color_highlight_small);
+    path { fill: var(--inner_path_color); }
+    polygon { fill: var(--inner_path_color); }
+    circle { fill: var(--inner_path_color); }
+    rect { fill: var(--inner_path_color);
     }
     &.__margin {
       margin: 5px;
@@ -105,7 +121,7 @@ $--corners-size: var(-corners-size) + 'px';
 
 .ticket {
   svg { height: 100%;
-    path { fill: var(--path_fill_regular_color_highlight_small); }
+    path { fill: var(--inner_path_color); }
   }
 }
 

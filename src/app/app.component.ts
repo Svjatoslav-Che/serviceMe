@@ -39,19 +39,22 @@ export class AppComponent implements OnInit {
     this.audioService.loadSoundData();
     this.audioService.initSoundData();
     //loader conditions
-    setTimeout(()=> {this.globalsService.loads = true;}, 3000);
-    // this.globalsService.loads = true;
+    // setTimeout(()=> {this.globalsService.loads = true;}, 3000);
+    this.globalsService.loads = true;
     this.checkCookies();
     this.detectDevice();
   }
 
   checkAchievesToSeen() {
-    let achievesList = this.localsService.getAllAchievesList();
-    achievesList.default.visit_page.forEach(element => {
-      if (element.solved && !element.achieve_seen) {
-        this.globalsService.newAchieve = true;
-      }
-    })
+    if (this.localsService.getAllAchievesList() !== null) {
+      let achievesList = this.localsService.getAllAchievesList();
+      achievesList.default.visit_page.forEach(element => {
+        if (element.state === 'solved') {
+          this.globalsService.newAchieve = true;
+          this.audioService.audio.msg.play();
+        }
+      })
+    }
   }
 
   checkCookies() {
@@ -91,7 +94,9 @@ export class AppComponent implements OnInit {
   }
 
   detectDevice() {
+    /*eslint-disable */
     let parser = new UAParser().getResult();
+    /*eslint-enable */
     if (parser === undefined) {
       setTimeout(()=> this.detectDevice(), 50)
     } else {

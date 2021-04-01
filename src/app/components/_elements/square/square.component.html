@@ -1,4 +1,7 @@
-<div class="square_body">
+<div class="square_body"
+    [ngClass]="{'__disabled': state === 'none',
+                '__solved': state === 'solved',
+                '__selected': state === 'fresh'}">
 
     <div class="image_container" *ngIf="element">
         <svg *ngIf="elementName === undefined || (elementName === 'angular' || elementName === 'HEADER')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

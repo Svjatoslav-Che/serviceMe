@@ -3,59 +3,60 @@
     {
       "weight": "solid",
       "type": "progress",
+      "implements": "single main page",
       "progress_value": 0,
       "progress_value_complete": 5,
       "name": "visit all main pages",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
       "weight": "casual",
-      "type": "single",
+      "type": "single main page",
       "name": "home page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
       "weight": "casual",
-      "type": "single",
+      "type": "single main page",
       "name": "about page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
       "weight": "casual",
-      "type": "single",
+      "type": "single main page",
       "name": "sandbox page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
       "weight": "casual",
-      "type": "single",
+      "type": "single main page",
       "name": "actions page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
       "weight": "casual",
-      "type": "single",
+      "type": "single main page",
       "name": "achieves page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     },
     {
-      "weight": "casual",
-      "type": "single",
+      "weight": "secret",
+      "type": "single main page",
       "name": "404 page",
-      "solved": false,
-      "achieve_seen": false,
+      "state": "none",
+      "achieve_seen_date": null,
       "date": null
     }
   ]

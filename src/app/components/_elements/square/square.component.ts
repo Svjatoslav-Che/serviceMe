@@ -11,10 +11,14 @@ export class SquareComponent implements OnInit {
   @Input() borders: boolean;
   @Input() element: boolean;
   @Input() elementName: string;
+  @Input() state: string;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.state === undefined) {
+      this.state = '';
+    }
   }
 
 }

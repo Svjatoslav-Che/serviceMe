@@ -105,6 +105,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         switch (this.fistRoute) {
           case '/actions': {
             this.audioService.audio.coreDeActivated.play();
+            break;
           }
           case '/achievement': {
             this.actionService.actionGenerator(

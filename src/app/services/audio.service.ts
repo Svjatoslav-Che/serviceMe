@@ -30,6 +30,7 @@ export class AudioService {
         coreWorks: new Audio(),
         coreDeActivated: new Audio(),
         coreWorksHover: new Audio(),
+        msg: new Audio(),
     };
 
     loadSoundData() {
@@ -49,6 +50,7 @@ export class AudioService {
         this.audio.headRoll.load();
         this.audio.coreActivated.load();
         this.audio.coreDeActivated.load();
+        this.audio.msg.load();
 
         // this.checkState();
     }
@@ -115,6 +117,9 @@ export class AudioService {
         this.audio.coreActivated.volume = this.globalsService.soundVol/100;
         this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/power_off.webm";
         this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
+        //MESSAGE
+        this.audio.msg.src = ROUTE + "/assets/sounds/msg.webm";
+        this.audio.msg.volume = this.globalsService.soundVol/100;
     }
 
     initSoundVol() {
@@ -146,5 +151,7 @@ export class AudioService {
         //CORE
         this.audio.coreActivated.volume = this.globalsService.soundVol/100;
         this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
+        //MESSAGE
+        this.audio.msg.volume = this.globalsService.soundVol/100;
     }
 }
