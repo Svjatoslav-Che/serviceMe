@@ -18,11 +18,12 @@ export class AchievesService {
         adress[params].date_solved = Date.parse(Date());
         if (params !== 'visit_404') {
             ++adress.all_mainpages.progress_now;
+            if (adress.all_mainpages.progress_now === 5) {
+                adress.all_mainpages.state = 'solve';
+                adress.all_mainpages.date_solved = Date.parse(Date());
+            }
         }
-        if (adress.all_mainpages.progress_now === 5) {
-            adress.all_mainpages.state = 'solve';
-            adress.all_mainpages.date_solved = Date.parse(Date());
-        }
+
         this.localsService.updateAchievesList(this.globalsService.achievesList);
         this.achieveMessage();
     }

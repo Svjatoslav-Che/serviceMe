@@ -100,6 +100,15 @@
 		"delete_but" : "DELETE",
 		"delete_now" : "Delete ticket now"
 	},
+	"receive": {
+		"receive": "RECEIVE",
+		"description": "Achievement",
+		"congratulations": "Congratulations!",
+		"you_solve": "You Solve the",
+		"achieve": "achieve",
+		"cool": "COOL",
+		"cool_description": "Get it, close this"
+	},
 	"404": {
 		"crap": "CRAP!",
 		"wrong": "Something went wrong..",

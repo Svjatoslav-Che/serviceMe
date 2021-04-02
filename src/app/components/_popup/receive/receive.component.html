@@ -20,7 +20,7 @@
                         '__center_headers': elementOrient === 'centre',
                         '__right_headers': elementOrient === 'right'}">
         <h1><typer-string
-                text='RECEIVE'
+                text='{{"receive.receive"|translate}}'
                 [durationInner] = 10
                 [charsAtOnce] = 1
         ></typer-string></h1>
@@ -32,7 +32,7 @@
                     '__right_headers': elementOrient === 'right'}">
         <h6>
             <h6><typer-string
-                    text='Achievement'
+                    text='{{"receive.description"|translate}}'
                     [durationInner] = 10
                     [charsAtOnce] = 1
             ></typer-string></h6>
@@ -42,14 +42,14 @@
     <div class="text_box"
          [ngClass]="{'__center_text' : elementOrient === 'centre'}">
         <h1><typer-string
-                text='Congratulations!'
+                text='{{"receive.congratulations"|translate}}'
                 [durationInner] = 10
                 [charsAtOnce] = 5
         ></typer-string></h1>
 
         <p>
             <typer-string
-                    text='You solve the <span>{{globalsService.currentAchieve.name}}</span> achieve'
+                    text='{{"receive.you_solve"|translate}} <span>{{"achives." + globalsService.currentAchieve.name|translate}}</span> {{"receive.achieve"|translate}}'
                     [durationInner] = 10
                     [charsAtOnce] = 5
             ></typer-string>
@@ -62,7 +62,7 @@
                         cornersPosition = 'out'
                         [borders] = true
                         [element] = true
-                        elementName = '{{header}}'>
+                        elementName = '{{globalsService.currentAchieve.icon}}'>
                 </square-element>
             </div>
         </div>
@@ -74,11 +74,11 @@
                         cornersPosition = 'out'
                         [borders] = true
                         state = 'apply'
-                        text= 'COOL'>
+                        text= '{{"receive.cool"|translate}}'>
                 </rectangle_button>
                 <div class="text __custom">
                     <typer-string
-                            text='Get it, close this'
+                            text='{{"receive.cool_description"|translate}}'
                             [durationInner] = 10
                             [charsAtOnce] = 5
                     ></typer-string>

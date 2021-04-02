@@ -100,6 +100,15 @@
 		"delete_but" : "УДАЛИТЬ",
 		"delete_now" : "Удалить билет сейчас"
 	},
+	"receive": {
+		"receive": "Получить",
+		"description": "Достижение",
+		"congratulations": "Поздравления!",
+		"you_solve": "Вы Собрали",
+		"achieve": "достижение",
+		"cool": "КРУТО",
+		"cool_description": "Понял, закрывайте это"
+	},
 	"404": {
 		"crap": "Ой!",
 		"wrong": "Что-то пошло не так..",

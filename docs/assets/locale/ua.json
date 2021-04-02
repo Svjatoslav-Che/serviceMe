@@ -100,12 +100,22 @@
     "delete_but" : "ВИДАЛИТИ",
     "delete_now" : "Видалити білет негайно"
   },
+  "receive": {
+    "receive": "Отримати",
+    "description": "Досягнення",
+    "congratulations": "Вітанячко!",
+    "you_solve": "Ви Зібрали",
+    "achieve": "досягнення",
+    "cool": "КРУТО",
+    "cool_description": "Зрозумів, закривайте це"
+  },
   "404": {
     "crap": "Лихо!",
     "wrong": "Щрсь пішло не так..",
     "try": "Спробуйте перейти до:",
     "project": "Сторінки Проекту"
-  },"sandbox": {
+  },
+  "sandbox": {
     "about": "Про Пісківку",
     "foundation": "Основні:",
     "basic": "Базові",
