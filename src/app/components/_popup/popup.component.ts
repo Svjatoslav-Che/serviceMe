@@ -69,6 +69,12 @@ export class PopupComponent implements OnInit, OnDestroy {
         this.audioService.audio.smallOut.play();
         break
       }
+      case 'receive': {
+        this.globalsService.currentAchieve = undefined;
+        this.globalsService.popupService = '';
+        this.audioService.audio.smallOut.play();
+        break
+      }
     }
   }
 

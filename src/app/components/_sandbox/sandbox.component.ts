@@ -79,6 +79,18 @@ export class SandboxComponent implements OnInit, OnDestroy {
         'sandbox page open',
         'open'
     );
+    if (this.globalsService.userLogged) {
+      let achieve = this.globalsService.achievesList.default;
+      if (achieve !== undefined && achieve.visit_page.visit_sandbox.state === 'none') {
+        this.actionService.actionGenerator(
+            'system',
+            'sandbox page',
+            'solve',
+            'visit mainpage solved',
+            'visit_sandbox'
+        );
+      }
+    }
   }
 
   ngOnDestroy() {

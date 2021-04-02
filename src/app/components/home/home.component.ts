@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._data.currentData.subscribe(currentData => this.toggleDiv(currentData));
     this.mainDiv = true;
+
     // if (this.globalsService.firstAppear) {
     //   this.audioService.audio.routeIn.play();
     // }
@@ -70,6 +71,18 @@ export class HomeComponent implements OnInit, OnDestroy {
         'home page open',
         'open'
     );
+    if (this.globalsService.userLogged) {
+      let achieve = this.globalsService.achievesList.default;
+      if (achieve !== undefined && achieve.visit_page.visit_home.state === 'none') {
+        this.actionService.actionGenerator(
+            'system',
+            'home page',
+            'solve',
+            'visit mainpage solved',
+            'visit_home'
+        );
+      }
+    }
   }
 
   ngOnDestroy() {

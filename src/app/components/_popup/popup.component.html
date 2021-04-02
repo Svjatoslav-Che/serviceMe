@@ -19,6 +19,11 @@
         <app-ticket>
         </app-ticket>
     </div>
+    <div *ngIf="globalsService.popupService === 'receive'"
+         class="feedback_space">
+        <app-receive>
+        </app-receive>
+    </div>
 
 
 

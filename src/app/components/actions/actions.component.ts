@@ -105,6 +105,18 @@ export class ActionsComponent implements OnInit, OnDestroy {
         'open'
     );
     if (this.globalsService.userLogged) {
+      let achieve = this.globalsService.achievesList.default;
+      if (achieve !== undefined && achieve.visit_page.visit_actions.state === 'none') {
+        this.actionService.actionGenerator(
+            'system',
+            'actions page',
+            'solve',
+            'visit mainpage solved',
+            'visit_actions'
+        );
+      }
+    }
+    if (this.globalsService.userLogged) {
       // this.audioService.audio.coreWorks.loop = true;
       // this.audioService.audio.coreWorks.play();
     }

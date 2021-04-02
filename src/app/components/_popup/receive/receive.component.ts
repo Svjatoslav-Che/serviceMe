@@ -3,14 +3,17 @@ import { GlobalsService } from '../../../services/globals.service';
 import { Observable, Subscription, fromEvent } from 'rxjs';
 import { LocalsService } from '../../../services/local-storage.service';
 import { AudioService } from '../../../services/audio.service';
-import { ActionService } from '../../../services/action.service';
+import { CookieService } from '../../../services/cookie.service';
+import { TokenService } from '../../../services/token.service';
+import { ActionService } from "../../../services/action.service";
 
 @Component({
-  selector: 'app-delete',
-  templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.scss']
+  selector: 'app-receive',
+  templateUrl: './receive.component.html',
+  styleUrls: ['./receive.component.scss']
 })
-export class DeleteComponent implements OnInit, OnDestroy {
+
+export class ReceiveComponent implements OnInit, OnDestroy {
   @ViewChild('sizeViewer') sizeViewer: ElementRef;
   resizeObservable$: Observable<Event>
   resizeSubscription$: Subscription
@@ -20,14 +23,16 @@ export class DeleteComponent implements OnInit, OnDestroy {
   public borders: boolean = true;
   public elementOrient: string = 'left';
   public element: string;
-  public header: string = 'DELETE';
-  public description: string = 'confirm to delete ticket';
+  public header: string = 'receive';
+  public description: string = 'receive';
 
   constructor(
       public globalsService: GlobalsService,
       private localsService: LocalsService,
       public audioService: AudioService,
-      private actionService: ActionService
+      private cookieService: CookieService,
+      private tokenService: TokenService,
+      private actionService: ActionService,
   ) {}
 
   ngOnInit(): void {
@@ -39,11 +44,12 @@ export class DeleteComponent implements OnInit, OnDestroy {
       this.getSize();
     })
     this.audioService.audio.type.play();
+    this.audioService.audio.receive.play();
     this.actionService.actionGenerator(
         'system',
-        'delete form',
-        'delete form open',
-        'delete form open',
+        'receive form',
+        'receive form open',
+        'receive form open',
         'open'
     );
   }
@@ -51,9 +57,9 @@ export class DeleteComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.actionService.actionGenerator(
         'system',
-        'delete form',
-        'delete form close',
-        'delete form close',
+        'receive form',
+        'receive form close',
+        'receive form close',
         'close'
     );
   }
@@ -64,7 +70,7 @@ export class DeleteComponent implements OnInit, OnDestroy {
       this.elementOrient = 'centre';
       this.actionService.actionGenerator(
           'system',
-          'delete form',
+          'receive form',
           'element position change',
           'element position change with autosize detection',
           this.elementOrient
@@ -73,7 +79,7 @@ export class DeleteComponent implements OnInit, OnDestroy {
       this.elementOrient = 'left';
       this.actionService.actionGenerator(
           'system',
-          'delete form',
+          'receive form',
           'element position change',
           'element position change with autosize detection',
           this.elementOrient
@@ -81,32 +87,18 @@ export class DeleteComponent implements OnInit, OnDestroy {
     }
   }
 
-  closeDelete() {
-    this.globalsService.currentTicketNum = undefined;
-    this.globalsService.currentTicket = undefined;
-    this.globalsService.popupService = '';
+  closeWatch() {
     this.actionService.actionGenerator(
         'user',
-        'delete form',
+        'receive form',
         'button click',
-        'auto Pop Up close after close action',
-        'close'
+        'close ticket watch form',
+        'receive'
     );
-  }
-
-  destroyTicket() {
-    this.localsService.removeOneStorageTicket(this.globalsService.currentTicketNum);
-    this.actionService.actionGenerator(
-        'user',
-        'delete form',
-        'button click',
-        'ticket delete action',
-        'delete'
-    );
-    this.globalsService.currentTicketNum = undefined;
-    this.globalsService.currentTicket = undefined;
     this.globalsService.popupService = '';
   }
 }
+
+
 
 

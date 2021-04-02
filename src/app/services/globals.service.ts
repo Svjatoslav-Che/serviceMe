@@ -30,6 +30,7 @@ export class GlobalsService {
     //ACHIEVES LIST
     achievesList: any = undefined;
     newAchieve: boolean = false;
+    currentAchieve: any;
 
 
     // SETTINGS VARIABLES

@@ -73,12 +73,14 @@ import { FeedbackComponent } from './components/_popup/feedback/feedback.compone
 import { CookiesPolicyComponent } from './components/_popup/cookies-policy/cookies-policy.component';
 import { TicketComponent } from './components/_popup/ticket/ticket.component';
 import { DeleteComponent } from './components/_popup/delete/delete.component';
+import { ReceiveComponent } from './components/_popup/receive/receive.component';
 
 import { SandAchivesComponent } from './components/_sandbox/sand-achives/sand-achives.component';
 import { SandPushComponent } from './components/_sandbox/sand-push/sand-push.component';
 import { SandCoreComponent } from './components/_sandbox/sand-core/sand-core.component';
 import { SandAssistComponent } from './components/_sandbox/sand-assist/sand-assist.component';
 import { SandStructureComponent } from './components/_sandbox/sand-structure/sand-structure.component';
+
 
 
 
@@ -180,6 +182,7 @@ const appRoutes: Routes =[
     SandCoreComponent,
     SandAssistComponent,
     SandStructureComponent,
+    ReceiveComponent,
   ],
     imports: [
       RouterModule.forRoot(appRoutes),

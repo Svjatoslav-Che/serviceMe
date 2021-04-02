@@ -1,65 +1,72 @@
 {
-  "achieves_version": 1,
-  "solved_visit_page": false,
-  "visit_page": [
-    {
-      "weight": "solid",
+  "achieves_version": 2,
+  "solved_all_mainpages": false,
+  "visit_page": {
+    "all_mainpages": {
+      "state": "none",
+      "name": "all_mainpages",
+      "icon": "HEADER",
+      "composed": "main_pages",
       "type": "progress",
-      "implements": "single main page",
-      "progress_value": 0,
-      "progress_value_complete": 5,
-      "name": "visit all main pages",
-      "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "progress_now": 0,
+      "progress_end": 5,
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "casual",
-      "type": "single main page",
-      "name": "home page",
+    "visit_home": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_home",
+      "icon": "HEADER",
+      "implements": "main_pages",
+      "type": "single",
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "casual",
-      "type": "single main page",
-      "name": "about page",
+    "visit_about": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_about",
+      "icon": "ABOUT",
+      "implements": "main_pages",
+      "type": "single",
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "casual",
-      "type": "single main page",
-      "name": "sandbox page",
+    "visit_sandbox": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_sandbox",
+      "icon": "SANDBOX",
+      "implements": "main_pages",
+      "type": "single",
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "casual",
-      "type": "single main page",
-      "name": "actions page",
+    "visit_actions": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_actions",
+      "icon": "ACTIONS",
+      "implements": "main_pages",
+      "type": "single",
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "casual",
-      "type": "single main page",
-      "name": "achieves page",
+    "visit_achieves": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_achieves",
+      "icon": "ACHIVES",
+      "implements": "main_pages",
+      "type": "single",
+      "date_solved": null,
+      "date_receive": null
     },
-    {
-      "weight": "secret",
-      "type": "single main page",
-      "name": "404 page",
+    "visit_404": {
       "state": "none",
-      "achieve_seen_date": null,
-      "date": null
+      "name": "visit_404",
+      "icon": "HEADER",
+      "implements": "main_pages",
+      "type": "secret",
+      "date_solved": null,
+      "date_receive": null
     }
-  ]
+  }
+
 }

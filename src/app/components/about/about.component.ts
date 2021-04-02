@@ -41,6 +41,18 @@ export class AboutComponent implements OnInit, OnDestroy {
         'about page open',
         'open'
     );
+    if (this.globalsService.userLogged) {
+      let achieve = this.globalsService.achievesList.default;
+      if (achieve !== undefined && achieve.visit_page.visit_about.state === 'none') {
+        this.actionService.actionGenerator(
+            'system',
+            'about page',
+            'solve',
+            'visit mainpage solved',
+            'visit_about'
+        );
+      }
+    }
   }
 
   ngOnDestroy() {

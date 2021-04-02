@@ -31,8 +31,9 @@ export class ActionService {
             }
         )
 
-        if (this.globalsService.userLogged && this.globalsService.achievesList && !this.globalsService.achievesList.default.solved_visit_page) {
-            this.achievesService.achievesCheckerSolvedVisit(location, action, params);
+
+        if (description === 'visit mainpage solved') {
+            this.achievesService.achievesCheckerSolvedVisitMainpages(params);
         }
     }
 

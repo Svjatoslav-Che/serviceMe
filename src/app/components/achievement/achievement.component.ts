@@ -7,7 +7,7 @@ import { GlobalsService } from '../../services/globals.service';
 import { ActionService } from '../../services/action.service';
 import { LocalsService } from '../../services/local-storage.service';
 import { TranslateService } from '@ngx-translate/core';
-import {element} from "protractor";
+// import {element} from "protractor";
 
 const DURATION = { duration: 300 };
 
@@ -24,6 +24,7 @@ const DURATION = { duration: 300 };
 export class AchievementComponent implements OnInit, OnDestroy {
   public mainDiv: boolean = false;
   public currentDate =  Date.parse(Date());
+  public achieveList: any;
 
   constructor(
       public audioService: AudioService,
@@ -35,7 +36,7 @@ export class AchievementComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this._data.currentData.subscribe(currentData => this.toggleDiv(currentData));
+    this._data.currentData.subscribe(currentData => this.checkAction(currentData));
     this.mainDiv = true;
     if (this.globalsService.firstAppear) {
       this.audioService.audio.routeIn.play();
@@ -47,7 +48,20 @@ export class AchievementComponent implements OnInit, OnDestroy {
         'achieves page open',
         'open'
     );
-    this.getAchieve();
+    if (this.globalsService.userLogged) {
+      this.generateAchievesList();
+
+      let achieve = this.globalsService.achievesList.default;
+      if (achieve !== undefined && achieve.visit_page.visit_achieves.state === 'none') {
+        this.actionService.actionGenerator(
+            'system',
+            'achieves page',
+            'solve',
+            'visit mainpage solved',
+            'visit_achieves'
+        );
+      }
+    }
   }
 
   ngOnDestroy() {
@@ -58,6 +72,35 @@ export class AchievementComponent implements OnInit, OnDestroy {
         'achieves page close',
         'close'
     );
+  }
+
+  generateAchievesList() {
+    let achieveVisit = this.globalsService.achievesList.default.visit_page;
+    this.achieveList = [
+      achieveVisit.all_mainpages,
+      achieveVisit.visit_home,
+      achieveVisit.visit_about,
+      achieveVisit.visit_sandbox,
+      achieveVisit.visit_actions,
+      achieveVisit.visit_achieves,
+      achieveVisit.visit_404
+    ]
+  }
+
+  checkSolid(value) {
+    if (value === 'progress') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  checkVisibility(value) {
+    if (value.type === 'secret' && value.state === 'none') {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   getAchieve() {
@@ -80,36 +123,47 @@ export class AchievementComponent implements OnInit, OnDestroy {
         i++;
       })
     }
-    this.checkAchieve();
+    // this.checkAchieve();
   }
 
-  checkAchieve() {
-    let achievesList = this.globalsService.achievesList.default;
-    this.globalsService.newAchieve = false;
-    achievesList.visit_page.forEach(element => {
-      if (element.state === 'solved') {
-        this.globalsService.newAchieve = true;
-      }
-    })
-
-    if (achievesList.visit_page[0].progress_value === 5 && achievesList.visit_page[0].state === 'none') {
-      this.globalsService.achievesList.default.visit_page[0].state = 'solved';
-      this.globalsService.newAchieve = true;
-      this.getAchieve();
-    }
-    if (achievesList.visit_page[0].state === 'received') {
-      this.globalsService.achievesList.default.solved_visit_page = true;
-      this.localsService.updateAchievesList(this.globalsService.achievesList);
-    }
+  receive(value) {
+    this.globalsService.currentAchieve = value;
+    this.globalsService.popupService = 'receive';
+    // if (confirm('received')) {
+    //   console.log(this.globalsService.achievesList.default.visit_page[value.name].state)
+    //   this.globalsService.achievesList.default.visit_page[value.name].state = 'received';
+    //   this.globalsService.achievesList.default.visit_page[value.name].date_receive = Date.parse(Date());
+    //   this.localsService.updateAchievesList(this.globalsService.achievesList);
+    //   this.generateAchievesList();
+    // }
   }
+
+  // checkAchieve() {
+  //   let achievesList = this.globalsService.achievesList.default;
+  //   this.globalsService.newAchieve = false;
+  //   achievesList.visit_page.forEach(element => {
+  //     if (element.state === 'solved') {
+  //       this.globalsService.newAchieve = true;
+  //     }
+  //   })
+  //
+  //   if (achievesList.visit_page[0].progress_value === 5 && achievesList.visit_page[0].state === 'none') {
+  //     this.globalsService.achievesList.default.visit_page[0].state = 'solved';
+  //     this.globalsService.newAchieve = true;
+  //     this.getAchieve();
+  //   }
+  //   if (achievesList.visit_page[0].state === 'received') {
+  //     this.globalsService.achievesList.default.solved_visit_page = true;
+  //     this.localsService.updateAchievesList(this.globalsService.achievesList);
+  //   }
+  // }
 
   checkState(value) {
-    let element = this.globalsService.achievesList.default.visit_page[value];
-    switch (element.state) {
+    switch (value) {
       case 'none': {
         return 'none';
       }
-      case 'solved': {
+      case 'solve': {
         return 'solved';
       }
       case 'received': {
@@ -131,13 +185,16 @@ export class AchievementComponent implements OnInit, OnDestroy {
   animOutDone(event: AnimationEvent) {
   }
 
-  toggleDiv(currentData) {
+  checkAction(currentData) {
     if (currentData.action === 'first route activate') {
       if (this.mainDiv) {
         this.audioService.audio.routeOut.play();
       }
       this.mainDiv = false;
     }
+    // if (currentData.description === 'apply receive' && currentData.action === 'receive') {
+    //   this.generateAchievesList();
+    // }
   }
   // ************************* TEMPLATE CONDITIONS END *************************
 }

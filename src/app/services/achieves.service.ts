@@ -12,26 +12,23 @@ export class AchievesService {
     ) {
     }
 
-    achievesCheckerSolvedVisit(
-        location: string,
-        action: string,
-        params: any) {
-        let i = 0;
+    achievesCheckerSolvedVisitMainpages(params: any) {
+        let adress = this.globalsService.achievesList.default.visit_page;
+        adress[params].state = 'solve';
+        adress[params].date_solved = Date.parse(Date());
+        if (params !== 'visit_404') {
+            ++adress.all_mainpages.progress_now;
+        }
+        if (adress.all_mainpages.progress_now === 5) {
+            adress.all_mainpages.state = 'solve';
+            adress.all_mainpages.date_solved = Date.parse(Date());
+        }
+        this.localsService.updateAchievesList(this.globalsService.achievesList);
+        this.achieveMessage();
+    }
 
-        this.globalsService.achievesList.default.visit_page.forEach(element => {
-                if (element.state === 'none') {
-                    if (element.name === location && params === 'open') {
-                        this.globalsService.achievesList.default.visit_page[i].state = 'solved';
-                        this.globalsService.achievesList.default.visit_page[i].date = Date.parse(Date());
-                        this.localsService.updateAchievesList(this.globalsService.achievesList);
-                        this.audioService.audio.msg.play();
-                        if (!this.globalsService.newAchieve) {
-                            this.globalsService.newAchieve = true;
-                        }
-                    }
-                }
-                i++;
-            }
-        );
+    achieveMessage() {
+        this.globalsService.newAchieve = true;
+        this.audioService.audio.msg.play();
     }
 }

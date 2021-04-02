@@ -50,12 +50,12 @@ export class AppComponent implements OnInit {
   checkAchievesToSeen() {
     if (this.localsService.getAllAchievesList() !== null) {
       let achievesList = this.localsService.getAllAchievesList();
-      achievesList.default.visit_page.forEach(element => {
-        if (element.state === 'solved') {
-          this.globalsService.newAchieve = true;
-          this.audioService.audio.msg.play();
-        }
-      })
+      // achievesList.default.visit_page.forEach(element => {
+      //   if (element.state === 'solved') {
+      //     this.globalsService.newAchieve = true;
+      //     this.audioService.audio.msg.play();
+      //   }
+      // })
     }
   }
 

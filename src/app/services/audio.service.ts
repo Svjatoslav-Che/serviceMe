@@ -31,6 +31,7 @@ export class AudioService {
         coreDeActivated: new Audio(),
         coreWorksHover: new Audio(),
         msg: new Audio(),
+        receive: new Audio(),
     };
 
     loadSoundData() {
@@ -51,6 +52,7 @@ export class AudioService {
         this.audio.coreActivated.load();
         this.audio.coreDeActivated.load();
         this.audio.msg.load();
+        this.audio.receive.load();
 
         // this.checkState();
     }
@@ -120,6 +122,9 @@ export class AudioService {
         //MESSAGE
         this.audio.msg.src = ROUTE + "/assets/sounds/msg.webm";
         this.audio.msg.volume = this.globalsService.soundVol/100;
+        //RECEIVE
+        this.audio.receive.src = ROUTE + "/assets/sounds/receive.webm";
+        this.audio.receive.volume = this.globalsService.soundVol/100;
     }
 
     initSoundVol() {
@@ -153,5 +158,7 @@ export class AudioService {
         this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
         //MESSAGE
         this.audio.msg.volume = this.globalsService.soundVol/100;
+        //RECEIVE
+        this.audio.receive.volume = this.globalsService.soundVol/100;
     }
 }
