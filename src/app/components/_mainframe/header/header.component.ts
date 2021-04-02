@@ -224,7 +224,7 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
         Math.floor(e.target.value)
     );
     this.globalsService.soundVol = Math.floor(e.target.value);
-    this.globalsService.soundAmbient = Math.floor(e.target.value / 10);
+    this.globalsService.soundAmbient = Math.floor(e.target.value / 4);
     this.audioService.initSoundData();
     this.localsService.set('soundVol', Math.floor(e.target.value));
     this.audioService.audio.applySND.play();

@@ -78,87 +78,73 @@ export class AudioService {
     initSoundData() {
         //HEADER ROLL IN
         this.audio.headRoll.src = ROUTE + "/assets/sounds/headroll.webm";
-        this.audio.headRoll.volume = this.globalsService.soundVol/100;
         //Router main shutter IN
         this.audio.routeIn.src = ROUTE + "/assets/sounds/routeout.webm";
-        this.audio.routeIn.volume = this.globalsService.soundVol/100;
         this.audio.routeOut.src = ROUTE + "/assets/sounds/routein.webm";
-        this.audio.routeOut.volume = this.globalsService.soundVol/100;
         //SMALL WINDOW FADE IN
         this.audio.smallIn.src = ROUTE + "/assets/sounds/on.webm";
-        this.audio.smallIn.volume = this.globalsService.soundVol/100;
         //SMALL WINDOW FADE OUT
         this.audio.smallOut.src = ROUTE + "/assets/sounds/off.webm";
-        this.audio.smallOut.volume = this.globalsService.soundVol/100;
         //APPLY SETTINGS SOUND
         this.audio.applySND.src = ROUTE + "/assets/sounds/apply.webm";
-        this.audio.applySND.volume = this.globalsService.soundVol/100;
         //SELECT BTN SOUND
         this.audio.selectSND.src = ROUTE + "/assets/sounds/select.webm";
-        this.audio.selectSND.volume = this.globalsService.soundVol/100;
         //CLICK BTN SND
         this.audio.clickSND.src = ROUTE + "/assets/sounds/click.webm";
-        this.audio.clickSND.volume = this.globalsService.soundVol/100;
         //LOGIN
         this.audio.logIn.src = ROUTE + "/assets/sounds/login.webm";
-        this.audio.logIn.volume = this.globalsService.soundAmbient/100;
         //LOGOUT
         this.audio.logOut.src = ROUTE + "/assets/sounds/logout.webm";
-        this.audio.logOut.volume = this.globalsService.soundAmbient/100;
         //FAIL
         this.audio.fail.src = ROUTE + "/assets/sounds/fail.webm";
-        this.audio.fail.volume = this.globalsService.soundVol/100;
         //TYPE
         this.audio.type.src = ROUTE + "/assets/sounds/type.webm";
-        this.audio.type.volume = this.globalsService.soundVol/100;
         //COMPLETE
         this.audio.complete.src = ROUTE + "/assets/sounds/complete.webm";
-        this.audio.complete.volume = this.globalsService.soundVol/100;
         //CORE
         this.audio.coreActivated.src = ROUTE + "/assets/sounds/power_on.webm";
-        this.audio.coreActivated.volume = this.globalsService.soundVol/100;
         this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/power_off.webm";
-        this.audio.coreDeActivated.volume =  this.globalsService.soundVol/100;
         //MESSAGE
         this.audio.msg.src = ROUTE + "/assets/sounds/msg.webm";
-        this.audio.msg.volume = this.globalsService.soundVol/100;
         //RECEIVE
         this.audio.receive.src = ROUTE + "/assets/sounds/receive.webm";
-        this.audio.receive.volume = this.globalsService.soundVol/100;
+        this.initSoundVol();
     }
 
     initSoundVol() {
+        let innerVol = this.globalsService.soundVol/100;
+        let innerAmbient = this.globalsService.soundAmbient/100;
         //HEADER ROLL IN
-        this.audio.headRoll.volume = this.globalsService.soundVol/100;
+        this.audio.headRoll.volume = innerVol;
         //Router main shutter IN
-        this.audio.routeIn.volume = this.globalsService.soundVol/100;
-        this.audio.routeOut.volume = this.globalsService.soundVol/100;
+        this.audio.routeIn.volume = innerVol;
+        this.audio.routeOut.volume = innerVol;
         //SMALL WINDOW FADE IN
-        this.audio.smallIn.volume = this.globalsService.soundVol/100;
+        this.audio.smallIn.volume = innerVol;
         //SMALL WINDOW FADE OUT
-        this.audio.smallOut.volume = this.globalsService.soundVol/100;
+        this.audio.smallOut.volume = innerVol;
         //APPLY SETTINGS SOUND
-        this.audio.applySND.volume = this.globalsService.soundVol/100;
+        this.audio.applySND.volume = innerVol;
         //SELECT BTN SOUND
-        this.audio.selectSND.volume = this.globalsService.soundVol/100;
+        this.audio.selectSND.volume = innerVol;
         //CLICK BTN SND
-        this.audio.clickSND.volume = this.globalsService.soundVol/100;
+        this.audio.clickSND.volume = innerVol;
         //LOGIN
-        this.audio.logIn.volume = this.globalsService.soundVol/100;
+        this.audio.logIn.volume = innerVol;
         //LOGOUT
-        this.audio.logOut.volume = this.globalsService.soundVol/100;
+        this.audio.logOut.volume = innerVol;
         //FAIL
-        this.audio.fail.volume = this.globalsService.soundVol/100;
+        this.audio.fail.volume = innerVol;
         //TYPE
-        this.audio.type.volume = this.globalsService.soundVol/100;
+        this.audio.type.volume = innerVol;
         //COMPLETE
-        this.audio.complete.volume = this.globalsService.soundVol/100;
+        this.audio.complete.volume = innerVol;
         //CORE
-        this.audio.coreActivated.volume = this.globalsService.soundVol/100;
-        this.audio.coreDeActivated.volume =  this.globalsService.soundVol/100;
+        this.audio.coreActivated.volume = innerAmbient;
+        this.audio.coreDeActivated.volume =  innerAmbient;
         //MESSAGE
-        this.audio.msg.volume = this.globalsService.soundVol/100;
+        this.audio.msg.volume = innerAmbient;
         //RECEIVE
-        this.audio.receive.volume = this.globalsService.soundVol/100;
+        this.audio.receive.volume = innerAmbient;
     }
 }

@@ -468,7 +468,19 @@
 		"achives": "ACHIEVES",
 		"achives_header": "Open them all",
 		"description_1": "Uses core information",
-		"description_2": "Built on user actions"
+		"description_2": "Built on user actions",
+		"all_mainpages": "All Main Pages",
+		"visit_home": "Project",
+		"visit_about": "About",
+		"visit_sandbox": "Sandbox",
+		"visit_actions": "Actions",
+		"visit_achieves": "Achieves",
+		"visit_404": "404",
+		"received": "Received: ",
+		"solved": "<span>Solved</span>, but <span>Not Received</span> yet",
+		"not_solved": "<span>Not Solved</span> yet",
+		"progress": "Progress: ",
+		"of": "of"
 	}
 }
 

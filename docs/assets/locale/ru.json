@@ -480,6 +480,18 @@
 		"achives": "АЧИВКИ",
 		"achives_header": "Открой их все",
 		"description_1": "Информация пользовательского ядра",
-		"description_2": "Создано на действиях пользователя"
+		"description_2": "Создано на действиях пользователя",
+		"all_mainpages": "Все Главные Страницы:",
+		"visit_home": "Проект",
+		"visit_about": "О Сайте",
+		"visit_sandbox": "Песочница",
+		"visit_actions": "Действия",
+		"visit_achieves": "Ачивки",
+		"visit_404": "404",
+		"received": "Получено: ",
+		"solved": "<span>Собрано</span>, но <span>Не Получено</span> пока",
+		"not_solved": "<span>Не Собрано</span> пока",
+		"progress": "Прогресс: ",
+		"of": "из"
 	}
 }

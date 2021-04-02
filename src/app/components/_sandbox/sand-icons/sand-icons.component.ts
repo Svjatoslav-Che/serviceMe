@@ -30,7 +30,7 @@ export class SandIconsComponent implements OnInit {
       private _data: CommonService,
       public globalsService: GlobalsService,
   ) {
-      this.headerIcons = ['HOME', 'ABOUT', 'SANDBOX', 'ACHIVES', 'ANGULAR', 'LOGIN', 'LOGOUT', 'ACTIONS', 'JP', 'DELETE', 'RJsX', 'IDEA', 'PUZZLE'];
+      this.headerIcons = ['HOME', 'ABOUT', 'SANDBOX', 'ACHIVES', 'ANGULAR', 'LOGIN', 'LOGOUT', 'ACTIONS', 'JP', 'DELETE', 'RJsX', 'IDEA', 'PUZZLE', 'achieve_progress'];
       this.buttonIcons = ['angular', 'settings', 'bug', 'gitlab', 'in', 'picture', 'potato', 'bubble', 'green', 'blue', 'pink', 'gray', 'addpic', 'cookie',
                           'github', 'unmute', 'mute', 'ambient', 'ambientMute', 'receive'];
       this.elementsIcons = ['BASIC', 'TABLE', 'BOOTSTRAP', 'ELEMENTS', 'POP UP', 'GRAPHS', 'SOUNDS', 'BUTTONS', 'SQUARE',

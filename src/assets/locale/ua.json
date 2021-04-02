@@ -466,6 +466,18 @@
     "achives": "ДОСЯГАНКИ",
     "achives_header": "Відкрий їх усі",
     "description_1": "Інформація користувацького ядра",
-    "description_2": "Створено на користувацьких діях"
+    "description_2": "Створено на користувацьких діях",
+    "all_mainpages": "Всі Головні Сторінки:",
+    "visit_home": "Проект",
+    "visit_about": "Про Сайт",
+    "visit_sandbox": "Пісківка",
+    "visit_actions": "Дії",
+    "visit_achieves": "Досяганки",
+    "visit_404": "404",
+    "received": "Отримано: ",
+    "solved": "<span>Зібрано</span>, але <span>Не Отримано</span> покищо",
+    "not_solved": "<span>Не Зібрано</span> покищо",
+    "progress": "Прогрес: ",
+    "of": "з"
   }
 }

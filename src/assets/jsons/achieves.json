@@ -5,7 +5,7 @@
     "all_mainpages": {
       "state": "none",
       "name": "all_mainpages",
-      "icon": "HEADER",
+      "icon": "achieve_progress",
       "composed": "main_pages",
       "type": "progress",
       "progress_now": 0,
@@ -16,7 +16,7 @@
     "visit_home": {
       "state": "none",
       "name": "visit_home",
-      "icon": "HEADER",
+      "icon": "HOME",
       "implements": "main_pages",
       "type": "single",
       "date_solved": null,
@@ -61,7 +61,7 @@
     "visit_404": {
       "state": "none",
       "name": "visit_404",
-      "icon": "HEADER",
+      "icon": "404",
       "implements": "main_pages",
       "type": "secret",
       "date_solved": null,

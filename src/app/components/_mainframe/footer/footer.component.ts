@@ -89,7 +89,7 @@ export class FooterComponent implements OnInit {
   }
 
   muteAmbientToggle() {
-    !this.ambientMute ? this.globalsService.soundAmbient = 0 : this.globalsService.soundAmbient = this.globalsService.soundVol/4;
+    !this.ambientMute ? this.globalsService.soundAmbient = 0 : this.globalsService.soundAmbient =  this.globalsService.soundVol;;
     this.audioService.initSoundVol();
     this.ambientMute = !this.ambientMute;
     this.localsService.set('ambientMute', this.ambientMute);

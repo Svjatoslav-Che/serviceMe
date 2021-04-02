@@ -7,7 +7,6 @@ import { GlobalsService } from '../../services/globals.service';
 import { ActionService } from '../../services/action.service';
 import { LocalsService } from '../../services/local-storage.service';
 import { TranslateService } from '@ngx-translate/core';
-// import {element} from "protractor";
 
 const DURATION = { duration: 300 };
 
@@ -88,11 +87,15 @@ export class AchievementComponent implements OnInit, OnDestroy {
   }
 
   checkSolid(value) {
-    if (value === 'progress') {
-      return true;
-    } else {
-      return false;
+    switch (value) {
+      case 'progress': {
+        return true;
+      }
+      case 'secret': {
+        return true;
+      }
     }
+    return false;
   }
 
   checkVisibility(value) {
@@ -112,7 +115,6 @@ export class AchievementComponent implements OnInit, OnDestroy {
           if (confirm(element.name + ' solved, receive it?')) {
             achievesList[i].state = 'received';
             achievesList[i].achieve_seen_date =  Date.parse(Date());
-
             //CHECK CONDITION FOR visit all main pages ACHIEVE
             if (element.type === 'single main page') {
               achievesList[0].progress_value = achievesList[0].progress_value + 1;
@@ -123,20 +125,16 @@ export class AchievementComponent implements OnInit, OnDestroy {
         i++;
       })
     }
-    // this.checkAchieve();
   }
 
   receive(value) {
     this.globalsService.currentAchieve = value;
     this.globalsService.popupService = 'receive';
-    // if (confirm('received')) {
-    //   console.log(this.globalsService.achievesList.default.visit_page[value.name].state)
       this.globalsService.achievesList.default.visit_page[value.name].state = 'received';
       this.globalsService.achievesList.default.visit_page[value.name].date_receive = Date.parse(Date());
       this.localsService.updateAchievesList(this.globalsService.achievesList);
       this.generateAchievesList();
       this.checkAchievesToSeen();
-    // }
   }
 
   checkAchievesToSeen() {
@@ -149,26 +147,6 @@ export class AchievementComponent implements OnInit, OnDestroy {
       }
     }
   }
-
-  // checkAchieve() {
-  //   let achievesList = this.globalsService.achievesList.default;
-  //   this.globalsService.newAchieve = false;
-  //   achievesList.visit_page.forEach(element => {
-  //     if (element.state === 'solved') {
-  //       this.globalsService.newAchieve = true;
-  //     }
-  //   })
-  //
-  //   if (achievesList.visit_page[0].progress_value === 5 && achievesList.visit_page[0].state === 'none') {
-  //     this.globalsService.achievesList.default.visit_page[0].state = 'solved';
-  //     this.globalsService.newAchieve = true;
-  //     this.getAchieve();
-  //   }
-  //   if (achievesList.visit_page[0].state === 'received') {
-  //     this.globalsService.achievesList.default.solved_visit_page = true;
-  //     this.localsService.updateAchievesList(this.globalsService.achievesList);
-  //   }
-  // }
 
   checkState(value) {
     switch (value) {

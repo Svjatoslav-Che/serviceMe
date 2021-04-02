@@ -50,20 +50,20 @@
                     <div class="description"
                         [ngClass]="{'received' : achieve.state === 'received'}">
                         <div class="description_text">
-                            <h4 class="__custom {{achieve.state}}">{{achieve.name}}</h4>
-                            <div *ngIf="achieve.type === 'progress'" class="text __custom">Progress: <span>{{achieve.progress_now}}</span> of <span>{{achieve.progress_end}}</span></div>
+                            <h4 class="__custom {{achieve.state}}">{{'achives.' + achieve.name|translate}}</h4>
+                            <div *ngIf="achieve.type === 'progress'" class="text __custom">{{'achives.progress'|translate}}<span>{{achieve.progress_now}}</span> {{'achives.of'|translate}} <span>{{achieve.progress_end}}</span></div>
                             <div *ngIf="achieve.date_receive !== null else notgetyet" class="text __custom">
                                 <div *ngIf="(achieve.date_receive | amDifference: currentDate :'days' : true) < 1">
-                                    <span>Received: </span>{{achieve.date_receive | amLocale: (translateService.currentLang === 'ua' ? 'uk' : translateService.currentLang) | amTimeAgo}}&nbsp;
+                                    <span>{{'achives.received'|translate}}</span>{{achieve.date_receive | amLocale: (translateService.currentLang === 'ua' ? 'uk' : translateService.currentLang) | amTimeAgo}}&nbsp;
                                 </div>
                                 <div *ngIf="(achieve.date_receive | amDifference: currentDate :'days' : true) >= 1">
-                                    <span>Received: </span>{{achieve.date_receive | date:'dd.MM.yyyy,HH:mm'}}&nbsp;
+                                    <span>{{'achives.received'|translate}}</span>{{achieve.date_receive | date:'dd.MM.yyyy,HH:mm'}}&nbsp;
                                 </div>
                             </div>
                             <ng-template #notgetyet>
                                 <div class="text __custom">
-                                    <span *ngIf="achieve.state === 'solve'">Solved, but not Received yet</span>
-                                    <span *ngIf="achieve.state === 'none'">Not Solved yet</span>
+                                    <div *ngIf="achieve.state === 'solve'" [innerHTML]="'achives.solved'|translate"></div>
+                                    <div *ngIf="achieve.state === 'none'" [innerHTML]="'achives.not_solved'|translate"></div>
                                 </div>
                             </ng-template>
                         </div>
