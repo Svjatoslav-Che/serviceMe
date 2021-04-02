@@ -87,12 +87,15 @@ export class HeaderComponent implements OnInit, ViewChildren, AfterContentInit {
   }
 
   checkAchievesToSeen() {
-    let achievesList = this.localsService.getAllAchievesList();
-    achievesList.default.visit_page.forEach(element => {
-      if (element.solved && !element.achieve_seen) {
-        this.globalsService.newAchieve = true;
+    let achievesList = this.localsService.getAllAchievesList().default;
+    for (let element in achievesList.visit_page) {
+      if (achievesList.visit_page[element].state === 'solve') {
+        this.audioService.audio.msg.play();
+        return this.globalsService.newAchieve = true;
+      } else {
+        this.globalsService.newAchieve = false;
       }
-    })
+    }
   }
 
   localScenarioToggle(): any {

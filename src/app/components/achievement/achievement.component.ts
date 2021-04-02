@@ -131,11 +131,23 @@ export class AchievementComponent implements OnInit, OnDestroy {
     this.globalsService.popupService = 'receive';
     // if (confirm('received')) {
     //   console.log(this.globalsService.achievesList.default.visit_page[value.name].state)
-    //   this.globalsService.achievesList.default.visit_page[value.name].state = 'received';
-    //   this.globalsService.achievesList.default.visit_page[value.name].date_receive = Date.parse(Date());
-    //   this.localsService.updateAchievesList(this.globalsService.achievesList);
-    //   this.generateAchievesList();
+      this.globalsService.achievesList.default.visit_page[value.name].state = 'received';
+      this.globalsService.achievesList.default.visit_page[value.name].date_receive = Date.parse(Date());
+      this.localsService.updateAchievesList(this.globalsService.achievesList);
+      this.generateAchievesList();
+      this.checkAchievesToSeen();
     // }
+  }
+
+  checkAchievesToSeen() {
+    let achievesList = this.localsService.getAllAchievesList().default;
+    for (let element in achievesList.visit_page) {
+      if (achievesList.visit_page[element].state === 'solve') {
+        return this.globalsService.newAchieve = true;
+      } else {
+        this.globalsService.newAchieve = false;
+      }
+    }
   }
 
   // checkAchieve() {

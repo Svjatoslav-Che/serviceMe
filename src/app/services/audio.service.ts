@@ -118,7 +118,7 @@ export class AudioService {
         this.audio.coreActivated.src = ROUTE + "/assets/sounds/power_on.webm";
         this.audio.coreActivated.volume = this.globalsService.soundVol/100;
         this.audio.coreDeActivated.src = ROUTE + "/assets/sounds/power_off.webm";
-        this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
+        this.audio.coreDeActivated.volume =  this.globalsService.soundVol/100;
         //MESSAGE
         this.audio.msg.src = ROUTE + "/assets/sounds/msg.webm";
         this.audio.msg.volume = this.globalsService.soundVol/100;
@@ -155,7 +155,7 @@ export class AudioService {
         this.audio.complete.volume = this.globalsService.soundVol/100;
         //CORE
         this.audio.coreActivated.volume = this.globalsService.soundVol/100;
-        this.audio.coreDeActivated.volume = (this.globalsService.soundVol/3)/100;
+        this.audio.coreDeActivated.volume =  this.globalsService.soundVol/100;
         //MESSAGE
         this.audio.msg.volume = this.globalsService.soundVol/100;
         //RECEIVE

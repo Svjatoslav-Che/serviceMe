@@ -48,14 +48,17 @@ export class AppComponent implements OnInit {
   }
 
   checkAchievesToSeen() {
-    if (this.localsService.getAllAchievesList() !== null) {
-      let achievesList = this.localsService.getAllAchievesList();
-      // achievesList.default.visit_page.forEach(element => {
-      //   if (element.state === 'solved') {
-      //     this.globalsService.newAchieve = true;
-      //     this.audioService.audio.msg.play();
-      //   }
-      // })
+    if (this.localsService.getAllAchievesList() === null) {
+      return this.initAchives();
+    }
+    let achievesList = this.localsService.getAllAchievesList().default;
+    for (let element in achievesList.visit_page) {
+      if (achievesList.visit_page[element].state === 'solve') {
+        this.audioService.audio.msg.play();
+        return this.globalsService.newAchieve = true;
+      } else {
+        this.globalsService.newAchieve = false;
+      }
     }
   }
 
