@@ -11,7 +11,7 @@ import { ActionService } from '../../../services/action.service';
   styleUrls: ['./delete.component.scss']
 })
 export class DeleteComponent implements OnInit, OnDestroy {
-  @ViewChild('sizeViewer') sizeViewer: ElementRef;
+  @ViewChild('sizeViewer') sizeViewer: ElementRef
   resizeObservable$: Observable<Event>
   resizeSubscription$: Subscription
 

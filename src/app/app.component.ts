@@ -1,4 +1,4 @@
-import {Component, OnInit, HostListener} from '@angular/core';
+import {Component, OnInit, HostListener, ViewChild, ElementRef} from '@angular/core';
 import { AudioService} from './services/audio.service';
 import { TokenService } from './services/token.service';
 import { CookieService } from './services/cookie.service';
@@ -9,6 +9,7 @@ import { BigGraphComponent } from './components/_elements/big-graph/big-graph.co
 import { UAParser } from 'ua-parser-js';
 import { LocalsService } from './services/local-storage.service';
 import { ActionService } from './services/action.service';
+import {fromEvent, Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,16 @@ import { ActionService } from './services/action.service';
 })
 
 export class AppComponent implements OnInit {
+  @ViewChild('sizeViewer') sizeViewer: ElementRef
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
   @HostListener('window:resize', ['$event'])
 
   onResize(event) {
     this.detectDevice();
   }
+
+  public innerOutletHeight: number = 100;
 
   constructor(
       private cookieService: CookieService,
@@ -36,6 +42,14 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.getSize();
+    }, 0);
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe( event => {
+      this.getSize();
+    })
+
     this.audioService.loadSoundData();
     this.audioService.initSoundData();
     //loader conditions
@@ -44,7 +58,43 @@ export class AppComponent implements OnInit {
     this.checkCookies();
     this.detectDevice();
     this.initAchives();
-    this.checkAchievesToSeen()
+    this.checkAchievesToSeen();
+
+    setTimeout(() => {
+      this.getSize();
+    }, 0);
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe( event => {
+      this.getSize();
+    })
+    this.audioService.audio.type.play();
+    this.actionService.actionGenerator(
+        'system',
+        'delete form',
+        'delete form open',
+        'delete form open',
+        'open'
+    );
+  }
+
+  getSize() {
+    let width = this.sizeViewer.nativeElement.offsetWidth;
+    let height = this.sizeViewer.nativeElement.offsetHeight;
+    // full size
+    if (width > 850) {
+      // header:96 footer:51 steps:11 (2 times) corrector:1
+      this.innerOutletHeight = height - 96 - 51 - 11 - 11 + 1;
+    }
+    // mid
+    if (width <= 850 &&  width > 650) {
+      // header:65 footer:41 steps:11 (2 times) corrector:1
+      this.innerOutletHeight = height - 65 - 41 - 11 - 11 + 1;
+    }
+    // extrasmall
+    if (width <= 650) {
+      // header:41 footer:41 steps:11 (2 times) corrector:1
+      this.innerOutletHeight = height - 41 - 41 - 11 - 11 + 1;
+    }
   }
 
   checkAchievesToSeen() {

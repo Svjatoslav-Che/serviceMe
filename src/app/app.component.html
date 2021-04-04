@@ -7,7 +7,8 @@
     <div class="user_select">
     </div>
 
-    <div class="outlet_container" *ngIf="globalsService.loads else loads">
+    <div class="outlet_container" *ngIf="globalsService.loads else loads"
+         [ngStyle]="{'height' : innerOutletHeight + 'px'}">
         <router-outlet></router-outlet>
     </div>
 

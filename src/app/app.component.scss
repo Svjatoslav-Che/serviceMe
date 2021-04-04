@@ -15,7 +15,7 @@
   .outlet_container {
     position: fixed;
     top: var(--outlet_top);
-    height: var(--outlet_height);
+    //height: var(--outlet_height);
     left: 50%;
     transform: translateX(-50%);
     z-index: 50;
